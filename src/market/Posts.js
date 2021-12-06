@@ -9,11 +9,13 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-
+import { useNavigate } from "react-router";
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const Market = () => {
+
+const Posts = () => {
+  const navigate = useNavigate();
   return (
-    <Container sx={{ py: 8 }} maxWidth="lg">
+    <Container sx={{ py: 4 }} maxWidth="lg">
       <Grid container spacing={4}>
         {cards.map((card) => (
           <Grid item key={card} xs={12} sm={6} md={3}>
@@ -27,6 +29,7 @@ const Market = () => {
                   pt: "5.25%",
                 }}
                 image="https://source.unsplash.com/random"
+                height="180"
                 alt="random"
               />
               <CardContent sx={{ flexGrow: 1 }}>
@@ -39,8 +42,12 @@ const Market = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">View</Button>
-                <Button size="small">Edit</Button>
+                <Button size="small" onClick={() => navigate("/post")}>
+                  View
+                </Button>
+                <Button size="small" onClick={() => navigate("/like")}>
+                  Like
+                </Button>
               </CardActions>
             </Card>
           </Grid>
@@ -50,4 +57,4 @@ const Market = () => {
   );
 };
 
-export default Market;
+export default Posts;

@@ -1,17 +1,18 @@
 import React from "react";
 import { Grid, Link, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import Market from "./Market";
+import Posts from "../market/Posts";
+import Fullpage from "../layout/Fullpage";
 
 const Main = () => {
   return (
-    <div>
+    <Fullpage>
       <Paper
         sx={{
           position: "relative",
           backgroundColor: "grey.800",
           color: "#fff",
-          mb: 4,
+          my: 8,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
@@ -63,8 +64,8 @@ const Main = () => {
           </Grid>
         </Grid>
       </Paper>
-      <Market />
-    </div>
+      <Posts />
+    </Fullpage>
   );
 };
 
