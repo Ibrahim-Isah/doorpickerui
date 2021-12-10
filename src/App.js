@@ -41,8 +41,8 @@ import BlogRightSidebar from "./pages/blogs/BlogRightSidebar";
 import BlogDetail from "./pages/blogs/BlogDetail";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import Error from "./pages/Error";
 import { UserProvider } from "./context/UserProvider";
+import Chat from "./components/chat/Chat";
 
 const App = () => {
   const childRef = useRef();
@@ -83,6 +83,7 @@ const App = () => {
                 component={ListRightSidebar}
               />
               <AppRoute path="/listing-details" component={ListingDetails} />
+              <AppRoute path="/listing-chat" component={Chat} />
               <AppRoute path="/add-listing/new" component={AddListing} />
               <AppRoute path="/user-profile" component={UserProfile} />
               <AppRoute path="/top-author" component={TopAuthors} />
@@ -108,7 +109,7 @@ const App = () => {
               <AppRoute path="/blog-single" component={BlogDetail} />
               <AppRoute path="/login" component={Login} />
               <AppRoute path="/sign-up" component={SignUp} />
-              <AppRoute component={Error} />
+              {/* <Route path="*" component={Error} /> */}
             </UserProvider>
           </Switch>
         )}
