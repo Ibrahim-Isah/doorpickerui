@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { IoIosLink } from "react-icons/io";
 import { FiDollarSign, FiHeart, FiPhone } from "react-icons/fi";
 import { FaRegCalendarCheck } from "react-icons/fa";
@@ -14,12 +14,12 @@ function PlaceGrid({ griditems }) {
   const { posts } = state;
   useEffect(() => {
     async function getData() {
-      const d = await getPosts(); // fetch("http://localhost:5071/api/v1/post/all/0/10", auth);
+      const d = await getPosts();
       if (!d.ok) {
         console.log(d, " error");
       }
       console.log(d);
-      dispatch({ type: "POSTS_SET", data: d?.data?.content });
+      dispatch({ type: "POSTS_SET", data: d?.data });
     }
     getData();
   }, []);

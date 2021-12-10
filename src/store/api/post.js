@@ -8,3 +8,11 @@ export const getPosts = async (pg = 0, ct = 10) => {
   const data = await response.json();
   return { data };
 };
+export const findLoc = async () => {
+  const response = await fetch(`https://extreme-ip-lookup.com/json/`);
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
