@@ -23,7 +23,6 @@ function PlaceGrid({ griditems }) {
     }
     getData();
   }, []);
-  console.log(posts, " postst ");
   return (
     <>
       {posts.map((item, index) => {
