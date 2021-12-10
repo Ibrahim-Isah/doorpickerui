@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoIosLink } from "react-icons/io";
 import { FiDollarSign, FiHeart, FiPhone } from "react-icons/fi";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { getPosts } from "../../store/api/post";
+import { UserContext } from "../../context/UserProvider";
 export const auth = {
   headers: { Authorization: `Basic ${process.env.REACT_APP_AUTH}` },
 };
 function PlaceGrid({ griditems }) {
-  const [data, setData] = useState([]);
+  const [state, dispatch] = useContext(UserContext);
+  const { posts } = state;
   useEffect(() => {
     async function getData() {
-      const d = await fetch("http://localhost:5071/api/v1/post/all/0/10", auth);
+      const d = await getPosts(); // fetch("http://localhost:5071/api/v1/post/all/0/10", auth);
       if (!d.ok) {
         console.log(d, " error");
       }
       console.log(d);
-      const data = await d.json();
-      setData(data?.content || []);
+      dispatch({ type: "POSTS_SET", data: d?.data?.content });
     }
     getData();
   }, []);
+  console.log(posts, " postst ");
   return (
     <>
-      {data.map((item, index) => {
+      {posts.map((item, index) => {
         return (
           <div className="col-lg-4 column-td-6" key={index}>
             <div className="card-item">
