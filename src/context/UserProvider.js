@@ -1,10 +1,11 @@
 import React, { createContext, useReducer } from "react";
-import { POSTS_SET, POST_SET, USER_SET } from "./actions";
+import { ALERT_SHOW, POSTS_SET, POST_SET, USER_SET } from "./actions";
 const initialState = {
   user: {},
   posts: [],
   post: {},
   loading: false,
+  alert: { show: false },
 };
 const UserContext = createContext(initialState);
 
@@ -25,6 +26,11 @@ const UserProvider = ({ children }) => {
         return {
           ...state,
           user: action.data,
+        };
+      case ALERT_SHOW:
+        return {
+          ...state,
+          alert: action.data,
         };
 
       default:

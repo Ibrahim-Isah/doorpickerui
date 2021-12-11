@@ -4,7 +4,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../context/UserProvider";
-import { userSignup } from "../../../store/api/user";
+import { userLogin, userSignup } from "../../../store/api/user";
 import { USER_SET } from "../../../context/actions";
 
 function LoginBox({ title, subtitle }) {
@@ -17,12 +17,12 @@ function LoginBox({ title, subtitle }) {
   const _submit = async () => {
     if (email.length > 0 && password.length > 0) {
       const obj = { email, password };
-      const response = await userSignup(obj);
-      if (!response.ok) {
+      const response = await userLogin(obj);
+      if (!response.data) {
         alert("Login failed");
+        return;
       }
-      const user = await response.json();
-      user?.id && dispatch({ type: USER_SET, data: user });
+      dispatch({ type: USER_SET, data: response.data });
     }
   };
   return (

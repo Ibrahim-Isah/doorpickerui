@@ -42,6 +42,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import { UserProvider } from "./context/UserProvider";
 import Chat from "./components/chat/Chat";
+import Confirmation from "./components/other/account/Confirmation";
 const App = () => {
   const childRef = useRef();
   let location = useLocation();
@@ -107,6 +108,7 @@ const App = () => {
               <AppRoute path="/blog-single" component={BlogDetail} />
               <AppRoute path="/login" component={Login} />
               <AppRoute path="/sign-up" component={SignUp} />
+              <AppRoute path="/confirmation" component={Confirmation} />
               {/* <Route path="*" component={Error} /> */}
             </UserProvider>
           </Switch>
