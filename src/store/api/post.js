@@ -1,0 +1,26 @@
+import { auth, BASE_URL, PostSettings } from "../../utils/constant";
+
+export const getPosts = async (pg = 0, ct = 10) => {
+  const response = await fetch(`${BASE_URL}post/all/${pg}/${ct}`, auth);
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
+export const addPicket = async (obj) => {
+  const response = await fetch(``, PostSettings(obj));
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
+export const findLoc = async () => {
+  const response = await fetch(`https://extreme-ip-lookup.com/json/`);
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
