@@ -6,6 +6,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { getPosts } from "../../store/api/post";
 import { UserContext } from "../../context/UserProvider";
+import { POST_SET } from "../../context/actions";
 export const auth = {
   headers: { Authorization: `Basic ${process.env.REACT_APP_AUTH}` },
 };
@@ -19,7 +20,7 @@ function PlaceGrid({ griditems }) {
         console.log(d, " error");
       }
       console.log(d);
-      dispatch({ type: "POSTS_SET", data: d?.data });
+      dispatch({ type: POST_SET, data: d?.data });
     }
     getData();
   }, []);

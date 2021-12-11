@@ -5,6 +5,7 @@ import { FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../context/UserProvider";
 import { userSignup } from "../../../store/api/user";
+import { USER_SET } from "../../../context/actions";
 
 function LoginBox({ title, subtitle }) {
   const [state, dispatch] = useContext(UserContext);
@@ -21,7 +22,7 @@ function LoginBox({ title, subtitle }) {
         alert("Login failed");
       }
       const user = await response.json();
-      user?.id && dispatch({ type: "USER_SET", data: user });
+      user?.id && dispatch({ type: USER_SET, data: user });
     }
   };
   return (

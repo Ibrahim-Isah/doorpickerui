@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import { useLocation, Switch } from "react-router-dom";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
-
 // Layouts
 import LayoutDefault from "./layouts/LayoutDefault";
 
@@ -43,7 +42,6 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import { UserProvider } from "./context/UserProvider";
 import Chat from "./components/chat/Chat";
-
 const App = () => {
   const childRef = useRef();
   let location = useLocation();
