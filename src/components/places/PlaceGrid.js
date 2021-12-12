@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { IoIosLink } from "react-icons/io";
-import { FiDollarSign, FiHeart, FiPhone } from "react-icons/fi";
+import { FiDollarSign, FiHeart } from "react-icons/fi";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";

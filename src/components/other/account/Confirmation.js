@@ -15,7 +15,8 @@ function Confirmation(props) {
   const [al, setAlert] = useState(null);
   const history = useHistory();
   const [state, dispatch] = useContext(UserContext);
-  const phone = props.location?.state?.phone;
+  const phone = props.location?.state?.phone || state?.user?.phone;
+  console.log(state.user);
   const _token = async () => {
     if (tk.length > 0) {
       const d = await doConfirmation(tk, phone);
@@ -31,15 +32,16 @@ function Confirmation(props) {
         msg: "Confirmation Succesful!",
         isAlert: true,
       });
-      console.log(d.data, " storing this");
-      dispatch({ type: USER_SET, data: d.data });
+      const toStore = { ...d?.data, auth: true };
+      dispatch({ type: USER_SET, data: toStore });
       history.push("/");
     }
   };
   return (
     <main className="booking-confirmation-page">
       {/* Header */}
-      {al && <GeneralHeader alert={al} />}
+      <GeneralHeader />
+      <GenAlert alert={al} />
 
       <section className="booking-confirm-area padding-top-200px padding-bottom-140px overflow-hidden">
         <div className="container">
@@ -55,7 +57,7 @@ function Confirmation(props) {
                     Thanks for signing up! {state?.user?.firstname}
                   </h2>
                   <p className="sec__desc">
-                    Kindly input the confirmation code sent to your phone.
+                    Kindly input the confirmation code sent to {phone}.
                   </p>
                 </div>
                 <div className="col-lg-12">
