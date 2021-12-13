@@ -55,17 +55,7 @@ export default function HeaderAuthorAccess() {
                         <li><Link to="#"><BsGear className="user-icon" /> Settings</Link></li>
                         <li><Link to="#"><BsPower className="user-icon" /> Sign Out</Link></li>
                     </ul>
-                    <div className="side-user-search contact-form-action">
-                        <form method="post">
-                            <div className="form-group mb-0">
-                                <FiSearch className="form-icon" />
-                                <input className="form-control" type="search" name="search-field" placeholder="Search by keywords" />
-                            </div>
-                            <button type="button" className="theme-btn border-0">
-                                Search
-                            </button>
-                        </form>
-                    </div>
+                     
                 </div>
             </div>
         </>
