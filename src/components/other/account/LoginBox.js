@@ -1,27 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import SignInOptions from "./SignInOptions";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../context/UserProvider";
-import { userSignup } from "../../../store/api/user";
+import { userLogin } from "../../../store/api/user";
+import { USER_SET } from "../../../context/actions";
 
 function LoginBox({ title, subtitle }) {
   const [state, dispatch] = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
   useEffect(() => {
-    state.user?.id && alert("Login succesful!");
-  }, [state.user]);
+    state.user?.id && history.push("/");
+  }, [state.user, history]);
   const _submit = async () => {
     if (email.length > 0 && password.length > 0) {
       const obj = { email, password };
-      const response = await userSignup(obj);
-      if (!response.ok) {
+      const response = await userLogin(obj);
+      if (!response.data) {
         alert("Login failed");
+        return;
       }
-      const user = await response.json();
-      user?.id && dispatch({ type: "USER_SET", data: user });
+      const isAuth = { ...response?.data, auth: true };
+      dispatch({ type: USER_SET, data: isAuth });
+      history.push("/");
     }
   };
   return (

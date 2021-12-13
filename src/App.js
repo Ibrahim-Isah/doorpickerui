@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import { useLocation, Switch } from "react-router-dom";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
-
 // Layouts
 import LayoutDefault from "./layouts/LayoutDefault";
 
@@ -43,7 +42,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import { UserProvider } from "./context/UserProvider";
 import Chat from "./components/chat/Chat";
-
+import Confirmation from "./components/other/account/Confirmation";
 const App = () => {
   const childRef = useRef();
   let location = useLocation();
@@ -109,6 +108,7 @@ const App = () => {
               <AppRoute path="/blog-single" component={BlogDetail} />
               <AppRoute path="/login" component={Login} />
               <AppRoute path="/sign-up" component={SignUp} />
+              <AppRoute path="/confirmation" component={Confirmation} />
               {/* <Route path="*" component={Error} /> */}
             </UserProvider>
           </Switch>

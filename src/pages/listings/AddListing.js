@@ -3,18 +3,13 @@ import GeneralHeader from "../../components/common/GeneralHeader";
 import Breadcrumb from "../../components/common/Breadcrumb";
 import GeneralInfo from "../../components/addlisting/GeneralInfo";
 import AddLocation from "../../components/addlisting/AddLocation";
-import AddFullDetails from "../../components/addlisting/AddFullDetails";
 import PhotoUploader from "../../components/addlisting/PhotoUploader";
-import Amenities from "../../components/addlisting/Amenities";
-import OpeningHours from "../../components/addlisting/OpeningHours";
 import AddPrice from "../../components/addlisting/AddPrice";
-import NewsLetter from "../../components/other/cta/NewsLetter";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import { Link } from "react-router-dom";
 import breadcrumbimg from "../../assets/images/bread-bg.jpg";
-import sectiondata from "../../store/store";
-import { findLoc } from "../../store/api/post";
+import { addPicket, findLoc } from "../../store/api/post";
 
 function AddListing() {
   const [bread] = useState(breadcrumbimg);
@@ -26,6 +21,11 @@ function AddListing() {
     }
     Location();
   }, []);
+  const addPost = () => {
+    const obj = { location: locale };
+    addPicket(obj);
+    //create a post
+  };
   return (
     <main className="add-listing">
       {/* Header */}
@@ -50,7 +50,7 @@ function AddListing() {
 
               {/* <AddFullDetails /> */}
 
-              <Amenities />
+              {/* <Amenities /> */}
 
               {/* <OpeningHours /> */}
 
@@ -61,7 +61,7 @@ function AddListing() {
                   <div className="custom-checkbox d-block mr-0">
                     <input type="checkbox" id="privacy" />
                     <label htmlFor="privacy">
-                      I Agree to Dirto's{" "}
+                      I Agree to DoorPicker's
                       <Link to="#" className="color-text">
                         Privacy Policy
                       </Link>
@@ -70,15 +70,15 @@ function AddListing() {
                   <div className="custom-checkbox d-block mr-0">
                     <input type="checkbox" id="terms" />
                     <label htmlFor="terms">
-                      I Agree to Dirto's{" "}
+                      I Agree to DoorPicker's
                       <Link to="#" className="color-text">
                         Terms of Services
                       </Link>
                     </label>
                   </div>
                   <div className="btn-box mt-4">
-                    <button type="submit" className="theme-btn border-0">
-                      submit listing
+                    <button onClick={addPost} className="theme-btn border-0">
+                      submit picket
                     </button>
                   </div>
                 </div>

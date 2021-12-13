@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.5.3",
     "classnames": "^2.2.6",
+    "firebase": "^9.6.1",
     "google-map-react": "^2.1.9",
     "lodash": "^4.17.20",
     "node-sass": "^5.0.0",
@@ -15,6 +16,7 @@
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.2.4",
     "react-google-maps": "^9.4.5",
+    "react-hook-form": "^7.21.2",
     "react-icons": "^3.11.0",
     "react-modal-video": "^1.2.6",
     "react-particles-js": "^3.4.1",
@@ -24,6 +26,7 @@
     "react-select": "^3.1.0",
     "react-slick": "^0.27.13",
     "react-tabs": "^3.1.1",
+    "react-web-gifted-chat": "^0.6.7",
     "slick-carousel": "^1.8.1",
     "supercluster": "^7.1.0",
     "swr": "^0.3.9",
