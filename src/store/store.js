@@ -126,7 +126,7 @@ const sectiondata = {
                 }*/
         //    ]
         },
-        {
+       /*  {
             title: 'categories',
             path: '/all-categories',
             dropdown: [
@@ -143,7 +143,7 @@ const sectiondata = {
                     path: '/top-place'
                 }
             ]
-        },
+        },*/
         {
             title: 'listings',
             path: '/listing-grid',
@@ -182,8 +182,8 @@ const sectiondata = {
                 }
             ]*/
         },
-        {
-            title: 'pages',
+      /*  {
+           title: 'pages',
             path: '/user-profile',
             dropdown: [
                 {
@@ -235,6 +235,16 @@ const sectiondata = {
                     path: '/recover'
                 }
             ]
+        },*/
+
+        {
+            title: 'About',
+            path: '/about',
+        },
+
+        {  
+            title: 'Contact',
+            path: '/contact'
         },
        
        /* {
