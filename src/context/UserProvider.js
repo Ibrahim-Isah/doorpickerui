@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import { ALERT_SHOW, POSTS_SET, POST_SET, USER_SET } from "./actions";
+import { ALERT_SHOW, POSTS_SET, POST_DO, POST_SET, USER_SET } from "./actions";
 const initialState = {
   user: {},
   posts: [],

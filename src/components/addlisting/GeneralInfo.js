@@ -1,11 +1,19 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore/lite";
 import React, { useContext, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsPencilSquare, BsPencil } from "react-icons/bs";
 import Select from "react-select";
+import * as firebaseApi from "../../store/api/firebaseApi";
+import { POST_SET } from "../../context/actions";
 import { UserContext } from "../../context/UserProvider";
+import { addPicket } from "../../store/api/post";
 import * as cats from "../../utils/category.json";
-
+import { firebaseConfig } from "../../utils/config";
+import { useHistory } from "react-router-dom";
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const ca = cats.category.map((c) => {
   return { value: c.cat, label: c.cat };
 });
@@ -15,10 +23,12 @@ const condit = cats.condition.map((cc) => {
 
 function GeneralInfo() {
   const [state, dispatch] = useContext(UserContext);
+  const history = useHistory();
   const [sub, setSub] = useState(null);
   const [t, setT] = useState([]);
   const [res, setRes] = useState(null);
   const [cond, setCondition] = useState("");
+  const [al, setAlert] = useState({ show: false });
   const getSub = (cat) => {
     setRes({ cat });
     const sel = cats.category.find((c) => c.cat === cat);
@@ -50,15 +60,70 @@ function GeneralInfo() {
     reset,
     formState: { errors },
   } = useForm();
-  const _done = (data) => {
-    console.log(res, " resident", cond);
-    console.log(data, " dat");
+  const openChat = (id, email) => {
+    firebaseApi.storeChat(
+      {
+        createdAt: new Date(),
+        _id: id,
+        text: "is this still available",
+        user: email, // should be OP
+      },
+      id
+    );
+  };
+  const _done = async (data) => {
+    if (!state.user?.auth) {
+      setAlert({
+        show: true,
+        msg: "Login is required",
+        variant: "danger",
+        isLogin: true,
+      });
+      return;
+    }
+    if (state?.post?.id) {
+      data.id = state.post.id;
+    }
+    data.condition = cond;
+    data.category = res.cat;
+    data.subCategory = res.subcat;
+    data.make = res.type;
+    data.ownerId = state.user.id;
+    const d = await addPicket(data);
+    if (d.error) {
+      return;
+    }
+    dispatch({ type: POST_SET, data: d.data });
+    openChat(d.data?.id, d?.data?.email);
+    // post it to firebase
+    reset();
   };
   return (
     <>
       <div className="billing-form-item">
         <div className="billing-title-wrap">
           <h3 className="widget-title pb-0">General Information</h3>
+          <Alert
+            variant={al?.variant}
+            show={al?.show}
+            onClose={() => setAlert({ show: false, msg: "" })}
+            dismissible
+          >
+            {al?.msg}
+            {al.isLogin && (
+              <Button
+                variant="link"
+                style={{ marginLeft: "4px", textDecoration: "none" }}
+                onClick={() =>
+                  history.push("/login", {
+                    from: "/add-listing/new",
+                  })
+                }
+              >
+                Go to login
+              </Button>
+            )}
+          </Alert>
           <div className="title-shape margin-top-10px"></div>
         </div>
         <div className="billing-content">
@@ -173,8 +238,13 @@ function GeneralInfo() {
                   </div>
                 </div>
               </div>
+              <Button
+                onClick={handleSubmit(_done)}
+                style={{ marginTop: "16px" }}
+              >
+                Done
+              </Button>
             </form>
-            <Button onClick={handleSubmit(_done)}>Done</Button>
           </div>
         </div>
       </div>

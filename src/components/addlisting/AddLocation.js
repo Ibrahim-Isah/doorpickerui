@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Alert, Button } from "react-bootstrap";
 import { FiMap } from "react-icons/fi";
+import { useHistory } from "react-router-dom";
 import Select from "react-select";
+import { UserContext } from "../../context/UserProvider";
+import { addPicket, findLoc } from "../../store/api/post";
 
 const cities = [
   {
@@ -95,11 +98,18 @@ const states = [
     label: "Montana",
   },
 ];
-const AddLocation = () => {
+const AddLocation = (props) => {
+  const [state, dispatch] = useContext(UserContext);
   const [selectedCity, setCity] = useState(null);
   const [selectedState, setState] = useState(null);
+  const [locale, setLocation] = useState(null);
+  const [al, setAlert] = useState({ show: false });
   const [addr, setAddr] = useState("");
   const [title] = useState("Add Location");
+  const history = useHistory();
+  // useEffect(() => {
+  //   findLoc().then((d) => setLocation(d?.data));
+  // }, []);
 
   const handleChangeCity = (s) => {
     setCity(s);
@@ -107,15 +117,53 @@ const AddLocation = () => {
   const handleChangeState = (v) => {
     setState(v);
   };
-  const _done = () => {
-    console.log(addr, " addr");
-    console.log(selectedCity, selectedState);
+  const _done = (data) => {
+    if (!state.user?.auth) {
+      setAlert({
+        show: true,
+        msg: "Login is required",
+        variant: "danger",
+        isLogin: true,
+      });
+      return;
+    }
+    data.location = locale;
+    data.address = addr;
+    data.city = selectedCity;
+    data.state = selectedState;
+    data.ownerId = state.user.id;
+    data.ownerId = state.user.id;
+    if (state?.post?.id) {
+      data.id = state.post.id;
+    }
+    addPicket(data);
   };
   return (
     <>
       <div className="billing-form-item">
         <div className="billing-title-wrap">
           <h3 className="widget-title pb-0">{title}</h3>
+          <Alert
+            variant={al?.variant}
+            show={al?.show}
+            onClose={() => setAlert({ show: false, msg: "" })}
+            dismissible
+          >
+            {al?.msg}
+            {al.isLogin && (
+              <Button
+                variant="link"
+                style={{ marginLeft: "4px", textDecoration: "none" }}
+                onClick={() =>
+                  history.push("/login", {
+                    from: "/add-listing/new",
+                  })
+                }
+              >
+                Go to login
+              </Button>
+            )}
+          </Alert>
           <div className="title-shape margin-top-10px"></div>
         </div>
         <div className="billing-content">

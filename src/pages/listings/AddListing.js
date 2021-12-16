@@ -14,16 +14,15 @@ import { UserContext } from "../../context/UserProvider";
 
 function AddListing() {
   const [bread] = useState(breadcrumbimg);
-  const [locale, setLocation] = useState(null);
   const [state, dispatch] = useContext(UserContext);
   const hist = useHistory();
-  useEffect(() => {
-    async function Location() {
-      const loc = await findLoc();
-      setLocation(loc);
-    }
-    Location();
-  }, []);
+  // useEffect(() => {
+  //   async function Location() {
+  //     const loc = await findLoc();
+  //     setLocation(loc.data);
+  //   }
+  //   Location();
+  // }, []);
   const addPost = () => {
     if (!state?.user?.auth) {
       alert("You are not logged in");
