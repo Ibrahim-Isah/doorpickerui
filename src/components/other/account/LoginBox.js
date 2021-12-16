@@ -8,14 +8,15 @@ import { UserContext } from "../../../context/UserProvider";
 import { userLogin } from "../../../store/api/user";
 import { USER_SET } from "../../../context/actions";
 
-function LoginBox({ title, subtitle }) {
+function LoginBox({ title, subtitle, from }) {
   const [state, dispatch] = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  const dest = from ? from : "/";
   useEffect(() => {
-    state.user?.id && history.push("/");
-  }, [state.user, history]);
+    state.user?.id && history.push(dest);
+  }, [state.user, dest, history]);
   const _submit = async () => {
     if (email.length > 0 && password.length > 0) {
       const obj = { email, password };
@@ -26,7 +27,7 @@ function LoginBox({ title, subtitle }) {
       }
       const isAuth = { ...response?.data, auth: true };
       dispatch({ type: USER_SET, data: isAuth });
-      history.push("/");
+      history.push(dest);
     }
   };
   return (

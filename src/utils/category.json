@@ -1,0 +1,201 @@
+{
+  "category": [
+    {
+      "cat": "Electronics & Media, Audio & Speakers",
+      "items": [
+        {
+          "name": "Audio & Speakers",
+          "subcategory": [
+            "Home audio & stereos",
+            "Speakers & subwoofers",
+            "Headphones",
+            "Portable stereos & Boomboxes"
+          ],
+          "color": ["Black", "Blue", "Silver"]
+        },
+        {
+          "name": "Cell phones and Accessories",
+          "subcategory": [
+            "Cell phones & Smart phones",
+            "Headsets",
+            "Cases, Covers & Skins"
+          ],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Cameras & Photography",
+          "subcategory": [
+            "Digital cameras",
+            "Camcoders",
+            "Camera & Camcoder accessories"
+          ],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "TVs & Media Players",
+          "subcategory": [
+            "Television",
+            "DVD & Blue-Ray Players",
+            "Streaming Devices"
+          ],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Video Games & Consoles",
+          "subcategory": ["Video Games", "Consoles", "Accessories"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Computers & Accessories",
+          "subcategory": [
+            "Laptops & Netbooks",
+            "Desktops & All-in-ones",
+            "Data storage & Media"
+          ],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Books, Movies & Music",
+          "subcategory": ["VHS", "CDs, DVDs & Blue ray"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Wearables",
+          "subcategory": [
+            "Smart watches",
+            "Smart watch accesories",
+            "Fitness trackers"
+          ],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Drones",
+          "subcategory": ["Drones", "other", "Drone accessories"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Virtual reality",
+          "subcategory": [
+            "VR headsets",
+            "Cases, Covers & Skins",
+            "VR Accessories"
+          ],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Other",
+          "subcategory": [],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        }
+      ]
+    },
+    {
+      "cat": "Home & Garden",
+      "items": [
+        {
+          "name": "Furniture",
+          "subcategory": [
+            "Armoires & Wardrobes",
+            "Bar & Serving carts",
+            "Beds & Bed frames"
+          ],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Houshold",
+          "subcategory": ["Laundry supplies"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Appliances",
+          "subcategory": ["Dishwashers"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Kitchen & Dinning",
+          "subcategory": ["Bakeware & Cookware"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Bathroom",
+          "subcategory": ["Cabinets & Storage"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Tools & Machinery",
+          "subcategory": ["Air tools"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Home Improvement",
+          "subcategory": ["Blueprints & How-to"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Lawn & Garden",
+          "subcategory": ["Garden Decoration"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "Home Decor",
+          "subcategory": ["Bedding"],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+        {
+          "name": "other - Home & Garden",
+          "subcategory": [],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        }
+      ]
+    },
+    {
+      "cat": "Clothing, Shoes & Accessories",
+      "items": [
+        {
+          "name": "Women's Clothing",
+          "subcategory": ["Dresses"],
+          "color": ["Black", "Blue", "Silver"]
+        }
+      ]
+    },
+    { "cat": "Baby & Kids" },
+    {
+      "cat": "Vehicles",
+      "items": [
+        {
+          "name": "Cars & Trucks",
+          "subcategory": ["SUV", "Sedan", "Truck"],
+          "color": ["Black", "Blue", "Silver"],
+          "model": [
+            {
+              "make": "Toyota",
+              "model": ["Camry", "Rav4"],
+              "year": [2000, 2001]
+            },
+            {
+              "make": "Honda",
+              "model": ["Civic", "Baby Boy"],
+              "year": [2000, 2001]
+            }
+          ]
+        }
+      ]
+    },
+    { "cat": "Toys, Games, & Hobbies" },
+    { "cat": "Sports & Outdoors" },
+    { "cat": "Collectibles & Art" },
+    { "cat": "Pet suppliers" },
+    { "cat": "Health & Beauty" },
+    { "cat": "Wedding" },
+    { "cat": "Business Equipment" },
+    { "cat": "Tickets" },
+    { "cat": "General" }
+  ],
+  "condition": [
+    "new",
+    "Reconditioned / Certified",
+    "Open box (Never used)",
+    "Used (Normal wear)",
+    "For parts"
+  ]
+}

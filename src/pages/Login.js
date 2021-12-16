@@ -6,7 +6,7 @@ import Footer from "../components/common/footer/Footer";
 import ScrollTopBtn from "../components/common/ScrollTopBtn";
 import breadcrumbimg from "../assets/images/bread-bg.jpg";
 
-function Login() {
+function Login(props) {
   const [bread] = useState(breadcrumbimg);
   return (
     <main className="login-page">
@@ -23,6 +23,7 @@ function Login() {
               <LoginBox
                 title="Login to your account"
                 subtitle="with your social network"
+                from={props.location?.state?.from}
               />
             </div>
           </div>

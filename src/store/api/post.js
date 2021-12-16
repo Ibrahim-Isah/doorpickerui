@@ -9,7 +9,7 @@ export const getPosts = async (pg = 0, ct = 10) => {
   return { data };
 };
 export const addPicket = async (obj) => {
-  const response = await fetch(``, PostSettings(obj));
+  const response = await fetch(`${BASE_URL}post/add`, PostSettings(obj));
   if (!response.ok) {
     return { error: { code: response.status } };
   }
@@ -17,10 +17,13 @@ export const addPicket = async (obj) => {
   return { data };
 };
 export const findLoc = async () => {
-  const response = await fetch(`https://extreme-ip-lookup.com/json/`);
+  const response = await fetch(
+    `https://extreme-ip-lookup.com/json/?key=${process.env.REACT_APP_GEO}`
+  );
   if (!response.ok) {
     return { error: { code: response.status } };
   }
   const data = await response.json();
+  console.log(data, "what happened to data");
   return { data };
 };
