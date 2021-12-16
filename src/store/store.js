@@ -97,7 +97,6 @@ import about2img from "../assets/images/img2.jpg"; //389*259
 import mainimage from "../assets/images/video-img.jpg"; // 750*500
 
 
-
 const sectiondata = {
     headermenu: [
         {

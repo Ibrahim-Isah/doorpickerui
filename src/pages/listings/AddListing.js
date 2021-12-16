@@ -10,6 +10,7 @@ import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import { Link } from "react-router-dom";
 import breadcrumbimg from "../../assets/images/bread-bg.jpg";
 import { addPicket, findLoc } from "../../store/api/post";
+import { Accordion } from "react-accessible-accordion";
 
 function AddListing() {
   const [bread] = useState(breadcrumbimg);
@@ -39,14 +40,40 @@ function AddListing() {
       />
 
       {/* Add Listing */}
+
       <section className="add-listing-area padding-top-40px padding-bottom-100px">
         <div className="container">
           <div className="row">
             <div className="col-lg-9 mx-auto">
-              <PhotoUploader />
-              <GeneralInfo />
-
-              <AddLocation />
+            <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="0">
+            <Accordion.Header> Photo </Accordion.Header>
+            <Accordion.Body> 
+            <PhotoUploader></PhotoUploader>
+            </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+            <Accordion.Header>General information</Accordion.Header>
+            <Accordion.Body> 
+            <GeneralInfo></GeneralInfo>
+            </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+            <Accordion.Header>Address</Accordion.Header>
+            <Accordion.Body> 
+            <AddLocation></AddLocation>
+            </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="3">
+            <Accordion.Header> Pricing </Accordion.Header>
+            <Accordion.Body>
+              <AddPrice></AddPrice>
+            </Accordion.Body>
+            </Accordion.Item>
+            </Accordion>
+        
+              
+               
 
               {/* <AddFullDetails /> */}
 
@@ -54,7 +81,7 @@ function AddListing() {
 
               {/* <OpeningHours /> */}
 
-              <AddPrice />
+               
 
               <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
                 <div className="billing-content p-0">
@@ -80,6 +107,7 @@ function AddListing() {
                     <button onClick={addPost} className="theme-btn border-0">
                       submit picket
                     </button>
+
                   </div>
                 </div>
               </div>
