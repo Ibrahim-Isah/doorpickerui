@@ -7,6 +7,8 @@ import Button from "../../common/Button";
 import userimg from "../../../assets/images/team1.jpg";
 import { UserContext } from "../../../context/UserProvider";
 import { USER_SET } from "../../../context/actions";
+import { Modal } from "react-bootstrap";
+import PhotoUploader from "../../addlisting/PhotoUploader";
 
 export default function HeaderAuthorAccess() {
   const [state, dispatch] = useContext(UserContext);
@@ -15,6 +17,10 @@ export default function HeaderAuthorAccess() {
   );
   const { user } = state;
   const d = new Date(user?.createdOn);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <div className="logo-right-content">
@@ -66,17 +72,50 @@ export default function HeaderAuthorAccess() {
             <span className="su__meta">{`Joined ${
               d.getMonth() + 1
             }/${d.getFullYear()}`}</span>
-            <div className="avatar-icon">
+              
+             < div className="avatar-icon"> 
               <Link
-                to="/profile"
+                
                 data-toggle="tooltip"
                 data-placement="top"
                 title="Change Avatar"
+                variant="primary" 
+                onClick={handleShow}
               >
+
                 {" "}
                 <FiPlus />
               </Link>
-            </div>
+              <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+          <Modal.Title>Photo</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <PhotoUploader/>
+          </Modal.Body>
+          <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose} size="sm" >
+            Close
+          </Button>
+          </Modal.Footer>
+          </Modal>
+          </div> 
+  
+          {/* < div className="avatar-icon">
+           <Button 
+           variant="secondary" 
+           onClick={handleShow}
+           size="sm"
+           >
+             {" "}
+           <FiPlus />
+        </Button> 
+          
+
+          </div> */}
+
+
+
           </div>
 
           <ul className="side-menu-ul">

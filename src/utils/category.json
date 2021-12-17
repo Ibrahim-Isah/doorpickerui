@@ -9,7 +9,11 @@
             "Home audio & stereos",
             "Speakers & subwoofers",
             "Headphones",
-            "Portable stereos & Boomboxes"
+            "Portable stereos & Boomboxes",
+            "Radios",
+            "MP3 & MP4 Players",
+            "Docks & Mini Speakers",
+            "Other - Audio & Speakers"
           ],
           "color": ["Black", "Blue", "Silver"]
         },
@@ -18,7 +22,10 @@
           "subcategory": [
             "Cell phones & Smart phones",
             "Headsets",
-            "Cases, Covers & Skins"
+            "Cases, Covers & Skins",
+            "Cell phones docks & Speakers",
+            "Batteries, Cables, & Adapters",
+            "Other - Cell Phones &Accessories"
           ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
@@ -27,7 +34,15 @@
           "subcategory": [
             "Digital cameras",
             "Camcoders",
-            "Camera & Camcoder accessories"
+            "Camera & Camcoder accessories",
+            "Lenses & Filters",
+            "Tripods & Supports",
+            "Flashes & Lightening",
+            "Binoculars ^ Telescopes",
+            "Films & Polaroid Cameras",
+            "Home Surveillance",
+            "Other - Cameras & Photography"
+
           ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
@@ -36,13 +51,15 @@
           "subcategory": [
             "Television",
             "DVD & Blue-Ray Players",
-            "Streaming Devices"
+            "Streaming Devices",
+            "Projectors & Screens",
+            "Other -  TVs & Media Players"
           ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Video Games & Consoles",
-          "subcategory": ["Video Games", "Consoles", "Accessories"],
+          "subcategory": ["Video Games", "Consoles", "Accessories", "Strategy guides", "Replacements parts & Tools", "Other - Video games & Console" ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
@@ -50,7 +67,8 @@
           "subcategory": [
             "Laptops & Netbooks",
             "Desktops & All-in-ones",
-            "Data storage & Media"
+            "Data storage & Media",
+            "Monitors & Screens"
           ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
