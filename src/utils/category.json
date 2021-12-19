@@ -68,13 +68,27 @@
             "Laptops & Netbooks",
             "Desktops & All-in-ones",
             "Data storage & Media",
-            "Monitors & Screens"
+            "Monitors & Screens",
+            "Keyboards & Mice",
+            "Printers & Scanners",
+            "Software",
+            "Tablet & E-readers",
+            "Computer components & Parts",
+            "Networking & Connectivity",
+            "Other - Computer & Accessories"
+
           ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Books, Movies & Music",
-          "subcategory": ["VHS", "CDs, DVDs & Blue ray"],
+          "subcategory": [
+            "VHS",
+            "CDs, DVDs & Blue ray",
+            "Books & Magazine",
+            "Vinyl",
+            "Other - Books, Movies, & Music"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
@@ -82,13 +96,18 @@
           "subcategory": [
             "Smart watches",
             "Smart watch accesories",
-            "Fitness trackers"
+            "Fitness trackers",
+            "Other - Wearables"
           ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Drones",
-          "subcategory": ["Drones", "other", "Drone accessories"],
+          "subcategory": [
+            "Drones", 
+            "Drone accessories",
+            "other - Drones"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
@@ -96,7 +115,8 @@
           "subcategory": [
             "VR headsets",
             "Cases, Covers & Skins",
-            "VR Accessories"
+            "VR Accessories",
+            "Other - Virtual reality"
           ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
@@ -115,48 +135,179 @@
           "subcategory": [
             "Armoires & Wardrobes",
             "Bar & Serving carts",
-            "Beds & Bed frames"
+            "Beds & Bed frames",
+            "Headboards & Footboards",
+            "Mattresses & Box springs",
+            "Bed accessories & Hardware",
+            "Bedroom sets",
+            "Benches, Stools, & Ottomans",
+            "Bookcases & Shelves",
+            "Cabinets & Cupboards",
+            "TV & Media centers",
+            "Chairs",
+            "Dinning sets",
+            "Dressers",
+            "Desks & Home Office furniture",
+            "Nightstands",
+            "Screens & Room dividers",
+            "Sideboards & Buffets",
+            "Slipcovers",
+            "Tables",
+            "Trunks & Chests",
+            "Vanities & Makeup tables",
+            "Furniture parts & Accessories",
+            "Sofas & Couches",
+            "Other - Furniture"
           ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
-          "name": "Houshold",
-          "subcategory": ["Laundry supplies"],
+          "name": "Household",
+          "subcategory": [
+            "Laundry supplies",
+            "Carpets streamers & Shampooers",
+            "Storage & Home Organization",
+            "Home fragrances",
+            "Paper products",
+            "Trash cans & Wastsebaskets",
+            "Cleaning tools & productions",
+            "Reusable shopping bags",
+            "School supplies",
+            "Other - Household"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Appliances",
-          "subcategory": ["Dishwashers"],
+          "subcategory": [
+            "Dishwashers",
+            "Freezers & Ice makers",
+            "Refrigerators",
+            "Washers & Dryers",
+            "Garbage Disposals",
+            "Fans",
+            "Air conditioners",
+            "Air purifiers",
+            "Cooktops & Ovens",
+            "Dehumidifiers",
+            "Humidifiers",
+            "Iron & Ironing boards, & Steamers",
+            "Microwaves",
+            "Space heaters",
+            "Vacuum cleaners, parts, & Accessories",
+            "Water coolers & Filters",
+            "Appliance parts & Accessories",
+            "Other - Appliances"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Kitchen & Dinning",
-          "subcategory": ["Bakeware & Cookware"],
+          "subcategory": [
+            "Bakeware & Cookware",
+            "Coffee & Tea accessories",
+            "Kitchen & Table linens",
+            "Kitchen utensils & Cutlery",
+            "Kitchen tools & Small appliances",
+            "Dinnerware & Serve ware",
+            "Glassware & Drinkware",
+            "Kitchen storage & Organization",
+            "Other - Kitchen & Dinning"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Bathroom",
-          "subcategory": ["Cabinets & Storage"],
+          "subcategory": [
+            "Cabinets & Storage",
+            "Towels, Bathmats, & Toilets covers",
+            "Bathroom hardware, & Toilet covers",
+            "Bathroom hardware & Accessories",
+            "Other - Bathroom"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Tools & Machinery",
-          "subcategory": ["Air tools"],
+          "subcategory": [
+            "Air tools",
+            "Hand tools",
+            "Power tools",
+            "Measuring & Layout tools",
+            "Safety & Protective gear",
+            "Toolboxes & Storage",
+            "Workshop equipment",
+            "Other - Tool & Machinery"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Home Improvement",
-          "subcategory": ["Blueprints & How-to"],
+          "subcategory": [
+            "Blueprints & How-to",
+            "Doors & Locks",
+            "Hardware",
+            "Hinges",
+            "Flooring & Tiles",
+            "Windows",
+            "Paints & Stains",
+            "Plumbing",
+            "Molding & Trim",
+            "Sliding & Skirting",
+            "Laddes & Stepstools",
+            "Fillers & Spackling",
+            "Lumber & Paneling",
+            "Bricks,Stones, & Concrete",
+            "Mortal, Cement, Plaster, & Stucco",
+            "Home Security",
+            "Other - Home Improvement"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Lawn & Garden",
-          "subcategory": ["Garden Decoration"],
+          "subcategory": [
+            "Garden Decoration",
+            "Plants & Seeds",
+            "Feeders & Birdhouses",
+            "Patio Furniture",
+            "Fire pit & Woods",
+            "Grills & Accessories",
+            "Outdoor lighting",
+            "Hammocks & Swings",
+            "Gardening tools",
+            "Watering & Hoses",
+            "Lawn mowers",
+            "Gardening clothes & Accessories",
+            "Wheelbarrows & Carts",
+            "Plant care, Soil, & Accessories",
+            "Garden fencing, Screens, & Gates",
+            "Pools control & Weeds",
+            "Outdor power equipment",
+            "Other - Lawn & Garden"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
           "name": "Home Decor",
-          "subcategory": ["Bedding"],
+          "subcategory": [
+            "Bedding",
+            "Lamps, Lighting, & Ceiling fans",
+            "Rugs & Carpets",
+            "Throws & Blankets",
+            "Baskets",
+            "Bookends",
+            "Candles & Holders",
+            "Clocks",
+            "Photo albums & Frames",
+            "Home Fragnance",
+            "Mirrors",
+            "Decorative Pillows",
+            "Window treatments & Hardware",
+            "Vases",
+            "Holiday & Seasonal",
+            "Other - Home Decor"
+          ],
           "color": ["Black", "Blue", "Silver", "Gold"]
         },
         {
@@ -171,19 +322,1647 @@
       "items": [
         {
           "name": "Women's Clothing",
-          "subcategory": ["Dresses"],
+          "subcategory": [
+            "Dresses",
+            "Tops & shirts",
+            "Sweaters",
+            "Sweats & Hoodies",
+            "Jeans",
+            "Pants",
+            "Shorts",
+            "Skirts",
+            "Jumpsuits & Rompers",
+            "Coats & Jackets",
+            "Suits & Blazers",
+            "Activewear",
+            "Swimwear",
+            "Pajamas & Sleepwear",
+            "Maternity",
+          "Socks, Hosiery, & Underwear",
+          "Uniforms & Work Clothing",
+          "Costumes",
+          "Other - Women's Clothing"
+          ],
           "color": ["Black", "Blue", "Silver"]
-        }
-      ]
+        },
+        {
+          "name": "Men's Clothing",
+          "subcategory": [
+            "Shirts",
+            "Sweats & Hoodies",
+            "Pants",
+            "Sweaters",
+            "Jeans",
+            "Shorts",
+            "Overalls & Jumpsuits",
+            "Coats & Jackets",
+            "Suits & Blazers",
+            "Activewear",
+            "Pajamas & Sleepwear",
+            "Socks & Underwear",
+            "Uniforms & Work clothing",
+            "Costumes",
+            "Other - Men's clothing"
+          ],
+          "color": ["Black", "Blue", "Silver"]
+          },
+          {
+            "name": "Women's Shoes",
+            "subcategory": [
+              "Sandals",
+              "Boots",
+              "Athletic shoes & Sneakers",
+              "Heels",
+              "Flats & Slip-ons",
+              "Clogs & Mules",
+              "Oxfords & Lace-ups",
+              "Mary Janes",
+              "Slippers",
+              "Other - Women Shoes"
+            ],
+            "color": ["Black", "Blue", "Silver"]
+            },
+            {
+              "name": "Men's Shoes",
+              "subcategory": [
+                "Athletic shoes & Sneakers",
+                "Boots",
+                "Sandals",
+                "Slippers",
+                "Oxfords & Lace-ups",
+                "Loafers & slip-ons",
+                "Clogs & Mules",
+                "Other - Men's shoes"
+              ],
+              "color": ["Black", "Blue", "Silver"]
+              },
+              {
+                "name": "Jewelry & Accessories",
+                "subcategory": [
+                  "Sunglasses",
+                  "Wallets",
+                  "Scarves & Wraps",
+                  "Belts & Belt Buckles",
+                  "Hats",
+                  "Hair accessories",
+                  "Bag, Backpacks, & Briefcases",
+                  "Ties",
+                  "Watches",
+                  "Earrings",
+                  "Necklaces",
+                  "Bracelets",
+                  "Rings",
+                  "Pendants",
+                  "Pins, Brooches, & Cufflinks",
+                  "Other - Jewelry & Accessories"
+                ],
+                "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Girl's Clothing",
+                  "subcategory": [
+                    "Dresses",
+                    "Tops & Tees",
+                    "Bodysuits",
+                    "Skirts",
+                    "Pants & Capris",
+                    "Sweats & Hoodies",
+                    "Sweaters",
+                    "Activewear",
+                    "Coats & Jackets",
+                  "Jumpsuits & Rompers",
+                  "Shorts & Skorts",
+                  "Swimwear",
+                  "Jeans",
+                  "Pajamas",
+                  "Socks, Hosiery, & Underwear",
+                  "Costumes",
+                  "Other - Girls' clothing"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                  },
+                  {
+                    "name": "Boy's Clothing",
+                    "subcategory": [
+                      "Tops & Tees",
+                      "Pants",
+                      "Sweats & Hoodies",
+                      "Sweaters",
+                      "Coats & Jackets",
+                      "Overall & Jumpsuits",
+                      "Shorts",
+                      "Swimwear",
+                      "Jeans",
+                      "Activewear",
+                      "Suits",
+                      "Pajamas",
+                      "Socks & Underwear",
+                      "Costumes",
+                      "Other - Boys' cloting"
+                    ],
+                    "color": ["Black", "Blue", "Silver"]
+                    },
+                    {
+                      "name": "Baby & Toddler girl Clothing",
+                      "subcategory": [
+                        "Rompers & One-pieces",
+                        "Clothing sets",
+                        "Tops",
+                        "Dresses",
+                        "Bloomers, Diaper covers, & Underwears",
+                        "Pants & Bottoms",
+                      "Sweaters",
+                      "Skirts",
+                      "Socks & Hoodies",
+                      "Coats & Jackets",
+                      "Pajamas",
+                      "Swimwear",
+                      "Costumes",
+                      "Other - Baby & Toddler girl clothing"
+                      ],
+                      "color": ["Black", "Blue", "Silver"]
+                      },
+                  {
+                     "name": "Baby & Toddler boy Clothing",
+                        "subcategory": [
+                          "Rompers & One-pieces",
+                          "Clothing sets",
+                          "Tops",
+                          "Bloomers, Diaper covers, & Underwear",
+                          "Pants & Bottoms",
+                          "Sweaters",
+                          "Socks & leg warmers",
+                          "Sweats & Hoodies",
+                          "Coats & Jackes",
+                          "Suits",
+                          "Vests",
+                          "Pajamas",
+                          "Swimwear",
+                          "Costumes",
+                          "Other - Baby & Toddler boy clothing"
+                        ],
+                        "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Baby and Toddler accessories",
+                  "subcategory": [
+                    "Gloves & Mittens",
+                    "Hair accessories",
+                    "Hats",
+                    "Scarves",
+                    "Sunglasses",
+                    "Ties",
+                    "Jewelry",
+                    "Other - Baby & Toddler accessories"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                  },
+                  {
+                    "name": "Girl's shoes",
+                    "subcategory": [
+                      "Booties & Crib shoes",
+                      "Sneakers & Athletic shoes",
+                      "Slippers",
+                    "Sandals",
+                    "Boots",
+                    "Flats & Slip-ons",
+                    "Oxfords & Lace-ups",
+                      "Heels",
+                      "Dance shoes",
+                      "Clogs & Mules",
+                      "Other - Girl's shoes"
+                    ],
+                    "color": ["Black", "Blue", "Silver"]
+                    },
+                    {
+                      "name": "Girls' accessories",
+                      "subcategory": [
+                        "Hats",
+                        "Belts & Belt buckles",
+                        "Gloves & Mittens",
+                        "Jewelry",
+                        "Scarvs & Wraps",
+                        "Sunglasses",
+                        "Other - Girl's accessories"
+                      ],
+                      "color": ["Black", "Blue", "Silver"]
+                      },
+                      {
+                        "name": "Boys' shoes",
+                        "subcategory": [
+                          "Booties & Crib shoes",
+                          "Athletic shoes & Sneakers",
+                          "Slippers",
+                          "Boots",
+                          "Sandals",
+                          "Loafers & slip-ons",
+                          "Oxfords & Lace-ups",
+                          "Clogs & Mules",
+                          "Other - Boys' Shoes"
+                        ],
+                        "color": ["Black", "Blue", "Silver"]
+                        },
+                        {
+                          "name": "Boy's accessories",
+                          "subcategory": [
+                            "Belts & Belts buckles",
+                            "Gloves & Mittens",
+                            "Hats",
+                          "Scarves",
+                          "Sunglasses",
+                          "Suspenders",
+                          "Ties"
+                          ],
+                          "color": ["Black", "Blue", "Silver"]
+                          },
+                          {
+                            "name": "other - Clothing, Shoes, & Accessories",
+                            "subcategory": [],
+                            "color": ["Black", "Blue", "Silver", "Gold"]
+                          },
+
+    { "cat": "Baby & Kids" ,
+      "items": [
+        {
+          "name": "Girls' accessories",
+          "subcategory": [
+            "Backpacks & Bags",
+            "Hair accessories",
+            "Other - Girl's accessories"
+          ],
+          "color": ["Black", "Blue", "Silver"]
     },
-    { "cat": "Baby & Kids" },
+    {
+      "name": "Boy's accessories",
+      "subcategory": [
+        "Backpacks & Bags",
+        "Wallets",
+        "Other - Baby accessories"
+      ],
+      "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Bathing and skin care",
+  "subcategory": [  
+    "Bathing tubs & seats",
+    "Bubble bath",
+    "Shampoos & Conditioners",
+    "Skincare",
+    "Soaps & Cleanser",
+    "Travel bathing kits",
+    "Washcloths & Towels",
+    "Other - Bathing & Skincare"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Car seats & accessories",
+  "subcategory": [
+    "Car seats",
+    "Car seat accessories",
+    "Other - Car seats & Accessories"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Diapering",
+  "subcategory": [
+    "Disposable diapers",
+  "Cloth diapers",
+  "Changing pads & Covers",
+  "Changing tables",
+  "Wipes & Holders",
+"Diaper bags",
+"Changing kits",
+"Diapers pails & Refils",
+"Diapers stackers & Caddies",
+"Powders & Lotions",
+"Washcloths & Towels",
+"Other - Diapering"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Feeding",
+  "subcategory": [
+    "Storage & containers",
+    "Bottle feeding",
+    "Highchairs & Booster seats",
+    "Pacifiers & Accessories",
+    "Other - Feeding"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Baby gear",
+  "subcategory": [
+    "Activity centers & Entertainers",
+    "Baby gyms & playmats",
+    "Baby seats",
+    "Backpacks & Carriers",
+    "Bicycle child seats & Trailers",
+  "Harnesses & Leashes",
+  "Playard bedding",
+  "Playards",
+  "Shopping carts covers",
+  "Swings, Jumpers, & Bouncers",
+  "Walkers",
+  "Other - Baby Gear"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Health & Baby care",
+  "subcategory": [
+    "Humidifiers & Vaporizers",
+    "Nail care",
+    "Nasal aspirators",
+    "Sun protections",
+    "Teethers",
+    "Thermometers",
+    "Toothbrushes",
+    "Other - Health and Baby care"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Nursery furniture & Decor",
+  "subcategory": [
+    "Bedding",
+    "Furniture",
+    "Nursery decor",
+    "Other - Nursery furniture & Decor"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Potty training",
+  "subcategory": [
+    "Seat covers",
+    "Potties & seats",
+    "Step stools",
+    "Training pants",
+    "Travel potties",
+    "Other - Potty training"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Pregnancy & Maternity",
+  "subcategory": [
+    "Breastfeeding pillows & Stools",
+    "Family planning test",
+    "Maternity pillows",
+  "Prenatal monitoring devices",
+  "Other - Pregnancy & Maternity"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Baby Safety",
+  "subcategory": [
+    "Bathroom safety",
+    "Cabinet locks & Straps",
+    "Crib netting",
+    "Edge & Corner guards",
+    "Electrical safety",
+    "Gates & Doorways",
+    "Harnesses & Leashes",
+    "Bed rails",
+    "Monitors",
+    "Sleep positioners",
+    "Other - Baby Safety"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Strollers",
+  "subcategory": [
+    "Accessories",
+    "Joggers",
+    "Lighweight",
+  "Prams",
+  "Standard",
+  "Tandem",
+  "Travel systems",
+  "Other - Strollers"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "Baby toys",
+  "subcategory": [
+    "Blocks & Sorters",
+    "Crib toys",
+    "Developemental toys",
+    "Plush toys",
+    "Rattles",
+    "Other - Baby toys"
+  ],
+  "color": ["Black", "Blue", "Silver"]
+},
+{
+  "name": "other - Baby & Kids",
+  "subcategory": [],
+  "color": ["Black", "Blue", "Silver", "Gold"]
+},
+
     {
       "cat": "Vehicles",
       "items": [
         {
           "name": "Cars & Trucks",
-          "subcategory": ["SUV", "Sedan", "Truck"],
-          "color": ["Black", "Blue", "Silver"],
+          "subcategory": [
+            "SUV & Crossover",
+            "Sedan",
+            "Truck",
+            "Covertible",
+            "Coupe",
+            "Wagons & Hatchback",
+            "Van & Minivan",
+            "Other - Cars & Trucks"
+          ],
+          "color": ["Black", "Blue", "Silver"
+          ]
+        },
+        {
+          "name": "Motorcycles",
+          "subcategory": [
+            "Bobber",
+            "Chopper",
+            "Cruiser",
+            "Dual-Purpose",
+            "Off-road",
+            "Revearse trike",
+            "Sport",
+            "Standard",
+            "Touring",
+            "Trike",
+            "Custom built",
+            "Other - Motorcycles"
+          ],
+          "color": ["Black", "Blue", "Silver"]
+        },
+        {
+          "name": "Campers & RVs",
+          "subcategory": [
+          "Class A",
+          "Class B",
+          "Class C",
+          "Tuck Campers",
+          "Towable fifth wheel",
+        "Towable travel trailers",
+      "Towable folding camping trailers",
+      "Other - Campers & RVs"
+          ],
+          "color": ["Black", "Blue", "Silver"
+          ]
+        },
+        {
+          "name": "Boats & Marine",
+          "subcategory": [
+          "Fishing",
+          "Powerboats & Motorboats",
+          "Sailboats",
+          "Project boats",
+          "Other - Bots & Marine"
+          ],
+          "color": ["Black", "Blue", "Silver"
+          ]
+        },
+        {
+          "name": "Powersport vehicle",
+          "subcategory": [
+            "ATVs",
+            "Dune Buggies & Sand rails",
+            "High-performance Go-Karts",
+            "Personal watercraft",
+            "Powersport vehicles under 50cc",
+            "Scooters & Mopeds",
+            "Snowmobiles",
+          "UTVs",
+          "Other - Powersport Vehicle"
+          ],
+          "color": ["Black", "Blue", "Silver"
+          ]
+        },
+        {
+          "name": "Trailers",
+          "subcategory": [
+        "Boats & Watercraft trailers",
+        "Car trailers",
+        "Cargo & Utility trailers",
+        "Commercial truck trailers",
+        "Horse trailers",
+        "Motorcycle trailers",
+        "Other - Trailers"
+          ],
+          "color": ["Black", "Blue", "Silver"
+          ]
+        },
+        {
+          "name": "Commercial vehicles",
+          "subcategory": [
+            "Commercial truck",
+            "Bucket & Boom trucks",
+            "Commercial pickup trucks",
+            "Dump trucks",
+            "Tow trucks",
+            "Emergency & fire trucks",
+            "Semi-trucks",
+            "Utility & Service trucks",
+            "Commercial vans & Box trucks",
+            "Other light-duty trucks",
+            "Other medium - duty trucks",
+            "Other heavy - duty trucks"
+            "Other - Commercial vehicles"
+          ],
+          "color": ["Black", "Blue", "Silver"]
+        },
+        {
+          "name": "Tires & Rims",
+          "subcategory": [
+          "Hub caps",
+          "Tire pressures monitor systems",
+        "Tires",
+        "Tire accessories",
+        "Tire chains",
+        "Tire valve stems & caps",
+        "Rims",
+        "Tire & Rim Packages",
+        "Rim center caps",
+        "Lug nuts",
+        "Wheel hubs & Bearings",
+        "Wheel spacers & Adapters",
+        "Other - Tires & Rims"
+          ],
+          "color": ["Black", "Blue", "Silver"
+          ]
+        },
+        {
+          "name": "Auto parts & Accessories",
+          "subcategory": [
+            "Air conditioning & Heat parts",
+            "Air intake & Fuel Delivery parts",
+            "Brakes & Brake parts",
+            "Charging & Starting systems",
+            "Computers, Chips & Cruise control",
+            "Cooling systems",
+            "Decals, Emblems, & License frame",
+            "Electric vehicle parts",
+            "Emission systems",
+            "Engines & Components",
+            "Exhausts & Exhaust parts",
+            "Exterior parts",
+            "Keyboards & Mice",
+            "Filters",
+          "Gaskets",
+          "Gauges",
+          "Glass",
+          "Ignition systems",
+          "Lighting & lamps",
+          "Security Equipment",
+          "Suspension & Steering parts",
+          "Transmission & Drivetrain parts",
+          "Turbos, Nitrous, & Superchargers",
+          "Auto accessories",
+          "Other - Auto parts & Accessories"
+          ],
+          "color": ["Black", "Blue", "Silver"]
+        },
+        {
+          "name": "other - Vehicle",
+          "subcategory": [],
+          "color": ["Black", "Blue", "Silver", "Gold"]
+        },
+
+        {
+          "cat": "Toys, Games, Hobbies",
+          "items": [
+            {
+              "name": "Toys",
+              "subcategory": [
+                "Action figures",
+                "Dolls & Accessories",
+                "Building toys",
+                "Remote control toys & Vehicles",
+                "Other - Toys"
+              ],
+              "color": ["Black", "Blue", "Silver"]
+            },
+            {
+              "name": "Games & Puzzles",
+              "subcategory": [
+                "Board game",
+                "Card games",
+                "Electronic games",
+                "Miniatures & War games",
+                "Plastic action games",
+                "Role playing games",
+                "Chess & Checkers",
+                "Training card games",
+                "Jigsaw puzzles",
+                "Wooden puzzles",
+                "3D puzzles",
+              "Other - Games & Puzzles"
+              ],
+              "color": ["Black", "Blue", "Silver"]
+            },
+            {
+              "name": "Outdoor toys & Games",
+              "subcategory": [
+                "Playground balks, Frisbees, Boomerangs",
+                "Bubble toys",
+                "NERF guns, Dart guns, & Darts",
+                "Bounce houses",
+                "Kites",
+                "Sand & Water toys",
+                "Trampolines",
+                "Play sets & Playhouses",
+                "Ball pits",
+                "Swing sets",
+                "Tricycle & Ride-on",
+                "Lawn games",
+                "Kids' bikes",
+                "Kids' helmets & Protective gear",
+                "Kids' skateboards, Skates, & Hoverboards",
+                "Nature exploration toys",
+                "Other - Outdoor toys & games"
+              ],
+              "color": ["Black", "Blue", "Silver"]
+            },
+            {
+              "name": "Stuffed animals & Plush",
+              "subcategory": [
+                "Stuffed animals",
+                "Teddy bears",
+                "Stuffed animals' accessories",
+                "Beanbag plushies",
+                "Plush puppets",
+                "Plush figures",
+                "Character pillows & Blankets",
+              "Plush purses & accessories",
+              "Other - Stuffed animals & Plush"
+              ],
+              "color": ["Black", "Blue", "Silver"]
+            },
+            {
+              "name": "Dress up & Pretend",
+              "subcategory": [
+                "Play cooking & Baking",
+                "Play tool sets",
+                "Play medical toys",
+                "Puppets",
+                "Toddler & Baby costumes",
+                "Kids costumes",
+                "Other - Dress up & Pretend"
+              ],
+              "color": ["Black", "Blue", "Silver"]
+            },
+            {
+              "name": "Trading cards",
+              "subcategory": [
+                "Animation",
+                "Sci-Fi & Fantasy",
+                "Vintage",
+                "Comics",
+                "Action & Adventure",
+                "Historical & Military",
+                "Sports",
+                "Other - Trading cards"
+                
+              ],
+              "color": ["Black", "Blue", "Silver"]
+            },
+            {
+              "name": "Musical instruments",
+              "subcategory": [
+                "Brass instruments & Horns",
+                "Guitars & Basses",
+                "Stringed instruments",
+                "Drums & Percussion",
+                "Woodwinds",
+                "Synthesizers & Effects",
+                "Piano & keyboards",
+                "DJ equipment",
+                "Microphones",
+                "Tuning & Accessories",
+                "Other - Musical instruments"
+              ],
+              "color": ["Black", "Blue", "Silver"]
+            },
+            {
+              "name": "other - Toys, Games & Hobbies",
+              "subcategory": [],
+              "color": ["Black", "Blue", "Silver", "Gold"]
+            },
+
+          {
+              "cat": "Sports & Outdoors",
+              "items": [
+                {
+                  "name": "Exercise",
+                  "subcategory": [
+                    "Weights & Dumbells",
+                    "Home gyms",
+                    "Exercise bikes",
+                    "Elliptical machines",
+                    "Treadmills",
+                    "Rowing machines",
+                    "Fitness technology",
+                    "Fitness accessories",
+                    "Other - Exercise"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Yoga & Pilates",
+                  "subcategory": [
+                    "Mats & Towels",
+                    "Mat carries & Bags",
+                    "Pilates tables",
+                    "Pilates rings",
+                    "Yoga straps",
+                    "Yoga props",
+                    "Yoga & Pilates accessories",
+                    "Other - Yoga & Pilates"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Mixed martial arts & Boxing",
+                  "subcategory": [
+                    "Boxing globes",
+                    "Apparel & Accessories",
+                    "Protective layer",
+                    "Other - Mixed martial arts & Boxing"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Bikes & Cycling",
+                  "subcategory": [
+                    "Bicycles",
+                    "Bicycles tires, Tubes & Wheels",
+                    "Helmets & Protective gear",
+                    "Cycling accessories",
+                    "Other - Bikes & Cycling"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Skateboarding",
+                  "subcategory": [
+                    "Skateboards",
+                    "Skateboard parts",
+                    "Ramps & Rails",
+                    "Other - Skateboarding"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Fishing",
+                  "subcategory": [
+                    "Rods & Reels",
+                    "Baits, Lures, & Flies",
+                    "Fishing lines & Leaders",
+                    "Terminal tackle",
+                    "Other - Fishing"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Camping & Hiking",
+                  "subcategory": [
+                    "Poles & Sticks",
+                    "Backpacks & Bags",
+                    "Tents & Canopies",
+                    "Sleeping gear",
+                    "Other - Camping & Hicking"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Water sports",
+                  "subcategory": [
+                    "Water sports clothing & accessories",
+                    "Kayaking, Canoeing, & Rafting",
+                    "Kitesurfing",
+                    "Scuba & Snorkeling",
+                    "Paddleboarding",
+                    "Surfing",
+                    "Swimming",
+                    "Wakeboarding & WAtersking",
+                    "Windsurfing",
+                    "Other - Water Sports"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Ice & Snow sports",
+                  "subcategory": [
+                    "Ice Skating",
+                    "Snowbaording",
+                    "Snowshoeing",
+                    "Skiing",
+                    "Other - Ice & Snowsports"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Lawn games",
+                  "subcategory": [
+                    "Cornhole & Bag toss",
+                    "Croquet",
+                    "Bocce ball",
+                    "Other - Lawn games"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Team sports",
+                  "subcategory": [
+                    "Baseball & Softball",
+                    "Soccer",
+                    "Lacrosse",
+                    "Basketball",
+                    "Hockey",
+                    "Football",
+                    "Volleyball",
+                    "Field hockey",
+                    "Other - Team sports"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "Gold",
+                  "subcategory": [
+                    "Golf clubs",
+                    "Golf balls",
+                    "Golf bags",
+                    "Golf tees",
+                    "Golf apparel",
+                    "Golf shoes",
+                    "Other - Golf"
+                  ],
+                  "color": ["Black", "Blue", "Silver"
+                  ]
+                },
+                {
+                  "name": "Fan shop",
+                  "subcategory": [
+                    "NFA",
+                    "NFL",
+                    "CHELSEA",
+                    "MANCHESTER UNITED",
+                    "LIVERPOOL",
+                    "KANO PILLERS",
+                    "Other - Fan shops"
+                  ],
+                  "color": ["Black", "Blue", "Silver"]
+                },
+                {
+                  "name": "other - Sports & Outdoors",
+                  "subcategory": [],
+                  "color": ["Black", "Blue", "Silver", "Gold"]
+                },
+
+                {
+                  "cat": "Collectibles & Art",
+                  "items": [
+                    {
+                      "name": "Art",
+                      "subcategory": [
+                        "Paintings",
+                        "Drawings & Illustrations",
+                        "Photographs",
+                        "Art posters",
+                        "Prints",
+                        "Sculptures",
+                        "Mixed media & Collage art",
+                        "Fiber arts",
+                        "Glass art",
+                        "Other - Art"
+                      ],
+                      "color": ["Black", "Blue", "Silver", "Gold"]
+                    },
+                    {
+                      "name": "Arts & Crafts suppliers",
+                      "subcategory": [
+                        "Painting supplies",
+                        "Drawing & Letter supplies",
+                        "Woodworking",
+                        "Leather crafts",
+                        "Needlecraft & Paper crafts",
+                        "Sculpting, Molding, & Ceramics",
+                        "Sewing",
+                        "Beading & Jewelry Making",
+                        "Fabric Painting & Decorating",
+                        "Glass art & Mosaic supplies",
+                        "Basketry & Chair canning",
+                        "Candle & Soap making",
+                        "Floral crafts",
+                        "Other - Arts & Crafts supples"
+                      ],
+                      "color": ["Black", "Blue", "Silver", "Gold"]
+                    },
+                    {
+                      "name": "Antiques",
+                      "subcategory": [
+                        "Architectural & Garden",
+                        "Decorative arts",
+                        "Furniture",
+                        "Home & Hearth",
+                        "Maps, Atlases, & Globes",
+                        "Maritime",
+                        "Rugs & Carpets",
+                        "Bags & Purses",
+                        "Jewelry",
+                        "Other - Antiques"
+                      ],
+                      "color": ["Black", "Blue", "Silver", "Gold"]
+                    },
+                    {
+                      "name": "Collectible",
+                      "subcategory": [
+                        "Memorabilia",
+                        "Figurines & Knick Knacks",
+                        "Coins & Money",
+                        "Collectible glass",
+                        "Advertisements",
+                        "Tobacciana",
+                        "Collectible plates",
+                        "Postage stamps",
+                        "Trading cards",
+                        "Paperweights",
+                        "Music boxes",
+                        "Other - Collectibles"
+                      ],
+                      "color": ["Black", "Blue", "Silver", "Gold"]
+                    },
+                    {
+                      "name": "Handmade",
+                      "subcategory": [
+                        "Home Decor",
+                        "Furniture",
+                        "Housewares",
+                        "Clothing",
+                        "Jewelry",
+                        "Bags & Purses",
+                        "Other - Handmade"
+                      ],
+                      "color": ["Black", "Blue", "Silver", "Gold"]
+                    },
+                    { 
+                      "name": "other - Collectibles & Art",
+                      "subcategory": [],
+                      "color": ["Black", "Blue", "Silver", "Gold"]
+                    },
+      {
+         "cat": "Pet suppliers",
+          "items": [
+          {
+           "name": "Pet collars & Leashes",
+           "subcategory": [
+            "Pet collars & Jewelry",
+            "Pet ID tags",
+            "Pet leashes",
+            "Pet harnesses & Backpacks",
+            "Pet collars & Leash sets",
+            "Other - Pet - Collars & Leashes"
+                   ],
+                "color": ["Black", "Blue", "Silver", "Gold"]
+       },
+       {
+        "name": "Pet Clothing, Accessories & Shoes",
+        "subcategory": [
+            "Pet accessories",
+            "Pet clothing",
+            "Pet shoes & Booties",
+            "Other - Pet clothing, Accessories, & Shoes"
+                ],
+             "color": ["Black", "Blue", "Silver", "Gold"]
+    },
+    {
+      "name": "Pet toys",
+      "subcategory": [
+          "Cat toys",
+          "Dog toys",
+          "Bird toys",
+          "Small animals toys",
+          "Other - Pet toys"
+              ],
+           "color": ["Black", "Blue", "Silver", "Gold"]
+  },
+  {
+    "name": "Pet feeding",
+    "subcategory": [
+        "Pet food & Treats",
+        "Pet bowls",
+        "Feeding stands",
+        "Placements",
+        "Pet feeder & Waterers",
+        "Other - Pet feeding"
+            ],
+         "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Pet bedding",
+  "subcategory": [
+      "Pet blankets",
+      "Pet mats & pads",
+      "Nesting supplies",
+      "Liners",
+      "Other - Pet bedding"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Pet Furniture",
+  "subcategory": [
+      "Pet beds & Cots",
+      "Pet hammocks",
+      "Play furniture",
+      "Pet steps & Ramps",
+      "Cage stands",
+      "Other - Pet furniture"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Pet carriers & Houses",
+  "subcategory": [
+     "Pet houses",
+     "Aquariums & Tanks decor",
+     "Nests & Bags",
+     "Pet totes & Carriers",
+     "Pet crates & Kennels",
+     "Bird cages",
+     "Coops",
+     "Other - Pet carriers & House"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Pet health & Wellness",
+  "subcategory": [
+      "Pet grooming",
+      "Pet waste",
+      "Pet pest control",
+      "Pet dental",
+      "Other - Pet health & wellness"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Training ",
+  "subcategory": [
+      "Pet diapers & Belly bands",
+      "Training bells & Whistles",
+      "Muzzles",
+      "Other - Training"
+           ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Pet gates & Fences",
+  "subcategory": [
+      "Gates",
+      "Indoor fences",
+      "Play pens",
+      "Other - Pet gates & Fences"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{ 
+  "name": "Other - Pet supplies",
+  "subcategory": [],
+  "color": ["Black", "Blue", "Silver", "Gold"]
+},
+
+{
+  "cat": "Health & Beauty",
+   "items": [
+   {
+    "name": "Hair care",
+    "subcategory": [
+     "Shampoos & Conditioners",
+     "Hair & Scalp treatments",
+     "Hair color",
+     "Hair loss products",
+     "Hair perms & Texturizers",
+     "Hair relaxers & Straightening products",
+     "Styling tools",
+     "Other - Hair care"
+            ],
+         "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Bath & Body",
+  "subcategory": [
+   "Bath bombs",
+   "Bath soaps & Bubble bath",
+   "Body washes & Liquid soaps",
+   "Bar soaps",
+   "Bath oils",
+   "Scrubs & Body treatments",
+   "Bath & Body sets",
+   "Washcloths, Sponges, & Loofahs",
+   "Other - Bath & Body"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Makeup & Cosmetics",
+  "subcategory": [
+   "Nails",
+   "Lips",
+   "Eyes",
+   "Face",
+   "Make tools & Brushes",
+   "Makeup palettes",
+   "Makeup remover",
+   "Makeup sets",
+   "Makeup bags & Cases",
+   "Other - Makeupp & Cosmetics"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Skincare",
+  "subcategory": [
+   "Acne & Blemish treatments",
+   "Anti-aging productions",
+   "Cleanser & Toners",
+   "Exfoliator & Scrubs",
+   "Eye treatments & Masks",
+   "Lightening cream",
+   "Lip balm & Treatments",
+   "Masks & Peels",
+   "Micro dermabrasion tools",
+   "Moisturizers",
+   "Night treatments",
+   "Set & Kits",
+   "Other - Skincare"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Fragrance",
+  "subcategory": [
+   "Women",
+   "Men",
+   "Kids",
+   "Sets",
+   "Other - Fragrance"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Personal care",
+  "subcategory": [
+   "Shaving & Grooming",
+   "Menstrual care",
+   "Deoderants & Antiperspirants",
+   "Oral care",
+   "Other - Personal care"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Tools & Accessories",
+  "subcategory": [
+   "Cotton & Swabs",
+   "Epilators",
+   "Mirrors",
+   "Nail tools",
+   "Tweezers",
+   "Waxing",
+   "Other - Tools & Accessories"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{ 
+  "name": "Other - Health & Beauty",
+  "subcategory": [],
+  "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "cat": "Wedding",
+   "items": [
+   {
+    "name": "Jewelry",
+    "subcategory": [
+     "Rings",
+     "Necklaces",
+     "Earrings",
+     "Bracelets",
+     "Pendants",
+     "Cuff links & Tie Clips",
+     "Jewelry sets",
+     "Brooches",
+     "Other - Jewelry"
+            ],
+         "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Invitation & Paper",
+  "subcategory": [
+   "Invitations",
+   "Templates",
+   "Greeting cards",
+   "Save the dates",
+   "Place cards",
+   "Thank you cards",
+   "Invitation kits",
+   "Address stamps",
+   "Announcements",
+   "Other - Invitation & Paper"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Gifts & Memories",
+  "subcategory": [
+   "Bridesmaids gifts",
+   "Gift for the couple",
+   "Groomsmen gift",
+   "Guest books & Pens",
+   "Albums & Scrapbooks",
+   "Other - Gifts & Memories"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Decorations",
+  "subcategory": [
+   "Signs",
+   "Cake toppers",
+   "Serving & Dining",
+   "Centerpieces",
+   "Ring bearer pillows",
+   "Baskets & Boxes",
+   "Aisle's runners & Decor",
+   "Candles & Holders",
+   "Paper fans",
+   "Plants",
+   "Other - Decorations"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Accessories",
+  "subcategory": [
+   "Hair accessories",
+   "Bouquets & Corsages",
+   "Veils",
+   "Belts & Sashes",
+   "Bags & Purses",
+   "Neckties",
+   "Shawls & Wraps",
+   "Hats",
+   "Something blue",
+   "Umbrellas",
+   "Hand fans",
+   "Cummerbunds",
+   "Other - Accessories"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Clothing",
+  "subcategory": [
+   "Dresses",
+   "Shrugs & Boleros",
+   "Suits",
+   "Jumpsuits & Rompers",
+   "Other - Clothing"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Shoes",
+  "subcategory": [
+   "Women's weeding shoes",
+   "Men's wedding shoes",
+   "Girl's wedding shoes",
+   "Boy's wedding shoes"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{ 
+  "name": "Other - Wedding",
+  "subcategory": [],
+  "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "cat": "Business Equipment",
+   "items": [
+   {
+    "name": "Farming & Agriculture",
+    "subcategory": [
+     "Forestry equipment & Supplies",
+     "Livestock supplies",
+     "Other - Farming & Agriculture"
+            ],
+         "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Building materials & Suppliers",
+  "subcategory": [
+   "Lights & Lighting",
+   "Painting equipment & Supplies",
+   "Building insulation",
+   "Doors & Fixtures",
+   "Windows & Glass",
+   "Faucets & Taps",
+   "Marbles, Tiles, & Stone",
+   "Lumber & Millwork",
+   "Water heaters",
+   "Modulars & Prefabricated buildings",
+   "Other - Building material & Supplies"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Cleaning & Janitorial Supplies",
+  "subcategory": [
+   "Cleaners & Disinfectants",
+   "Floor & Upholstery cleaning",
+   "Janitorial & Housekeeping carts",
+   "Laundry carts, Bags, & Cleaners",
+   "Manual Cleanig equipment",
+   "Pest control",
+   "Pressure washer, Parts & Accessories",
+   "Sanitation steam cleaners",
+   "Trash bags & Trash liners",
+   "Other - Cleaning & Janitorial supplies"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Electrical equipment & Supplies",
+  "subcategory": [
+   "Circuit breakers & Disconnectors",
+   "Electronic components & Semiconductors",
+   "Switches",
+   "Sensors",
+   "Fuses",
+   "Relays",
+   "Transformers",
+   "Electrical tools",
+   "Wire & Cable connectors",
+   "Electrical plusg, Outlets, & Covers",
+   "Electrical boxes, Panels, & Boards",
+   "Power suppliers",
+   "Contractors",
+   "Phase converters",
+   "Electrical usage meters",
+   "Signals & Indicators",
+   "Other - Elecrical equipment & Supplies"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Facility maintenance & Safety",
+  "subcategory": [
+  "Access control equipment",
+  "Facility bathroom & Refuse",
+  "Facility safety eqiupment",
+  "Industrial fire protection eqiupment",
+  "Industrial surveilance & Alarm eqiupment",
+  "Lookout/Tagout (LOTO) supplies",
+  "Personal protective equipment (PPE)",
+  "Public safety staff equipment",
+  "Traffic & Safety signs, Lights",
+  "Other - Facility maintenance & Safety"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Fasteners & Hardware",
+  "subcategory": [
+  "Anchors",
+  "Clamps, Ties, & Cords",
+  "Magnets",
+  "Nails & Staples",
+  "Industrial fastener nuts",
+  "Industrial fastening pins",
+  "Industrial hardware plates & Brackets",
+  "Industrial retaining rings",
+  "Industrial rivets",
+  "Industrial screws & Bolts",
+  "Extension & Compression springs",
+  "Standoffs & Spacers",
+  "Industial threaded inserts",
+  "Threaded rods & Threaded studs",
+  "Industrial hardware washers",
+  "Other - Fasteners & Hardware"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "HVAC",
+  "subcategory": [
+  "HVAC parts",
+  "HVAC tools",
+  "HVAC units",
+  "Industrial units",
+  "Industrial portable heaters",
+  "Other - HVAC"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Light industrial equipment & Tools",
+  "subcategory": [
+  "Breakers & Demolition hammers",
+  "Concrete stamps, Forms & Mats",
+  "Concrete vibrators",
+  "Drywall tools",
+  "Industrial air tools",
+  "Mortal & Concrete mixers",
+  "Industrial drills & Hammers",
+  "Industrial generators pairs & Accessories",
+  "Industrial generators",
+  "Industrial hand tools",
+  "Industrial light saws",
+  "Industrial heat guns",
+  "Industrial powder actuated tools",
+  "Industrial routers",
+  "Industrial sanders",
+  "Industrial stationary engines, Parts, & Accessories",
+  "Industrial tool batteries & Chargers",
+  "Industrial tool combo kits",
+  "Industrial tooling storage & Cabinets",
+  "Industrial transfer switches",
+  "Walk-behind trenchers",
+  "Jobsite heaters",
+  "Grinders",
+  "Walk-behind compactors",
+  "Other - Light Industrial equipment & Tools"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Material handling",
+  "subcategory": [
+  "Casters & Wheels",
+  "Conveyors & Conveyor parts",
+  "Hoists, Winches, Rigging",
+  "Packing & Shipping",
+  "Shelving & Storage",
+  "Shipping Containers",
+  "Warehouse carts & Trucks",
+  "Warehouse loading & Unloading",
+  "Other - Material handling"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Office equipment & Supplies",
+  "subcategory": [
+  "Microfilm & Microfiche",
+  "Office equipment",
+  "Office furniture",
+  "Projectors & Presentation equipment",
+  "Office supplies",
+  "Telecom systems",
+  "Trade show displays",
+  "Other - Office equipment & Suppliers"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Restaurant & Food service equipment",
+  "subcategory": [
+  "Commercial kitchen equipment",
+  "Commercial refrigerator equipment",
+  "Bar & Bereage equipment",
+  "Vending machine & Dispensers",
+  "Food trucks, Trailers, & Carts",
+  "Furniture, Signs, & Decor",
+  "Commercial tabletop & Serving",
+  "Uniforms & Aprons",
+  "Other - Restaurant & Food service equipement"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Printing & Graphic Arts",
+  "subcategory": [
+  "Bindery & Finishing equipment",
+  "Commercial printing essentials",
+  "Commercial screen & Specialty printing equipment",
+  "Direct mail equipment",
+  "Plotters & Wide-format printing equipment",
+  "Prepress printing equipment",
+  "Printing & Graphics essentials",
+  "Printing ink, Plates, & Film",
+  "Other - Printing & Graphic arts"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Retail & Services",
+  "subcategory": [
+  "Business signs",
+  "Dry cleaning & Laundromat equipment",
+  "Point of Sale (POS) equipment",
+  "Retail Jewelry packgaging & Display equipment",
+  "Retail labeling & Tagging supplies",
+  "Retail mannequins & Dress forms",
+  "Retails racks & Fixtures",
+  "Retail security & Surveillance equipment",
+  "Retail shopping carts & Baskets",
+  "Other - Retails & Services"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Industrial fuel & Energy equipment",
+  "subcategory": [
+  "Alternative fuel & Energy equipment",
+  "Gas & Water meters",
+  "Oils & Gas",
+  "Power & Utilities",
+  "Other - Industrial fuel & Energy equipment"
+
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{ 
+  "name": "Other - Business equipment",
+  "subcategory": [],
+  "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "cat": "Tickets",
+   "items": [
+   {
+    "name": "Concerts",
+    "subcategory": [
+     
+            ],
+         "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Sports",
+  "subcategory": [
+   "Baseball",
+   "Basketball",
+   "Football",
+   "Hockey",
+   "Other - Sports"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Theater",
+  "subcategory": [
+   "Amusement parks",
+   "Disney World",
+   "Disney Land",
+   "Game Resort",
+   "Universal studios",
+   "Other - Theme parks"
+          ],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Theme parks",
+  "subcategory": [],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "name": "Other",
+  "subcategory": [],
+       "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "cat": "General",
+   "items": [
+   {
+    "name": "General",
+    "subcategory": [],
+         "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
+  "cat": "Conditon",
+   "items": [
+   {
+    "name": "Condition",
+    "subcategory": [
+      "New",
+      "Reconditioned/Certified",
+      "Open box (Never used)",
+      "Used (Normal wear)",
+      "For parts",
+      "Other (See description)"
+    ],
+         "color": ["Black", "Blue", "Silver", "Gold"]
+},
+{
           "model": [
             {
               "make": "Toyota",
@@ -196,8 +1975,6 @@
               "year": [2000, 2001]
             }
           ]
-        }
-      ]
     },
     { "cat": "Toys, Games, & Hobbies" },
     { "cat": "Sports & Outdoors" },
