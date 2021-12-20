@@ -148,7 +148,7 @@ import { Link } from "react-router-dom";
 
 function ControlledTabs() {
   const [state, dispatch] = useContext(UserContext);
-  const [key, setKey] = useState("photo");
+  const [key, setKey] = useState("home");
   const [bread] = useState(breadcrumbimg);
   const [locale, setLocation] = useState(null);
   useEffect(() => {
@@ -197,10 +197,10 @@ function ControlledTabs() {
                   ))}
                 </SplitButton>
               </div>
-              <PhotoUploader />
+              {/* <PhotoUploader />
               <GeneralInfo />
 
-              <AddLocation />
+              <AddLocation /> */}
 
               {/* <AddFullDetails /> */}
 

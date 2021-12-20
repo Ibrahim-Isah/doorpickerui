@@ -110,7 +110,7 @@ function AddPrice() {
           </div>
         </div>
       </div>
-      <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
+      {/* <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
         <div className="billing-content p-0">
           <div className="custom-checkbox d-block mr-0">
             <input
@@ -132,7 +132,7 @@ function AddPrice() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
