@@ -56,9 +56,17 @@ function Confirmation(props) {
                   <h2 className="sec__title pt-0 mb-2 before-none">
                     Thanks for signing up! {state?.user?.firstname}
                   </h2>
-                  <p className="sec__desc">
+                  <container>
+                    <row>
+                    <col></col>
+                    <col> <p className="sec__desc">
                     Kindly input the confirmation code sent to {phone}.
-                  </p>
+                  </p> 
+                  </col>
+                  <col></col>
+                  </row>  
+                  </container>
+
                 </div>
                 <div className="col-lg-12">
                   <div className="input-box">

@@ -25,7 +25,7 @@ function PlaceGrid({ griditems }) {
   }, []);
   return (
     <>
-      {posts.map((item, index) => {
+      {posts?.map((item, index) => {
         return (
           <div className="col-lg-4 column-td-6" key={index}>
             <div className="card-item">

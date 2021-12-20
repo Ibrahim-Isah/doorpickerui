@@ -97,18 +97,17 @@ import about2img from "../assets/images/img2.jpg"; //389*259
 import mainimage from "../assets/images/video-img.jpg"; // 750*500
 
 
-
 const sectiondata = {
     headermenu: [
         {
             title: 'Home',
             path: '/',
-            dropdown: [
-                {
-                    title: 'Home One',
-                    path: '/'
-                },
-                {
+           // links: [
+           //     {
+           //         title: 'Home One',
+           //         path: '/'
+            //    },
+                /* {
                     title: 'Home Two',
                     path: '/index2'
                 },
@@ -123,10 +122,10 @@ const sectiondata = {
                 {
                     title: 'Home Five',
                     path: '/index5'
-                }
-            ]
+                }*/
+        //    ]
         },
-        {
+       /*  {
             title: 'categories',
             path: '/all-categories',
             dropdown: [
@@ -143,11 +142,11 @@ const sectiondata = {
                     path: '/top-place'
                 }
             ]
-        },
+        },*/
         {
             title: 'listings',
             path: '/listing-grid',
-            dropdown: [
+            /*dropdown: [
                 {
                     title: 'listing grid',
                     path: '/listing-grid'
@@ -180,10 +179,10 @@ const sectiondata = {
                     title: 'add listing',
                     path: '/add-listing/new'
                 }
-            ]
+            ]*/
         },
-        {
-            title: 'pages',
+      /*  {
+           title: 'pages',
             path: '/user-profile',
             dropdown: [
                 {
@@ -235,9 +234,20 @@ const sectiondata = {
                     path: '/recover'
                 }
             ]
-        },
+        },*/
+
         {
-            title: 'blog',
+            title: 'About',
+            path: '/about',
+        },
+
+        {  
+            title: 'Contact',
+            path: '/contact'
+        },
+       
+       /* {
+           title: 'blog',
             path: '/blog-full-width',
             dropdown: [
                 {
@@ -261,7 +271,7 @@ const sectiondata = {
                     path: '/blog-single'
                 }
             ]
-        },
+        }, */
     ],
     herobanners: {
         banner1: {
@@ -886,25 +896,25 @@ const sectiondata = {
     ],
     howitworks: {
         hiw1: {
-            sectitle: 'Plan The Vacation of Your Dreams',
+            sectitle: 'Start Buying The Best For Less',
             seccontent: 'Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.',
             items: [
                 {
                     id: 1,
                     icon: <FiMap />,
-                    title: 'Find Interesting Place',
+                    title: 'Find a Seller',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 },
                 {
                     id: 2,
                     icon: <FiMail />,
-                    title: 'Contact a Few authors',
+                    title: 'Make your Bid ',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 },
                 {
                     id: 3,
                     icon: <AiOutlineUser />,
-                    title: 'Make a Reservation',
+                    title: 'Meet Up for Purchase',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 }
             ],
