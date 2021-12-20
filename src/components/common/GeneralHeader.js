@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import HeaderAuthorAccess from "../other/account/HeaderAuthorAccess";
 import Logo from "./Logo";
-import logosrc from "../../assets/images/logo.png";
+import logosrc from "../../assets/images/logo-1.png";
 
 export default function GeneralHeader() {
   useEffect(() => {

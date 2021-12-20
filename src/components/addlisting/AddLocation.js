@@ -118,7 +118,7 @@ const AddLocation = (props) => {
     setState(v);
   };
   const _done = (data) => {
-    if (!state.user?.auth) {
+    if (!state.user?.id) {
       setAlert({
         show: true,
         msg: "Login is required",

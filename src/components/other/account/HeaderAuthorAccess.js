@@ -11,7 +11,7 @@ import { USER_SET } from "../../../context/actions";
 export default function HeaderAuthorAccess() {
   const [state, dispatch] = useContext(UserContext);
   const [AuthorAccessOpen, setAuthorAccessOpen] = useState(
-    state.user?.auth || false
+    state.user?.id || false
   );
   const { user } = state;
   const d = new Date(user?.createdOn);

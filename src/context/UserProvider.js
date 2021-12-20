@@ -1,10 +1,19 @@
 import React, { createContext, useReducer } from "react";
-import { ALERT_SHOW, POSTS_SET, POST_DO, POST_SET, USER_SET } from "./actions";
+import {
+  ALERT_SHOW,
+  DRAFT_SET,
+  POSTS_DRAFT,
+  POSTS_SET,
+  POST_SET,
+  USER_SET,
+} from "./actions";
 const initialState = {
   user: {},
   posts: [],
   post: {},
   loading: false,
+  drafts: [],
+  draft: {},
   alert: { show: false },
 };
 const UserContext = createContext(initialState);
@@ -16,6 +25,12 @@ const UserProvider = ({ children }) => {
         return {
           ...state,
           posts: action.data,
+        };
+      case POSTS_DRAFT:
+        return {
+          ...state,
+          drafts: action.data,
+          draft: action.data[0],
         };
       case POST_SET:
         return {
@@ -31,6 +46,11 @@ const UserProvider = ({ children }) => {
         return {
           ...state,
           alert: action.data,
+        };
+      case DRAFT_SET:
+        return {
+          ...state,
+          draft: action.data,
         };
 
       default:
