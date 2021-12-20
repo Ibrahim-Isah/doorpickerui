@@ -61,7 +61,7 @@ function PlaceOne({ places }) {
           autoplay={true}
           responsive={responsive}
         >
-          {places.map((item, index) => {
+          {places?.map((item, index) => {
             return (
               <div className="card-item" key={index}>
                 <a href={item.titleUrl} className="card-image-wrap">

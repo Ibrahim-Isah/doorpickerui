@@ -53,7 +53,6 @@ function SignUpBox({ title, subtitle }) {
       history.push({ pathname: "/confirmation", state: { phone: data.phone } });
     }
   };
-  console.log(JSON.stringify(state?.user), "user detail");
 
   return (
     <>

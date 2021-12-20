@@ -2,11 +2,10 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore/lite";
 import React, { useContext, useState } from "react";
 import { Alert, Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
 import { BsPencilSquare, BsPencil } from "react-icons/bs";
 import Select from "react-select";
 import * as firebaseApi from "../../store/api/firebaseApi";
-import { POST_SET } from "../../context/actions";
+import { DRAFT_SET } from "../../context/actions";
 import { UserContext } from "../../context/UserProvider";
 import { addPicket } from "../../store/api/post";
 import * as cats from "../../utils/category.json";
@@ -24,10 +23,16 @@ const condit = cats.condition.map((cc) => {
 function GeneralInfo() {
   const [state, dispatch] = useContext(UserContext);
   const history = useHistory();
+  const [title, setTitle] = useState(state.draft?.title || "");
+  const [description, setDescr] = useState(state.draft?.description || "");
   const [sub, setSub] = useState(null);
   const [t, setT] = useState([]);
-  const [res, setRes] = useState(null);
-  const [cond, setCondition] = useState("");
+  const [res, setRes] = useState({
+    cat: state.draft?.category,
+    subcat: state.draft?.subCategory,
+    type: state.draft?.make,
+  });
+  const [cond, setCondition] = useState(state.draft?.condition || "");
   const [al, setAlert] = useState({ show: false });
   const getSub = (cat) => {
     setRes({ cat });
@@ -48,18 +53,19 @@ function GeneralInfo() {
     const ba = { ...res, subcat: su };
     setRes(ba);
   };
+  console.log(res, " role it ");
   const _type = (ty) => {
     const f = { ...res, type: ty };
     setRes(f);
   };
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   reset,
+  //   formState: { errors },
+  // } = useForm({ defaultValues: state.draft });
   const openChat = (id, email) => {
     firebaseApi.storeChat(
       {
@@ -71,8 +77,8 @@ function GeneralInfo() {
       id
     );
   };
-  const _done = async (data) => {
-    if (!state.user?.auth) {
+  const _done = async () => {
+    if (!state.user?.id) {
       setAlert({
         show: true,
         msg: "Login is required",
@@ -81,22 +87,38 @@ function GeneralInfo() {
       });
       return;
     }
-    if (state?.post?.id) {
-      data.id = state.post.id;
+    const data = {
+      ...state.draft,
+      title,
+      description,
+      condition: cond,
+      category: res?.cat,
+      subCategory: res?.subcat,
+      make: res?.type,
+      ownerId: state.user.id,
+      status: "DRAFT",
+    };
+    // const data = {
+    //   title,
+    //   description,
+    //   condition: cond,
+    //   category: res.cat,
+    //   subCategory: res.subcat,
+    //   make: res.type,
+    //   ownerId: state.user.id,
+    //   status: "DRAFT",
+    // };
+    if (state?.draft?.id) {
+      data.id = state.draft.id;
     }
-    data.condition = cond;
-    data.category = res.cat;
-    data.subCategory = res.subcat;
-    data.make = res.type;
-    data.ownerId = state.user.id;
     const d = await addPicket(data);
     if (d.error) {
       return;
     }
-    dispatch({ type: POST_SET, data: d.data });
+    dispatch({ type: DRAFT_SET, data: d.data });
     openChat(d.data?.id, d?.data?.email);
     // post it to firebase
-    reset();
+    //reset();
   };
   return (
     <>
@@ -142,37 +164,12 @@ function GeneralInfo() {
                         type="text"
                         name="name"
                         placeholder="Enter your listing title"
-                        {...register("title")}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                       />
                     </div>
                   </div>
                 </div>
-                {/* <div className="col-lg-6">
-                  <div className="input-box">
-                    <label className="label-text d-flex align-items-center ">
-                      Keywords
-                      <i
-                        className="la tip ml-1"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Maximum of 15 keywords related with your business"
-                      >
-                        <BsQuestion />
-                      </i>
-                    </label>
-                    <div className="form-group">
-                      <span className="la form-icon">
-                        <AiOutlineTags />
-                      </span>
-                      <input
-                        className="form-control"
-                        type="text"
-                        name="name"
-                        placeholder="Keywords should be separated by commas"
-                      />
-                    </div>
-                  </div>
-                </div> */}
                 <div className="col-lg-12">
                   <div className="input-box">
                     <label className="label-text">Description</label>
@@ -184,7 +181,8 @@ function GeneralInfo() {
                         className="message-control form-control"
                         name="message"
                         placeholder="Write your listing description"
-                        {...register("description")}
+                        value={description}
+                        onChange={(e) => setDescr(e.target.value)}
                       ></textarea>
                     </div>
                   </div>
@@ -197,6 +195,7 @@ function GeneralInfo() {
                         placeholder="Select a Category"
                         options={ca}
                         onChange={(e) => getSub(e.value)}
+                        value={{ value: res?.cat, label: res?.cat }}
                       />
                     </div>
                   </div>
@@ -209,6 +208,7 @@ function GeneralInfo() {
                         placeholder="Select a Subcategory"
                         options={sub}
                         onChange={(e) => _sub(e.value)}
+                        value={{ value: res?.subcat, label: res?.subcat }}
                       />
                     </div>
                   </div>
@@ -221,6 +221,7 @@ function GeneralInfo() {
                         placeholder="Select type"
                         options={t}
                         onChange={(e) => _type(e.value)}
+                        value={{ value: res?.type, label: res?.type }}
                       />
                     </div>
                   </div>
@@ -233,15 +234,13 @@ function GeneralInfo() {
                         placeholder="Select a Condition"
                         options={condit}
                         onChange={(e) => setCondition(e.value)}
+                        value={{ value: cond, label: cond }}
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <Button
-                onClick={handleSubmit(_done)}
-                style={{ marginTop: "16px" }}
-              >
+              <Button onClick={_done} style={{ marginTop: "16px" }}>
                 Done
               </Button>
             </form>

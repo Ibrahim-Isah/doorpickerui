@@ -3,17 +3,18 @@ import { Alert, Button } from "react-bootstrap";
 import { FaDollarSign } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../context/UserProvider";
+import { addPicket } from "../../store/api/post";
 
 function AddPrice() {
   const [state, dispatch] = useContext(UserContext);
-  const [price, setPrice] = useState(0);
+  const { post } = state;
+  const [price, setPrice] = useState(post?.sellingPrice);
   const [firm, setFirm] = useState(false);
   const [terms, setTerms] = useState(false);
   const [al, setAlert] = useState({ show: false });
   const history = useHistory();
   const _done = () => {
-    console.log(price, firm, terms);
-    if (!state.user?.auth) {
+    if (!state.user?.id) {
       setAlert({
         show: true,
         msg: "Login is required",
@@ -30,6 +31,8 @@ function AddPrice() {
       });
       return;
     }
+    const toSave = { status: "LIVE", sellingPrice: price, id: state.post.id };
+    addPicket(toSave);
   };
   return (
     <>
@@ -107,7 +110,7 @@ function AddPrice() {
           </div>
         </div>
       </div>
-      <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
+      {/* <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
         <div className="billing-content p-0">
           <div className="custom-checkbox d-block mr-0">
             <input
@@ -125,11 +128,11 @@ function AddPrice() {
           </div>
           <div className="btn-box mt-4">
             <button onClick={_done} className="theme-btn border-0">
-              submit picket
+              Publish Picket
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
