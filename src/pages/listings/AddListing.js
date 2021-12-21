@@ -211,46 +211,47 @@ function ControlledTabs() {
                 className="mb-3"
               >
                 <Tab eventKey="home" title="Add Photo">
-                  <PhotoUploader />
+                  <PhotoUploader next={() => setKey("profile")} />
                 </Tab>
                 <Tab eventKey="profile" title="General Info">
-                  <GeneralInfo />
+                  <GeneralInfo next={() => setKey("contact")} />
                 </Tab>
                 <Tab eventKey="contact" title="Add Location">
-                  <AddLocation />
+                  <AddLocation next={() => setKey("pricing")} />
                 </Tab>
                 <Tab eventKey="pricing" title="Add Pricing">
                   <AddPrice />
                 </Tab>
               </Tabs>
-
-              <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
-                <div className="billing-content p-0">
-                  <div className="custom-checkbox d-block mr-0">
-                    <input type="checkbox" id="privacy" />
-                    <label htmlFor="privacy">
-                      I Agree to DoorPicker's
-                      <Link to="#" className="color-text">
-                        Privacy Policy
-                      </Link>
-                    </label>
-                  </div>
-                  <div className="custom-checkbox d-block mr-0">
-                    <input type="checkbox" id="terms" />
-                    <label htmlFor="terms">
-                      I Agree to DoorPicker's
-                      <Link to="#" className="color-text">
-                        Terms of Services
-                      </Link>
-                    </label>
-                  </div>
-                  <div className="btn-box mt-4">
-                    <button onClick={addPost} className="theme-btn border-0">
-                      submit picket
-                    </button>
+              {key === "pricing" && (
+                <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
+                  <div className="billing-content p-0">
+                    <div className="custom-checkbox d-block mr-0">
+                      <input type="checkbox" id="privacy" />
+                      <label htmlFor="privacy">
+                        I Agree to DoorPicker's
+                        <Link to="#" className="color-text">
+                          Privacy Policy
+                        </Link>
+                      </label>
+                    </div>
+                    <div className="custom-checkbox d-block mr-0">
+                      <input type="checkbox" id="terms" />
+                      <label htmlFor="terms">
+                        I Agree to DoorPicker's
+                        <Link to="#" className="color-text">
+                          Terms of Services
+                        </Link>
+                      </label>
+                    </div>
+                    <div className="btn-box mt-4">
+                      <button onClick={addPost} className="theme-btn border-0">
+                        submit picket
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
