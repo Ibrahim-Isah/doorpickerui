@@ -32,15 +32,15 @@ class ListingDetails extends Component {
     peopleViewtitle: "People Also Viewed",
   };
   render() {
-    const { post } = this.props?.location?.state || {};
-    console.log(this.props);
+    const p = this.props?.location?.state?.post || {};
+    console.log(this.props?.location?.state?.post, " properly ");
     return (
       <main className="listing-details">
         {/* Header */}
         <GeneralHeader />
 
         {/* Breadcrumb */}
-        <ListingDetailsBreadcrumb title={post?.title || "NAT"} />
+        <ListingDetailsBreadcrumb title={p?.title || "NAT"} />
 
         <ModalVideo
           channel="youtube"
@@ -141,7 +141,7 @@ class ListingDetails extends Component {
                 </div>
               </div>
               <div className="col-lg-4">
-                <ListingDetailsSidebar />
+                <ListingDetailsSidebar post={p} />
               </div>
             </div>
           </div>

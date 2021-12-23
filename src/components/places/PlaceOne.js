@@ -52,7 +52,7 @@ function PlaceOne({ places }) {
         <Slider
           className="places-carousel"
           dots={true}
-          infinite={true}
+          infinite={places.length > 3}
           slidesToScroll={2}
           arrows={false}
           slidesToShow={3}
@@ -67,7 +67,7 @@ function PlaceOne({ places }) {
                 <a href={item.titleUrl} className="card-image-wrap">
                   <div className="card-image">
                     <img
-                      src={item?.image || "https://via.placeholder.com/100"}
+                      src={item?.image || "https://via.placeholder.com/100x50"}
                       className="card__img"
                       alt="Place"
                     />
@@ -120,12 +120,6 @@ function PlaceOne({ places }) {
                         </span>
                         {item?.sellingPrice}
                       </li>
-                      {/* <li>
-                        <span className="la d-inline-block">
-                          <IoIosLink />
-                        </span>
-                        <a href={item.websiteUrl}>{item.website}</a>
-                      </li> */}
                       <li>
                         <span className="la d-inline-block">
                           <FaRegCalendarCheck />

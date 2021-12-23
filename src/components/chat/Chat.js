@@ -1,15 +1,11 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import { GiftedChat } from "react-web-gifted-chat";
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore/lite";
 import * as firebaseApi from "../../store/api/firebaseApi";
 import { UserContext } from "../../context/UserProvider";
 import Footer from "../common/footer/Footer";
 import GeneralHeader from "../common/GeneralHeader";
 import ScrollTopBtn from "../common/ScrollTopBtn";
-import { firebaseConfig } from "../../utils/config";
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+
 const styles = {
   container: {
     flex: 1,
@@ -36,10 +32,12 @@ const styles = {
   },
 };
 const Chat = (props) => {
-  const [state, dispatch] = useContext(UserContext);
+  const [state] = useContext(UserContext);
+  const { post } = props.location.state;
   const [messages, setMessages] = useState([
     {
-      _id: "770c3554-bcc4-46e9-b2e2-7fc63123456",
+      id: "770c3554-bcc4-46e9-b2e2-7fc63123456",
+      createdAt: new Date(),
       text: "Still available?",
       user: {
         _id: 1,
@@ -47,29 +45,28 @@ const Chat = (props) => {
       },
     },
   ]);
-  const { user, post } = state;
+  const { user } = state;
   const _msgs = (ms) => {
-    const m = Object.values(ms);
-    if (m.length > 0) {
-      m.filter(
-        (msg) => msg.user.id === user.id || msg.user.id === post.ownerId
-      );
-      m.sort((a, b) => b.createdAt - a.createdAt);
+    //const m = Object.values(ms);
+    let newm = [];
+    if (ms.msgs.length > 0) {
+      newm = ms.msgs.filter((msg) => {
+        return msg.user._id === user.id || msg.user._id === +post.ownerId;
+      });
+      newm.sort((a, b) => b.createdAt - a.createdAt);
     }
-    setMessages(m);
+    newm.forEach((n) => (n.createdAt = n.createdAt.toDate()));
+    setMessages(newm);
   };
   useEffect(() => {
     post?.id && firebaseApi.getChat(post?.id, _msgs);
   }, [post]);
   const _send = useCallback(
-    (messages = []) => {
-      const { text, user, _id } = messages[0];
+    (msg = []) => {
+      const data = [...messages, msg[0]];
       firebaseApi.storeChat(
         {
-          createdAt: db.ServerValue.TIMESTAMP,
-          _id,
-          text,
-          user,
+          msgs: data,
         },
         post?.id
       );
@@ -86,7 +83,9 @@ const Chat = (props) => {
             <div className="col-lg-12">
               <div className="booking-confirm-page text-center">
                 <div className="section-heading pt-3">
-                  <h2 className="sec__title pt-0 mb-2 before-none">Title</h2>
+                  <h2 className="sec__title pt-0 mb-2 before-none">
+                    {post?.title}
+                  </h2>
                 </div>
               </div>
               <div className="App" style={styles.container}>
