@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import GeneralHeader from "../../components/common/GeneralHeader";
 import Breadcrumb from "../../components/common/Breadcrumb";
 import GeneralInfo from "../../components/addlisting/GeneralInfo";
@@ -12,12 +11,7 @@ import breadcrumbimg from "../../assets/images/bread-bg.jpg";
 import { addPicket, findLoc, userDrafts } from "../../store/api/post";
 import { UserContext } from "../../context/UserProvider";
 import { DRAFT_SET, POSTS_DRAFT } from "../../context/actions";
-import {
-  ButtonGroup,
-  Dropdown,
-  DropdownButton,
-  SplitButton,
-} from "react-bootstrap";
+import { Dropdown, SplitButton } from "react-bootstrap";
 import { Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import { renderSync } from "node-sass";
@@ -35,14 +29,7 @@ import { Link } from "react-router-dom";
   //   Location();
   // }, []);
   console.log(state.drafts, "users");
-  useEffect(() => {
-    async function myDrafts() {
-      const drafts = await userDrafts(state?.user?.id || 2);
-      dispatch({ type: POSTS_DRAFT, data: drafts?.data });
-    }
-    myDrafts();
-    //state?.user?.id && myDrafts();
-  }, [state.user]);
+
   const addPost = () => {
     if (!state?.user?.id) {
       alert("You are not logged in");
@@ -153,7 +140,7 @@ function ControlledTabs() {
   const [locale, setLocation] = useState(null);
   useEffect(() => {
     async function Location() {
-      const loc = await findLoc();
+      const loc = {}; //await findLoc();
       setLocation(loc);
     }
     Location();
@@ -163,6 +150,14 @@ function ControlledTabs() {
     addPicket(obj);
     //create a post
   };
+  useEffect(() => {
+    async function myDrafts() {
+      const drafts = await userDrafts(state?.user?.id || 2);
+      dispatch({ type: POSTS_DRAFT, data: drafts?.data });
+    }
+    myDrafts();
+    //state?.user?.id && myDrafts();
+  }, [state.user, dispatch]);
 
   return (
     <main className="add-listing">

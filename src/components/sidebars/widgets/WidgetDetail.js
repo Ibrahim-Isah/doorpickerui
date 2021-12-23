@@ -5,7 +5,9 @@ import { FiExternalLink, FiPhone } from "react-icons/fi";
 import { GiPositionMarker } from "react-icons/gi";
 import Button from "../../common/Button";
 
-const WidgetDetail = ({ contents }) => {
+const WidgetDetail = (props) => {
+  const { contents, post } = props;
+
   return (
     <>
       <div className="sidebar-widget">
@@ -61,7 +63,14 @@ const WidgetDetail = ({ contents }) => {
           })}
         </ul>
         <div className="btn-box text-center">
-          <Button text="chat" url="/listing-chat" className="d-block">
+          <Button
+            text="chat"
+            url={{
+              pathname: "/listing-chat",
+              state: { post: post },
+            }}
+            className="d-block"
+          >
             <span className="d-inline-block">
               <AiOutlineUser />
             </span>

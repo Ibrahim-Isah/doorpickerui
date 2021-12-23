@@ -12,107 +12,30 @@ import Button from "../../components/common/Button";
 import PlaceOne from "../../components/places/PlaceOne";
 import sectiondata from "../../store/store";
 import { UserContext } from "../../context/UserProvider";
-import { getPosts } from "../../store/api/post";
+import { getLive } from "../../store/api/post";
 import { POSTS_SET } from "../../context/actions";
 
 function Home() {
   const [state, dispatch] = useContext(UserContext);
   useEffect(() => {
     async function getData() {
-      const d = await getPosts();
+      const d = await getLive();
       if (!d.ok) {
         console.log(d, " error");
       }
-      console.log(d);
       dispatch({ type: POSTS_SET, data: d?.data });
     }
     getData();
   }, []);
   return (
     <main className="home-1">
-      {/* Header */}
       <GeneralHeader />
-
-      {/* Hero Banner */}
       <BannerOne />
-
-      {/* Popular Categories */}
-      {/* <section className="cat-area padding-top-100px padding-bottom-90px">
-        <div className="container">
-          <div className="row section-title-width text-center">
-            <SectionsHeading
-              title={sectiondata.popularcategories.sectitle}
-              desc={sectiondata.popularcategories.seccontent}
-            />
-          </div>
-          <div className="row mt-5">
-            <PopularCategories
-              catitems={sectiondata.popularcategories.categories}
-            />
-          </div>
-        </div>
-      </section> */}
-
-      {/* How It Work */}
-      {/* <section className="hiw-area text-center padding-top-100px padding-bottom-110px">
-        <div className="container">
-          <div className="row section-title-width text-center">
-            <SectionsHeading
-              title={sectiondata.howitworks.hiw1.sectitle}
-              desc={sectiondata.howitworks.hiw1.seccontent}
-            />
-          </div>
-
-          <HowItWorkOne hiw1content={sectiondata.howitworks.hiw1} />
-        </div>
-      </section> */}
-
-      {/* Most Visited Place */}
       <section className="card-area text-center padding-bottom-100px">
         <div className="container">
-          {/* <div className="row section-title-width text-center">
-            <SectionsHeading
-              title={sectiondata.mostvisitedplaces.sectitle}
-              desc={sectiondata.mostvisitedplaces.seccontent}
-            />
-          </div> */}
-
           <PlaceOne places={state.posts} />
         </div>
       </section>
-
-      {/* FunFacts */}
-      {/* <section className="funfact-area section-bg-2 padding-top-100px padding-bottom-50px text-center">
-        <div className="container">
-          <div className="row section-title-width">
-            <SectionsHeading
-              title={sectiondata.funfacts.funfact1.sectitle}
-              titleClass="text-white"
-              desc={sectiondata.funfacts.funfact1.seccontent}
-            />
-          </div>
-
-          <FunFactsOne
-            countitems={sectiondata.funfacts.funfact1.counteritems}
-          />
-        </div>
-      </section> */}
-
-      {/* How It Work */}
-      {/* <section className="hiw-area padding-top-100px padding-bottom-80px after-none text-center">
-        <div className="container">
-          <div className="row section-title-width text-center">
-            <SectionsHeading
-              title={sectiondata.howitworks.hiw2.sectitle}
-              desc={sectiondata.howitworks.hiw2.seccontent}
-            />
-          </div>
-
-          <InfoBox3 infoitems={sectiondata.howitworks.hiw2.items} />
-        </div>
-      </section> */}
-
-      {/* CTA */}
       <section className="cta-area section-bg column-sm-center padding-top-80px padding-bottom-80px">
         {sectiondata.calltoactions.cta1.shapes.map((img, index) => {
           return (
@@ -134,7 +57,6 @@ function Home() {
                 desc="we connects buyers and sellers to give you the best bang for your bucks"
               />
             </div>
-
             <div className="col-lg-3">
               <div className="btn-box">
                 <Button text="Join DoorPicker" url="/sign-up" />
@@ -143,37 +65,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Testimonial */}
-      {/* <section className="testimonial-area padding-top-100px padding-bottom-100px text-center">
-        {sectiondata.testimonialdata.tmimage.map((tmimg, index) => {
-          return (
-            <img
-              key={index}
-              src={tmimg.tmimg}
-              alt="testimonial"
-              className="random-img"
-            />
-          );
-        })}
-        <div className="container">
-          <div className="row section-title-width text-center">
-            <SectionsHeading
-              title={sectiondata.testimonialdata.sectitle}
-              desc={sectiondata.testimonialdata.seccontent}
-            />
-          </div>
-          <div className="row">
-            <div className="col-lg-8 mx-auto mt-4">
-              <Testimonial slideitems={sectiondata.testimonialdata.sliders} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider /> */}
-
-      {/* Blog */}
       <section className="blog-area padding-top-100px padding-bottom-80px">
         <div className="container">
           <div className="row section-title-width section-title-ml-mr-0">

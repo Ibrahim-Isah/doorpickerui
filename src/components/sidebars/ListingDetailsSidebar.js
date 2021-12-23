@@ -18,7 +18,7 @@ const state = {
   btnText: "Verified Listing",
   btnIcon: <BsCheckCircle />,
 };
-function ListingDetailsSidebar() {
+function ListingDetailsSidebar(props) {
   return (
     <>
       <div className="author-verified-badge margin-bottom-20px">
@@ -28,13 +28,14 @@ function ListingDetailsSidebar() {
           data-placement="top"
           title="Listing has been verified and belongs the business owner or manager"
         >
-          <span className="d-inline-block">{state.btnIcon}</span>{" "}
+          <span className="d-inline-block">{state.btnIcon}</span>
           {state.btnText}
         </div>
       </div>
       <div className="sidebar section-bg">
         <WidgetDetail
           contents={sectiondata.listingDetails.sidebar.widgetAuthor}
+          post={props.post}
         />
         <WidgetStaticsInfo
           staticsinfo={sectiondata.listingDetails.sidebar.widgetStaticsInfo}
