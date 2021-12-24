@@ -4,105 +4,20 @@ import { FiMap } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import { UserContext } from "../../context/UserProvider";
-import { addPicket, findLoc } from "../../store/api/post";
+import { addLocation, addPicket } from "../../store/api/post";
+import * as ngcities from "../../utils/ng-cities.json";
+const cities = ngcities.ngcities.map((c) => {
+  return {
+    label: c.city,
+    value: c.city.toLowerCase(),
+  };
+});
 
-const cities = [
-  {
-    value: 0,
-    label: "Select a City",
-  },
-  {
-    value: 1,
-    label: "New York",
-  },
-  {
-    value: 2,
-    label: "Los Angeles",
-  },
-  {
-    value: 3,
-    label: "Chicago",
-  },
-  {
-    value: 4,
-    label: "Phoenix",
-  },
-  {
-    value: 5,
-    label: "Washington",
-  },
-  {
-    value: 6,
-    label: "Boston",
-  },
-  {
-    value: 7,
-    label: "Philadelphia",
-  },
-  {
-    value: 8,
-    label: "Baltimore",
-  },
-  {
-    value: 9,
-    label: "Seattle",
-  },
-  {
-    value: 10,
-    label: "San Francisco",
-  },
-];
-const states = [
-  {
-    value: 0,
-    label: "Select a State",
-  },
-  {
-    value: 1,
-    label: "California",
-  },
-  {
-    value: 2,
-    label: "Florida",
-  },
-  {
-    value: 3,
-    label: "Texas",
-  },
-  {
-    value: 4,
-    label: "Hawaii",
-  },
-  {
-    value: 5,
-    label: "Arizona",
-  },
-  {
-    value: 6,
-    label: "Michigan",
-  },
-  {
-    value: 7,
-    label: "New Jersey",
-  },
-  {
-    value: 8,
-    label: "Georgia",
-  },
-  {
-    value: 9,
-    label: "South Carolina",
-  },
-  {
-    value: 10,
-    label: "Montana",
-  },
-];
 const AddLocation = (props) => {
   const [state, dispatch] = useContext(UserContext);
   const [selectedCity, setCity] = useState(null);
-  const [selectedState, setState] = useState(null);
-  const [locale, setLocation] = useState(null);
+  // const [selectedState, setState] = useState(null);
+  // const [locale, setLocation] = useState(null);
   const [al, setAlert] = useState({ show: false });
   const [addr, setAddr] = useState("");
   const [title] = useState("Add Location");
@@ -114,11 +29,12 @@ const AddLocation = (props) => {
   const handleChangeCity = (s) => {
     setCity(s);
   };
-  const handleChangeState = (v) => {
-    setState(v);
-  };
-  const _done = (data) => {
-    if (!state.user?.id) {
+  // const handleChangeState = (v) => {
+  //   setState(v);
+  // };
+  console.log(state.draft);
+  const _done = async () => {
+    if (!state.user?.id || !state.draft?.id) {
       setAlert({
         show: true,
         msg: "Login is required",
@@ -127,16 +43,18 @@ const AddLocation = (props) => {
       });
       return;
     }
-    data.location = locale;
-    data.address = addr;
-    data.city = selectedCity;
-    data.state = selectedState;
-    data.ownerId = state.user.id;
-    data.ownerId = state.user.id;
-    if (state?.post?.id) {
-      data.id = state.post.id;
-    }
-    addPicket(data);
+    //data.location = locale;
+    const data = {
+      id: state.draft.id,
+      ownerId: state.user.id,
+      city: selectedCity?.value,
+      location: addr,
+      status: "DRAFT",
+    };
+
+    const r = await addLocation(data);
+    console.log(r);
+    props.next();
   };
   return (
     <>
@@ -188,21 +106,7 @@ const AddLocation = (props) => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-6">
-                  <div className="input-box">
-                    <label className="label-text">State</label>
-                    <div className="form-group">
-                      <Select
-                        value={selectedState}
-                        onChange={handleChangeState}
-                        placeholder="Select a State"
-                        options={states}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-lg-6">
+                <div className="col-lg-12">
                   <div className="input-box">
                     <label className="label-text">City</label>
                     <div className="form-group">
@@ -213,6 +117,19 @@ const AddLocation = (props) => {
                         options={cities}
                       />
                     </div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="input-box">
+                    {/* <label className="label-text">State</label>
+                    <div className="form-group">
+                      <Select
+                        value={selectedState}
+                        onChange={handleChangeState}
+                        placeholder="Select a State"
+                        options={states}
+                      />
+                    </div> */}
                   </div>
                 </div>
 

@@ -24,6 +24,25 @@ export const addPicket = async (obj) => {
   const data = await response.json();
   return { data };
 };
+export const addLocation = async (obj) => {
+  const response = await fetch(
+    `${BASE_URL}post/add/location`,
+    PostSettings(obj)
+  );
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
+export const addPrice = async (obj) => {
+  const response = await fetch(`${BASE_URL}post/add/price`, PostSettings(obj));
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
 export const userDrafts = async (usr) => {
   const response = await fetch(`${BASE_URL}post/posts/drafts/${usr}`, auth);
   if (!response.ok) {

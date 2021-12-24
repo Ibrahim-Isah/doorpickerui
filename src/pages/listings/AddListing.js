@@ -13,131 +13,13 @@ import { UserContext } from "../../context/UserProvider";
 import { DRAFT_SET, POSTS_DRAFT } from "../../context/actions";
 import { Dropdown, SplitButton } from "react-bootstrap";
 import { Tab, Tabs } from "react-bootstrap";
-import { Link } from "react-router-dom";
-// import { renderSync } from "node-sass";
-
-/* function AddListing() {
-  const [bread] = useState(breadcrumbimg);
-  const [state, dispatch] = useContext(UserContext);
-  const hist = useHistory();
-  // get my drafts, load it in a drop down. and make the latest one default.
-  // useEffect(() => {
-  //   async function Location() {
-  //     const loc = await findLoc();
-  //     setLocation(loc.data);
-  //   }
-  //   Location();
-  // }, []);
-  console.log(state.drafts, "users");
-
-  const addPost = () => {
-    if (!state?.user?.id) {
-      alert("You are not logged in");
-      hist.push({ pathname: "/login", state: { from: "add-listing/new" } });
-    }
-    //const obj = { location: locale };
-    //addPicket(obj);
-    //create a post
-  };
-  
-  return (
-    <main className="add-listing">
-      {/* Header */
-// <GeneralHeader />
-
-{
-  /* Breadcrumb */
-}
-//  <Breadcrumb
-//   CurrentPgTitle="Add Listing"
-//   MenuPgTitle="Listings"
-//    img={bread}
-//  />
-{
-  /* Add Listing */
-}
-
-//     <section className="add-listing-area padding-top-40px padding-bottom-100px">
-//      <div className="container">
-//        <div className="row">
-//          <div className="col-lg-9 mx-auto">
-
-//        <PhotoUploader/>
-
-//        <GeneralInfo/>
-
-//        <AddLocation/>
-//
-//       <AddPrice/>
-
-{
-  /* <AddFullDetails /> */
-}
-
-{
-  /* <Amenities /> */
-}
-
-{
-  /* <OpeningHours /> */
-}
-
-//       <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
-//         <div className="billing-content p-0">
-//         <div className="custom-checkbox d-block mr-0">
-//         <input type="checkbox" id="privacy" />
-//            <label htmlFor="privacy">
-//             I Agree to DoorPicker's
-//            <Link to="#" className="color-text">
-//             Privacy Policy
-//          </Link>
-//       </label>
-//      </div>
-//     <div className="custom-checkbox d-block mr-0">
-//        <input type="checkbox" id="terms" />
-//       <label htmlFor="terms">
-//        I Agree to DoorPicker's
-//       <Link to="#" className="color-text">
-//        Terms of Services
-//     </Link>
-//  </label>
-//        </div>
-//       <div className="btn-box mt-4">
-//            <button onClick={addPost} className="theme-btn border-0">
-//             submit picket
-//          </button>
-
-//        </div>
-//     </div>
-//       </div>
-
-//     </div>
-//     </div>
-//      </div>
-//   </section>
-
-{
-  /* Newsletter */
-}
-{
-  /* <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} /> */
-}
-
-{
-  /* Footer */
-}
-//     <Footer />
-
-//     <ScrollTopBtn />
-//   </main>
-//  );
-// }
 
 function ControlledTabs() {
   const [state, dispatch] = useContext(UserContext);
   const [key, setKey] = useState("home");
   const [bread] = useState(breadcrumbimg);
   const [locale, setLocation] = useState(null);
+
   useEffect(() => {
     async function Location() {
       const loc = {}; //await findLoc();
@@ -145,33 +27,32 @@ function ControlledTabs() {
     }
     Location();
   }, []);
-  const addPost = () => {
-    const obj = { location: locale };
-    addPicket(obj);
-    //create a post
-  };
+  // const addPost = () => {
+  //   const toSave = {
+  //     status: "LIVE",
+  //     sellingPrice: price,
+  //     id: state.draft?.id,
+  //     ownerId: state.user?.id,
+  //   };
+  //   addPicket(toSave);
+  //   //create a post
+  // };
   useEffect(() => {
     async function myDrafts() {
-      const drafts = await userDrafts(state?.user?.id || 2);
+      const drafts = await userDrafts(state?.user?.id);
       dispatch({ type: POSTS_DRAFT, data: drafts?.data });
     }
-    myDrafts();
-    //state?.user?.id && myDrafts();
+    state?.user?.id && myDrafts();
   }, [state.user, dispatch]);
 
   return (
     <main className="add-listing">
-      {/* Header */}
       <GeneralHeader />
-
-      {/* Breadcrumb */}
       <Breadcrumb
         CurrentPgTitle="Add Listing"
         MenuPgTitle="Listings"
         img={bread}
       />
-      {/* Add Listing */}
-
       <section className="add-listing-area padding-top-40px padding-bottom-100px">
         <div className="container">
           <div className="row">
@@ -192,13 +73,6 @@ function ControlledTabs() {
                   ))}
                 </SplitButton>
               </div>
-              {/* <PhotoUploader />
-              <GeneralInfo />
-
-              <AddLocation /> */}
-
-              {/* <AddFullDetails /> */}
-
               <Tabs
                 id="controlled-tab"
                 activeKey={key}
@@ -218,35 +92,6 @@ function ControlledTabs() {
                   <AddPrice />
                 </Tab>
               </Tabs>
-              {key === "pricing" && (
-                <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
-                  <div className="billing-content p-0">
-                    <div className="custom-checkbox d-block mr-0">
-                      <input type="checkbox" id="privacy" />
-                      <label htmlFor="privacy">
-                        I Agree to DoorPicker's
-                        <Link to="#" className="color-text">
-                          Privacy Policy
-                        </Link>
-                      </label>
-                    </div>
-                    <div className="custom-checkbox d-block mr-0">
-                      <input type="checkbox" id="terms" />
-                      <label htmlFor="terms">
-                        I Agree to DoorPicker's
-                        <Link to="#" className="color-text">
-                          Terms of Services
-                        </Link>
-                      </label>
-                    </div>
-                    <div className="btn-box mt-4">
-                      <button onClick={addPost} className="theme-btn border-0">
-                        submit picket
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>

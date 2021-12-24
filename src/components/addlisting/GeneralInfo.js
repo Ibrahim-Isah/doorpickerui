@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-// import { initializeApp } from "firebase/app";
-// import { getFirestore } from "firebase/firestore/lite";
 import * as firebaseApi from "../../store/api/firebaseApi";
 import { Alert, Button } from "react-bootstrap";
 import { BsPencilSquare, BsPencil } from "react-icons/bs";
@@ -9,10 +7,7 @@ import { DRAFT_SET } from "../../context/actions";
 import { UserContext } from "../../context/UserProvider";
 import { addPicket } from "../../store/api/post";
 import * as cats from "../../utils/category.json";
-//import { firebaseConfig } from "../../utils/config";
 import { useHistory } from "react-router-dom";
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
 const ca = cats.category.map((c) => {
   return { value: c.cat, label: c.cat };
 });
