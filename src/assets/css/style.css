@@ -548,7 +548,8 @@ body {
   padding-left: 24px;
   padding-right: 24px;
   text-transform: capitalize;
-  background-color: #ff6b6b;
+  background-color: #12d015
+  ;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
@@ -565,8 +566,8 @@ body {
   border-radius: 4px;
 }
 .theme-btn:hover {
-  background-color: #ea5555;
-  color: #fff;
+  background-color: #007202;
+  color: #12d015;
 }
 
 .download-btn {
@@ -3105,7 +3106,8 @@ select,
   font-size: 13px;
 }
 .main-menu-content nav ul li a:hover {
-  color: #ff6b6b;
+  color: #12d015
+  ;
 }
 .main-menu-content nav ul li .dropdown-menu-item {
   text-align: left;
@@ -3156,7 +3158,8 @@ select,
   font-size: 15px;
 }
 .main-menu-content nav ul li .dropdown-menu-item li a:hover {
-  color: #ff6b6b;
+  color: #12d015
+  ;
   padding-left: 30px;
 }
 .main-menu-content nav ul li:hover .dropdown-menu-item {
@@ -3208,7 +3211,8 @@ select,
   transition: all 0.3s;
 }
 .logo-right-content .author-access-list li a:hover {
-  color: #ff6b6b;
+  color: #12d015
+  ;
 }
 .logo-right-content .author-access-list li a.theme-btn:hover {
   color: #fff;
@@ -3269,7 +3273,7 @@ select,
 .logo-right-content .side-user-menu-open {
   width: 45px;
   height: 46px;
-  background-color: #40cc6f;
+  background-color: #c7dd1f;
   line-height: 40px;
   text-align: center;
   color: #fff;
