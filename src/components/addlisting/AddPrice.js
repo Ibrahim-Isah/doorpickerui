@@ -2,18 +2,20 @@ import React, { useContext, useState } from "react";
 import { Alert, Button } from "react-bootstrap";
 import { FaDollarSign } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
+import { POST_SET } from "../../context/actions";
 import { UserContext } from "../../context/UserProvider";
-import { addPicket } from "../../store/api/post";
+import { addPrice } from "../../store/api/post";
 
-function AddPrice() {
+function AddPrice(props) {
   const [state, dispatch] = useContext(UserContext);
-  const { post } = state;
-  const [price, setPrice] = useState(post?.sellingPrice);
+  const { draft } = state;
+  const [price, setPrice] = useState(draft?.sellingPrice);
   const [firm, setFirm] = useState(false);
   const [terms, setTerms] = useState(false);
   const [al, setAlert] = useState({ show: false });
   const history = useHistory();
-  const _done = () => {
+  console.log(terms, "terms");
+  const _done = async () => {
     if (!state.user?.id) {
       setAlert({
         show: true,
@@ -31,8 +33,18 @@ function AddPrice() {
       });
       return;
     }
-    const toSave = { status: "LIVE", sellingPrice: price, id: state.post.id };
-    addPicket(toSave);
+    const toSave = {
+      status: "LIVE",
+      sellingPrice: price,
+      id: state.draft.id,
+      ownerId: state.user?.id,
+      fixed: terms,
+    };
+    const post = await addPrice(toSave);
+    dispatch({ type: POST_SET, data: post?.data });
+    history.push("/", {
+      from: "/add-listing/new",
+    });
   };
   return (
     <>
@@ -116,6 +128,29 @@ function AddPrice() {
             <input
               type="checkbox"
               id="terms"
+              onChange={() => setTerms(!terms)}
+            />
+            <label htmlFor="privacy">
+              I Agree to DoorPicker's
+              <Link to="#" className="color-text">
+                Terms of Services & Privacy Policy
+              </Link>
+            </label>
+          </div>
+
+          <div className="btn-box mt-4">
+            <button onClick={_done} className="theme-btn border-0">
+              submit picket
+            </button>
+          </div>
+        </div>
+      </div> */}
+      <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
+        <div className="billing-content p-0">
+          <div className="custom-checkbox d-block mr-0">
+            <input
+              type="checkbox"
+              id="terms"
               checked={terms}
               onChange={() => setTerms(!terms)}
             />
@@ -132,7 +167,7 @@ function AddPrice() {
             </button>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }

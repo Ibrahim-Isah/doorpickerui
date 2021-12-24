@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
+import { FaUserSecret } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 import { USER_SET } from "../../../context/actions";
@@ -56,34 +57,69 @@ function Confirmation(props) {
                   <h2 className="sec__title pt-0 mb-2 before-none">
                     Thanks for signing up! {state?.user?.firstname}
                   </h2>
-                  <container>
-                    <row>
-                    <col></col>
-                    <col> <p className="sec__desc">
-                    Kindly input the confirmation code sent to {phone}.
-                  </p> 
-                  </col>
-                  <col></col>
-                  </row>  
-                  </container>
 
+                  <p className="sec__desc">
+                    Kindly input the confirmation code sent to {phone}.
+                  </p>
                 </div>
-                <div className="col-lg-12">
-                  <div className="input-box">
-                    <div className="form-group">
+                <div className="row">
+                  <div className="col-md-4"></div>
+                  {/* <div className="form-group mb-0">
+                    <span className="form-icon">
+                      <FaUserSecret />
+                    </span>
+                    <input
+                      className="form-control"
+                      type="number"
+                      placeholder="input token"
+                    />
+                    <button className="theme-btn" type="submit">
+                      Submit
+                    </button>
+                  </div> */}
+                  {/* <div className="col-md-4">
+                    <div className="input-box">
+                      <div className="form-group">
+                        <input
+                          className="form-control"
+                          type="number"
+                          name="token"
+                          align="center"
+                          placeholder="numbers only e.g 1234"
+                          onChange={(e) => setTk(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                  </div> */}
+                  <div className="col-md-4"></div>
+                </div>
+
+                {/* <div className="btn-box padding-top-30px">
+                  <Button onClick={_token}>Submit Token</Button>
+                </div> */}
+              </div>
+            </div>
+            <div className="col-lg-4"></div>
+            <div className="col-lg-4">
+              <div className="contact-form-action">
+                <div className="row">
+                  <div className="col-lg-8">
+                    <div className="form-group mb-0">
+                      <span className="form-icon">
+                        <FaUserSecret />
+                      </span>
                       <input
                         className="form-control"
                         type="number"
-                        name="token"
-                        align="center"
-                        placeholder="numbers only e.g 1234"
-                        onChange={(e) => setTk(e.target.value)}
+                        placeholder="input token"
                       />
                     </div>
                   </div>
-                </div>
-                <div className="btn-box padding-top-30px">
-                  <Button onClick={_token}>Submit Token</Button>
+                  <div className="col-lg-4">
+                    <button className="theme-btn" onClick={_token}>
+                      Submit
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
