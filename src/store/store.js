@@ -320,7 +320,7 @@ const sectiondata = {
   ],
   herobanners: {
     banner1: {
-      title: "Serch for items in ",
+      title: "Search for items in ",
       titleHighlight: [
         {
           active: true,
