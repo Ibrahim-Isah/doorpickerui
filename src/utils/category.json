@@ -319,7 +319,7 @@
       ]
     },
     {
-      "cat": "Clothing, Shoes & Accessories",
+      "cat": "Clothing,Shoes & Accessories",
       "items": [
         {
           "name": "Women's Clothing",
@@ -1947,64 +1947,6 @@
           "name": "General",
           "subcategory": [],
           "color": ["Black", "Blue", "Silver", "Gold"]
-        }
-      ]
-    },
-    {
-      "cat": "Conditon",
-      "items": [
-        {
-          "name": "Condition",
-          "subcategory": [
-            "New",
-            "Reconditioned/Certified",
-            "Open box (Never used)",
-            "Used (Normal wear)",
-            "For parts",
-            "Other (See description)"
-          ],
-          "color": ["Black", "Blue", "Silver", "Gold"]
-        },
-        {
-          "model": [
-            {
-              "make": "Toyota",
-              "model": ["Camry", "Rav4"],
-              "year": [2000, 2001]
-            },
-            {
-              "make": "Honda",
-              "model": ["Civic", "Baby Boy"],
-              "year": [2000, 2001]
-            }
-          ]
-        },
-        {
-          "cat": "Toys, Games, & Hobbies"
-        },
-        {
-          "cat": "Sports & Outdoors"
-        },
-        {
-          "cat": "Collectibles & Art"
-        },
-        {
-          "cat": "Pet suppliers"
-        },
-        {
-          "cat": "Health & Beauty"
-        },
-        {
-          "cat": "Wedding"
-        },
-        {
-          "cat": "Business Equipment"
-        },
-        {
-          "cat": "Tickets"
-        },
-        {
-          "cat": "General"
         }
       ]
     }

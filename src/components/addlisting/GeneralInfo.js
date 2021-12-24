@@ -1,18 +1,18 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore/lite";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+// import { initializeApp } from "firebase/app";
+// import { getFirestore } from "firebase/firestore/lite";
+import * as firebaseApi from "../../store/api/firebaseApi";
 import { Alert, Button } from "react-bootstrap";
 import { BsPencilSquare, BsPencil } from "react-icons/bs";
 import Select from "react-select";
-import * as firebaseApi from "../../store/api/firebaseApi";
 import { DRAFT_SET } from "../../context/actions";
 import { UserContext } from "../../context/UserProvider";
 import { addPicket } from "../../store/api/post";
 import * as cats from "../../utils/category.json";
-import { firebaseConfig } from "../../utils/config";
+//import { firebaseConfig } from "../../utils/config";
 import { useHistory } from "react-router-dom";
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
 const ca = cats.category.map((c) => {
   return { value: c.cat, label: c.cat };
 });
@@ -20,11 +20,14 @@ const condit = cats.condition.map((cc) => {
   return { value: cc, label: cc };
 });
 
-function GeneralInfo() {
+function GeneralInfo(props) {
   const [state, dispatch] = useContext(UserContext);
+
   const history = useHistory();
-  const [title, setTitle] = useState(state.draft?.title || "");
-  const [description, setDescr] = useState(state.draft?.description || "");
+  const [dr, setDraft] = useState({});
+  useEffect(() => {
+    setDraft(state.draft);
+  }, [state.draft]);
   const [sub, setSub] = useState(null);
   const [t, setT] = useState([]);
   const [res, setRes] = useState({
@@ -53,29 +56,33 @@ function GeneralInfo() {
     const ba = { ...res, subcat: su };
     setRes(ba);
   };
-  console.log(res, " role it ");
   const _type = (ty) => {
     const f = { ...res, type: ty };
     setRes(f);
   };
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   watch,
-  //   reset,
-  //   formState: { errors },
-  // } = useForm({ defaultValues: state.draft });
-  const openChat = (id, email) => {
-    firebaseApi.storeChat(
+  const _change = (e) => {
+    e.preventDefault();
+    const { id, value } = e?.target;
+    console.log(id, value);
+    const draftCone = { ...dr };
+    draftCone[id] = value;
+    setDraft(draftCone);
+  };
+  const writeUserData = async (itemId = 10) => {
+    const res = await firebaseApi.storeChat(
       {
         createdAt: new Date(),
-        _id: id,
+        _id: itemId,
         text: "is this still available",
-        user: email, // should be OP
+        user: {
+          _id: state.user.id,
+          name: state.user.firstname,
+        },
       },
-      id
+      itemId
     );
+    console.log(res);
   };
   const _done = async () => {
     if (!state.user?.id) {
@@ -88,9 +95,7 @@ function GeneralInfo() {
       return;
     }
     const data = {
-      ...state.draft,
-      title,
-      description,
+      ...dr,
       condition: cond,
       category: res?.cat,
       subCategory: res?.subcat,
@@ -98,16 +103,7 @@ function GeneralInfo() {
       ownerId: state.user.id,
       status: "DRAFT",
     };
-    // const data = {
-    //   title,
-    //   description,
-    //   condition: cond,
-    //   category: res.cat,
-    //   subCategory: res.subcat,
-    //   make: res.type,
-    //   ownerId: state.user.id,
-    //   status: "DRAFT",
-    // };
+    console.log(JSON.stringify(data), " wtf ?????");
     if (state?.draft?.id) {
       data.id = state.draft.id;
     }
@@ -116,7 +112,8 @@ function GeneralInfo() {
       return;
     }
     dispatch({ type: DRAFT_SET, data: d.data });
-    openChat(d.data?.id, d?.data?.email);
+    writeUserData(d.data?.id);
+    props.next();
     // post it to firebase
     //reset();
   };
@@ -154,35 +151,41 @@ function GeneralInfo() {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="input-box">
-                    <label className="label-text">Listing Title</label>
+                    <label className="label-text">
+                      Listing Title {dr?.title}
+                    </label>
                     <div className="form-group">
                       <span className="la form-icon">
                         <BsPencilSquare />
                       </span>
                       <input
+                        id="title"
                         className="form-control"
                         type="text"
                         name="name"
                         placeholder="Enter your listing title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        value={dr?.title}
+                        onChange={_change}
                       />
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-12">
                   <div className="input-box">
-                    <label className="label-text">Description</label>
+                    <label className="label-text">
+                      Description {dr?.description}
+                    </label>
                     <div className="form-group">
                       <span className="la form-icon">
                         <BsPencil />
                       </span>
                       <textarea
+                        id="description"
                         className="message-control form-control"
                         name="message"
                         placeholder="Write your listing description"
-                        value={description}
-                        onChange={(e) => setDescr(e.target.value)}
+                        value={dr?.description}
+                        onChange={_change}
                       ></textarea>
                     </div>
                   </div>
@@ -243,6 +246,7 @@ function GeneralInfo() {
               <Button onClick={_done} style={{ marginTop: "16px" }}>
                 Done
               </Button>
+              <Button onClick={() => firebaseApi.addTwo()}>Two</Button>
             </form>
           </div>
         </div>

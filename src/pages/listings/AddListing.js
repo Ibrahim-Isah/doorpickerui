@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import GeneralHeader from "../../components/common/GeneralHeader";
 import Breadcrumb from "../../components/common/Breadcrumb";
 import GeneralInfo from "../../components/addlisting/GeneralInfo";
@@ -12,12 +11,7 @@ import breadcrumbimg from "../../assets/images/bread-bg.jpg";
 import { addPicket, findLoc, userDrafts } from "../../store/api/post";
 import { UserContext } from "../../context/UserProvider";
 import { DRAFT_SET, POSTS_DRAFT } from "../../context/actions";
-import {
-  ButtonGroup,
-  Dropdown,
-  DropdownButton,
-  SplitButton,
-} from "react-bootstrap";
+import { Dropdown, SplitButton } from "react-bootstrap";
 import { Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import { renderSync } from "node-sass";
@@ -35,14 +29,7 @@ import { Link } from "react-router-dom";
   //   Location();
   // }, []);
   console.log(state.drafts, "users");
-  useEffect(() => {
-    async function myDrafts() {
-      const drafts = await userDrafts(state?.user?.id || 2);
-      dispatch({ type: POSTS_DRAFT, data: drafts?.data });
-    }
-    myDrafts();
-    //state?.user?.id && myDrafts();
-  }, [state.user]);
+
   const addPost = () => {
     if (!state?.user?.id) {
       alert("You are not logged in");
@@ -153,7 +140,7 @@ function ControlledTabs() {
   const [locale, setLocation] = useState(null);
   useEffect(() => {
     async function Location() {
-      const loc = await findLoc();
+      const loc = {}; //await findLoc();
       setLocation(loc);
     }
     Location();
@@ -163,6 +150,14 @@ function ControlledTabs() {
     addPicket(obj);
     //create a post
   };
+  useEffect(() => {
+    async function myDrafts() {
+      const drafts = await userDrafts(state?.user?.id || 2);
+      dispatch({ type: POSTS_DRAFT, data: drafts?.data });
+    }
+    myDrafts();
+    //state?.user?.id && myDrafts();
+  }, [state.user, dispatch]);
 
   return (
     <main className="add-listing">
@@ -211,46 +206,47 @@ function ControlledTabs() {
                 className="mb-3"
               >
                 <Tab eventKey="home" title="Add Photo">
-                  <PhotoUploader />
+                  <PhotoUploader next={() => setKey("profile")} />
                 </Tab>
                 <Tab eventKey="profile" title="General Info">
-                  <GeneralInfo />
+                  <GeneralInfo next={() => setKey("contact")} />
                 </Tab>
                 <Tab eventKey="contact" title="Add Location">
-                  <AddLocation />
+                  <AddLocation next={() => setKey("pricing")} />
                 </Tab>
                 <Tab eventKey="pricing" title="Add Pricing">
                   <AddPrice />
                 </Tab>
               </Tabs>
-
-              <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
-                <div className="billing-content p-0">
-                  <div className="custom-checkbox d-block mr-0">
-                    <input type="checkbox" id="privacy" />
-                    <label htmlFor="privacy">
-                      I Agree to DoorPicker's
-                      <Link to="#" className="color-text">
-                        Privacy Policy
-                      </Link>
-                    </label>
-                  </div>
-                  <div className="custom-checkbox d-block mr-0">
-                    <input type="checkbox" id="terms" />
-                    <label htmlFor="terms">
-                      I Agree to DoorPicker's
-                      <Link to="#" className="color-text">
-                        Terms of Services
-                      </Link>
-                    </label>
-                  </div>
-                  <div className="btn-box mt-4">
-                    <button onClick={addPost} className="theme-btn border-0">
-                      submit picket
-                    </button>
+              {key === "pricing" && (
+                <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
+                  <div className="billing-content p-0">
+                    <div className="custom-checkbox d-block mr-0">
+                      <input type="checkbox" id="privacy" />
+                      <label htmlFor="privacy">
+                        I Agree to DoorPicker's
+                        <Link to="#" className="color-text">
+                          Privacy Policy
+                        </Link>
+                      </label>
+                    </div>
+                    <div className="custom-checkbox d-block mr-0">
+                      <input type="checkbox" id="terms" />
+                      <label htmlFor="terms">
+                        I Agree to DoorPicker's
+                        <Link to="#" className="color-text">
+                          Terms of Services
+                        </Link>
+                      </label>
+                    </div>
+                    <div className="btn-box mt-4">
+                      <button onClick={addPost} className="theme-btn border-0">
+                        submit picket
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
