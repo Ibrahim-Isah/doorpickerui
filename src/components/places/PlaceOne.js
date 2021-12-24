@@ -1,7 +1,12 @@
 import React from "react";
 import { AiOutlineEye } from "react-icons/ai";
-import { FiPhone, FiHeart } from "react-icons/fi";
-import { FaRegCalendarCheck } from "react-icons/fa";
+import { FiPhone, FiHeart, FiDollarSign } from "react-icons/fi";
+import {
+  FaLocationArrow,
+  FaMap,
+  FaMarker,
+  FaRegCalendarCheck,
+} from "react-icons/fa";
 import Slider from "react-slick";
 
 // Import css files
@@ -46,6 +51,7 @@ const responsive = [
 ];
 
 function PlaceOne({ places }) {
+  console.log(places, " where date");
   return (
     <div className="row mt-5">
       <div className="col-lg-12">
@@ -106,6 +112,7 @@ function PlaceOne({ places }) {
                         <i>{item?.titleIcon}</i>
                       </h4>
                       <p className="card-sub">{item?.stitle}</p>
+                      <p>{item?.description}</p>
                     </a>
                     <a href={item?.authorUrl} className="author-img">
                       <img
@@ -116,15 +123,15 @@ function PlaceOne({ places }) {
                     <ul className="info-list padding-top-20px">
                       <li>
                         <span className="la d-inline-block">
-                          <FiPhone />
+                          <FiDollarSign />
                         </span>
-                        {item?.sellingPrice}
+                        {item?.sellingPrice?.toLocaleString("en")}
                       </li>
                       <li>
                         <span className="la d-inline-block">
-                          <FaRegCalendarCheck />
+                          <FaLocationArrow />
                         </span>
-                        {item.createdOn}
+                        {item.city}
                       </li>
                     </ul>
                   </div>

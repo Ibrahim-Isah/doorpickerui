@@ -77,7 +77,7 @@ function Home() {
             <div className="col-lg-4">
               <div className="btn-box h-100 d-flex align-items-center justify-content-end">
                 <Button
-                  text={sectiondata.latestarticles.btntext}
+                  text="View All"
                   url={sectiondata.latestarticles.btnurl}
                   className=" margin-top-100px"
                 />
@@ -95,7 +95,7 @@ function Home() {
       </section>
 
       {/* Client Logo */}
-      <ClientLogo logos={sectiondata.clientlogos} />
+      {/* <ClientLogo logos={sectiondata.clientlogos} /> */}
 
       {/* NewsLetter */}
       <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />

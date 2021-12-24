@@ -81,7 +81,7 @@ import team6 from "../assets/images/testi-img4.jpg"; // 78*70
 import { GoFile } from "react-icons/go";
 import cta2mobileimg from "../assets/images/mobile.png";
 import logo1 from "../assets/images/client-logo.png";
-import darklogo from "../assets/images/logo2.png";
+import darklogo from "../assets/images/logo-1.png";
 import {
   FaBehance,
   FaCogs,
@@ -1878,27 +1878,27 @@ const sectiondata = {
     featureslists: [
       {
         icon: <BsCheckCircle />,
-        title: "Instant Noodles",
+        title: "4WD",
       },
       {
         icon: <BsCheckCircle />,
-        title: "Smoking Allowed",
+        title: "Alloy Wheels",
       },
       {
         icon: <BsCheckCircle />,
-        title: "Bike Parking",
+        title: "Assisted Parking",
       },
       {
         icon: <BsCheckCircle />,
-        title: "Wireless Internet",
+        title: "Low Milage",
       },
       {
         icon: <BsCheckCircle />,
-        title: "Street Parking",
+        title: "6V Engine",
       },
       {
         icon: <BsCheckCircle />,
-        title: "Accepts Credit Cards",
+        title: "Tokunbo",
       },
     ],
     videotitle: "Video",
@@ -2127,43 +2127,43 @@ const sectiondata = {
         title: "Tags Cloud",
         lists: [
           {
-            text: "Travel",
+            text: "Vehicle",
             url: "#",
           },
           {
-            text: "Restaurant",
+            text: "Sedan",
             url: "#",
           },
           {
-            text: "Gym",
+            text: "Camry",
             url: "#",
           },
           {
-            text: "Food",
+            text: "Ikorodu",
             url: "#",
           },
           {
-            text: "Office",
+            text: "Buy",
             url: "#",
           },
           {
-            text: "Bar",
+            text: "Auto Drive",
             url: "#",
           },
           {
-            text: "Health",
+            text: "EV",
             url: "#",
           },
           {
-            text: "Car Parking",
+            text: "Parking",
             url: "#",
           },
           {
-            text: "Nightlife",
+            text: "Clean",
             url: "#",
           },
           {
-            text: "Doctor",
+            text: "Milage",
             url: "#",
           },
           {
@@ -2177,10 +2177,10 @@ const sectiondata = {
         items: [
           {
             img: similarimg,
-            title: "The best sale marketer of the next year",
+            title: "Toyota Corolla 2012",
             titleUrl: "/blog-single",
-            price: "$19.00",
-            cat: "Gym & Fitness",
+            price: "$25,00.00",
+            cat: "Vehicles",
             catUrl: "#",
             stars: [
               <MdStar />,
@@ -2192,10 +2192,10 @@ const sectiondata = {
           },
           {
             img: similarimg,
-            title: "How to make your ideas became true",
+            title: "Toyota Corolla 2012",
             titleUrl: "/blog-single",
-            price: "$20.00",
-            cat: "Restaurant",
+            price: "$20,000.00",
+            cat: "Vehicles",
             catUrl: "#",
             stars: [
               <MdStar />,
@@ -2207,10 +2207,10 @@ const sectiondata = {
           },
           {
             img: similarimg,
-            title: "What gets in the way of strategy",
+            title: "Toyota Corolla 2012",
             titleUrl: "/blog-single",
-            price: "$19.00",
-            cat: "Art & Design",
+            price: "$19,000.00",
+            cat: "Vehicles",
             catUrl: "#",
             stars: [
               <MdStar />,
@@ -2222,10 +2222,10 @@ const sectiondata = {
           },
           {
             img: similarimg,
-            title: "What gets in the way of strategy",
+            title: "Toyota Corolla 2012",
             titleUrl: "/blog-single",
-            price: "$19.00",
-            cat: "Outdoors",
+            price: "$19,000.00",
+            cat: "Vehicles",
             catUrl: "#",
             stars: [
               <MdStar />,
@@ -3277,9 +3277,9 @@ const sectiondata = {
       ],
     },
     cta2: {
-      title: "Dirto Android and IOS App is Available!",
+      title: "DoorPicker Android and IOS App is Available!",
       content:
-        "Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet Lorem ipsum dolor sit amet.",
+        "DoorPicker places the entire market in the palm of your hands. Give our mobile apps a trial today. New deals added daily",
       img: cta2mobileimg,
       featurelists: [
         {
@@ -3288,11 +3288,11 @@ const sectiondata = {
         },
         {
           icon: <FiFilter />,
-          text: "Budget Filter For Budget",
+          text: "Location Filter",
         },
         {
           icon: <AiOutlineQuestionCircle />,
-          text: "Notification Price Reduction",
+          text: "No Fraud, Secured listings",
         },
       ],
       shapes: [
@@ -3812,33 +3812,33 @@ const sectiondata = {
     items: [
       {
         img: img2,
-        title: "50 Greatest Event Places in United Kingdom",
+        title: "Fairly used bouncy castle for kids",
         date: "25 Dec,  2020",
         description:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem eaque ipsa quae ab illo inventore incididunt ut labore et dolore magna",
-        author: "David Wise",
+          "Suitable for all age grades. we can deliver to your location within lagos",
+        author: "Femi Wise",
         authorImg: authorimg,
-        likeNum: "244",
+        likeNum: "4",
         cardUrl: "/blog-single",
       },
       {
         img: img2,
-        title: "Top 10 Best Clothing Shops In Sydney",
-        date: "26 Dec,  2020",
+        title: "iPhone 12 Pro Max",
+        date: "26 Dec,  2021",
         description:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem eaque ipsa quae ab illo inventore incididunt ut labore et dolore magna",
-        author: "Mark Wins",
+          "Well maintained no contract iPhone 12 Pro Max. Compatible with MTN, Airtel, Glo",
+        author: "Femi Wins",
         authorImg: authorimg,
         likeNum: "535",
         cardUrl: "/blog-single",
       },
       {
         img: img2,
-        title: "Top 15 Greatest Hotels In United States",
-        date: "27 Dec,  2020",
+        title: "Mini Flat for Rent in Ajah",
+        date: "27 Dec,  2021",
         description:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem eaque ipsa quae ab illo inventore incididunt ut labore et dolore magna",
-        author: "Matt Derry",
+          "This is a first come first serve apartment. Rent is free for the first year. Furnished, just move in with your back",
+        author: "Femi Derry",
         authorImg: authorimg,
         likeNum: "294",
         cardUrl: "/blog-single",
@@ -3940,7 +3940,7 @@ const sectiondata = {
   footerdata: {
     footerlogo: darklogo,
     footerdesc:
-      "Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros",
+      "DoorPicker is a leading marketplace that connects buyers to sellers.",
     sociallinks: [
       {
         icon: <FaFacebookF />,
@@ -3997,44 +3997,44 @@ const sectiondata = {
       links: [
         {
           path: "#",
-          text: "Shops",
+          text: "Home & Garden",
         },
         {
           path: "#",
-          text: "Hotels",
+          text: "Vehicles",
         },
         {
           path: "#",
-          text: "Restaurants",
+          text: "Clothing, Shoes & Accessories",
         },
         {
           path: "#",
-          text: "Bars",
+          text: "Sports & Outdoors",
         },
         {
           path: "#",
-          text: "Events",
+          text: "Tickets",
         },
         {
           path: "#",
-          text: "Fitness",
+          text: "Baby & Kids",
         },
       ],
     },
     footercontact: {
-      title: "Contact With Us",
+      title: "Contact Us",
       lists: [
         {
           icon: <AiOutlineHome />,
-          text: "12345 Little Baker St, Melbourne",
+          text: "12345 Admiralty St, Lekki, Lagos",
         },
         {
           icon: <FiHeadphones />,
-          text: "+ 61 23 8093 3400",
+          text: "+ 234 803 335 18344",
         },
         {
           icon: <FaRegEnvelope />,
-          text: "dirto@gmail.com",
+          text: "office@doorpicker.com",
         },
       ],
     },
@@ -4053,14 +4053,7 @@ const sectiondata = {
           title: "Help Center",
         },
       ],
-      languages: [
-        "English",
-        "Bangladesh",
-        "Nepal",
-        "America",
-        "Arabic",
-        "England",
-      ],
+      languages: ["English", "Igbo", "Hausa", "Yoruba", "Arabic", "French"],
     },
   },
 };

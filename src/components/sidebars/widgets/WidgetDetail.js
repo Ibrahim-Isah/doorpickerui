@@ -16,7 +16,9 @@ const WidgetDetail = (props) => {
             <img src={contents.authorImg} alt="author" />
             <div className="author-inner-bio">
               <h4 className="author__title font-weight-bold pb-0 mb-1">
-                {contents.authorName}
+                {`${post?.ownerFirstname || "DP"} ${
+                  post?.ownerLastname || "Admin"
+                }`}
               </h4>
               <p className="author__meta">{contents.date}</p>
             </div>
@@ -28,30 +30,30 @@ const WidgetDetail = (props) => {
               <i className="la">
                 <GiPositionMarker />
               </i>
-              {contents.address}
+              {`${post.location}, ${post.city}`}
             </li>
-            <li className="mb-2">
+            {/* <li className="mb-2">
               <i className="la">
                 <FaRegEnvelope />
               </i>
-              <a href={"mailto:" + contents.email}>{contents.email}</a>
-            </li>
+              <a href={"mailto:" + post.ownerEmail}>{contents.ownerEmail}</a>
+            </li> */}
             <li className="mb-2">
               <i className="la">
                 <FiPhone />
               </i>
-              {contents.number}
+              0803-xxx-xxxx
             </li>
-            <li className="mb-2">
+            {/* <li className="mb-2">
               <i className="la">
                 <FiExternalLink />
               </i>
               <a href={contents.websiteUrl}>{contents.website}</a>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="section-block-2 margin-top-35px margin-bottom-35px"></div>
-        <ul className="social-profile margin-bottom-35px text-center">
+        {/* <ul className="social-profile margin-bottom-35px text-center">
           {contents.socials.map((item, index) => {
             return (
               <li key={index}>
@@ -61,7 +63,7 @@ const WidgetDetail = (props) => {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
         <div className="btn-box text-center">
           <Button
             text="chat"

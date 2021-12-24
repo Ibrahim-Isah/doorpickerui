@@ -40,13 +40,13 @@ function ListingDetailsSidebar(props) {
         <WidgetStaticsInfo
           staticsinfo={sectiondata.listingDetails.sidebar.widgetStaticsInfo}
         />
-        <WidgetBooking />
-        <WidgetOpenHours
+        {/* <WidgetBooking /> */}
+        {/* <WidgetOpenHours
           openhours={sectiondata.listingDetails.sidebar.widgetOpenHours}
-        />
-        <WidgetCategory
+        /> */}
+        {/* <WidgetCategory
           wCategories={sectiondata.listingDetails.sidebar.widgetCategories}
-        />
+        /> */}
         <WidgetTags
           tagcontent={sectiondata.listingDetails.sidebar.widgetTags}
         />
