@@ -56,32 +56,30 @@ function Confirmation(props) {
                   <h2 className="sec__title pt-0 mb-2 before-none">
                     Thanks for signing up! {state?.user?.firstname}
                   </h2>
-                  <container>
-                    <row>
-                    <col></col>
-                    <col> <p className="sec__desc">
-                    Kindly input the confirmation code sent to {phone}.
-                  </p> 
-                  </col>
-                  <col></col>
-                  </row>  
-                  </container>
 
+                  <p className="sec__desc">
+                    Kindly input the confirmation code sent to {phone}.
+                  </p>
                 </div>
-                <div className="col-lg-12">
-                  <div className="input-box">
-                    <div className="form-group">
-                      <input
-                        className="form-control"
-                        type="number"
-                        name="token"
-                        align="center"
-                        placeholder="numbers only e.g 1234"
-                        onChange={(e) => setTk(e.target.value)}
-                      />
+                <div className="row">
+                  <div className="col-md-4"></div>
+                  <div className="col-md-4">
+                    <div className="input-box">
+                      <div className="form-group">
+                        <input
+                          className="form-control"
+                          type="number"
+                          name="token"
+                          align="center"
+                          placeholder="numbers only e.g 1234"
+                          onChange={(e) => setTk(e.target.value)}
+                        />
+                      </div>
                     </div>
                   </div>
+                  <div className="col-md-4"></div>
                 </div>
+
                 <div className="btn-box padding-top-30px">
                   <Button onClick={_token}>Submit Token</Button>
                 </div>

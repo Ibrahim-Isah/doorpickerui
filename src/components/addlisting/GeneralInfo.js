@@ -241,7 +241,7 @@ function GeneralInfo(props) {
               <Button onClick={_done} style={{ marginTop: "16px" }}>
                 Done
               </Button>
-              <Button onClick={() => firebaseApi.addTwo()}>Two</Button>
+              {/* <Button onClick={() => firebaseApi.addTwo()}>Two</Button> */}
             </form>
           </div>
         </div>
