@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
+import { FaUserSecret } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 import { USER_SET } from "../../../context/actions";
@@ -63,7 +64,20 @@ function Confirmation(props) {
                 </div>
                 <div className="row">
                   <div className="col-md-4"></div>
-                  <div className="col-md-4">
+                  {/* <div className="form-group mb-0">
+                    <span className="form-icon">
+                      <FaUserSecret />
+                    </span>
+                    <input
+                      className="form-control"
+                      type="number"
+                      placeholder="input token"
+                    />
+                    <button className="theme-btn" type="submit">
+                      Submit
+                    </button>
+                  </div> */}
+                  {/* <div className="col-md-4">
                     <div className="input-box">
                       <div className="form-group">
                         <input
@@ -76,12 +90,36 @@ function Confirmation(props) {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-md-4"></div>
                 </div>
 
-                <div className="btn-box padding-top-30px">
+                {/* <div className="btn-box padding-top-30px">
                   <Button onClick={_token}>Submit Token</Button>
+                </div> */}
+              </div>
+            </div>
+            <div className="col-lg-4"></div>
+            <div className="col-lg-4">
+              <div className="contact-form-action">
+                <div className="row">
+                  <div className="col-lg-8">
+                    <div className="form-group mb-0">
+                      <span className="form-icon">
+                        <FaUserSecret />
+                      </span>
+                      <input
+                        className="form-control"
+                        type="number"
+                        placeholder="input token"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-4">
+                    <button className="theme-btn" onClick={_token}>
+                      Submit
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -40,7 +40,7 @@ class ListingDetails extends Component {
         <GeneralHeader />
 
         {/* Breadcrumb */}
-        <ListingDetailsBreadcrumb title={p?.title || "NAT"} />
+        <ListingDetailsBreadcrumb post={p} />
 
         <ModalVideo
           channel="youtube"
@@ -61,9 +61,7 @@ class ListingDetails extends Component {
                     </h2>
                     <div className="title-shape"></div>
                     <div className="section-heading mt-4">
-                      <p className="sec__desc font-size-16">
-                        {sectiondata.listingDetails.description}
-                      </p>
+                      <p className="sec__desc font-size-16">{p?.description}</p>
                     </div>
                   </div>
 
@@ -88,7 +86,7 @@ class ListingDetails extends Component {
                     </ul>
                   </div>
 
-                  <div className="video-listing padding-bottom-40px">
+                  {/* <div className="video-listing padding-bottom-40px">
                     <h2 className="widget-title">
                       {sectiondata.listingDetails.videotitle}
                     </h2>
@@ -113,7 +111,7 @@ class ListingDetails extends Component {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="listing-map gmaps">
                     <h2 className="widget-title">
@@ -123,9 +121,9 @@ class ListingDetails extends Component {
                     <GeneralMap />
                   </div>
 
-                  <ContactInfo
+                  {/* <ContactInfo
                     contactinfos={sectiondata.listingDetails.contactinfos}
-                  />
+                  /> */}
 
                   <CustomerFeedback />
 

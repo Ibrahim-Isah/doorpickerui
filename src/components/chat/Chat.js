@@ -49,7 +49,7 @@ const Chat = (props) => {
   const _msgs = (ms) => {
     //const m = Object.values(ms);
     let newm = [];
-    if (ms.msgs.length > 0) {
+    if (ms?.msgs?.length > 0) {
       newm = ms.msgs.filter((msg) => {
         return msg.user._id === user.id || msg.user._id === +post.ownerId;
       });
