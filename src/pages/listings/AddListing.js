@@ -8,7 +8,7 @@ import AddPrice from "../../components/addlisting/AddPrice";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import breadcrumbimg from "../../assets/images/bread-bg.jpg";
-import { addPicket, findLoc, userDrafts } from "../../store/api/post";
+import { userDrafts } from "../../store/api/post";
 import { UserContext } from "../../context/UserProvider";
 import { DRAFT_SET, POSTS_DRAFT } from "../../context/actions";
 import { Dropdown, SplitButton } from "react-bootstrap";
@@ -18,15 +18,15 @@ function ControlledTabs() {
   const [state, dispatch] = useContext(UserContext);
   const [key, setKey] = useState("home");
   const [bread] = useState(breadcrumbimg);
-  const [locale, setLocation] = useState(null);
+  //const [locale, setLocation] = useState(null);
 
-  useEffect(() => {
-    async function Location() {
-      const loc = {}; //await findLoc();
-      setLocation(loc);
-    }
-    Location();
-  }, []);
+  // useEffect(() => {
+  //   async function Location() {
+  //     const loc = {}; //await findLoc();
+  //     setLocation(loc);
+  //   }
+  //   Location();
+  // }, []);
   // const addPost = () => {
   //   const toSave = {
   //     status: "LIVE",
@@ -49,7 +49,7 @@ function ControlledTabs() {
     <main className="add-listing">
       <GeneralHeader />
       <Breadcrumb
-        CurrentPgTitle="Add Listing"
+        CurrentPgTitle="Add Picket"
         MenuPgTitle="Listings"
         img={bread}
       />
@@ -96,11 +96,6 @@ function ControlledTabs() {
           </div>
         </div>
       </section>
-
-      {/* Newsletter */}
-      {/* <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} /> */}
-
-      {/* Footer */}
       <Footer />
 
       <ScrollTopBtn />
@@ -109,5 +104,3 @@ function ControlledTabs() {
 }
 
 export default ControlledTabs;
-
-// export default AddListing;

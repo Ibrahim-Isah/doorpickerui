@@ -356,7 +356,7 @@ const sectiondata = {
         },
       ],
       content:
-        "Discover the best places to stay, eat, shop & visit the city nearest to you.",
+        "Discover the best pocket friendy items in city nearest to you.",
       bgimage: bannerbg1,
     },
     banner2: {

@@ -40,17 +40,19 @@ export default function HeaderAuthorAccess() {
           )}
 
           <li>
-            <Button text="add listing" url="/add-listing/new">
+            <Button text="add picket" url="/add-listing/new">
               <FiPlusCircle />
             </Button>
           </li>
         </ul>
-        <div
-          className="side-user-menu-open"
-          onClick={() => setAuthorAccessOpen(!AuthorAccessOpen)}
-        >
-          <AiOutlineUser />
-        </div>
+        {AuthorAccessOpen && (
+          <div
+            className="side-user-menu-open"
+            onClick={() => setAuthorAccessOpen(!AuthorAccessOpen)}
+          >
+            <AiOutlineUser />
+          </div>
+        )}
       </div>
 
       {/* Side User panel */}
@@ -72,36 +74,34 @@ export default function HeaderAuthorAccess() {
             <span className="su__meta">{`Joined ${
               d.getMonth() + 1
             }/${d.getFullYear()}`}</span>
-              
-             < div className="avatar-icon"> 
+
+            <div className="avatar-icon">
               <Link
-                
                 data-toggle="tooltip"
                 data-placement="top"
                 title="Change Avatar"
-                variant="primary" 
+                variant="primary"
                 onClick={handleShow}
               >
-
                 {" "}
                 <FiPlus />
               </Link>
               <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-          <Modal.Title>Photo</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-          <PhotoUploader/>
-          </Modal.Body>
-          <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose} size="sm" >
-            Close
-          </Button>
-          </Modal.Footer>
-          </Modal>
-          </div> 
-  
-          {/* < div className="avatar-icon">
+                <Modal.Header closeButton>
+                  <Modal.Title>Photo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <PhotoUploader />
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose} size="sm">
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </div>
+
+            {/* < div className="avatar-icon">
            <Button 
            variant="secondary" 
            onClick={handleShow}
@@ -113,9 +113,6 @@ export default function HeaderAuthorAccess() {
           
 
           </div> */}
-
-
-
           </div>
 
           <ul className="side-menu-ul">
@@ -136,7 +133,7 @@ export default function HeaderAuthorAccess() {
             </li>
             <li>
               <Link to="/dashboard">
-                <FiPlusCircle className="user-icon" /> add listing
+                <FiPlusCircle className="user-icon" /> add picket
               </Link>
             </li>
             <li>
@@ -158,9 +155,7 @@ export default function HeaderAuthorAccess() {
               </Link>
             </li>
           </ul>
-          <div className="side-user-search contact-form-action">
-           
-          </div>
+          <div className="side-user-search contact-form-action"></div>
         </div>
       </div>
     </>
