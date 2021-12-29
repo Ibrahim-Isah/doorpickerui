@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from "react";
 import {
   ALERT_SHOW,
   DRAFT_SET,
+  MY_POSTS_SET,
   POSTS_DRAFT,
   POSTS_SET,
   POST_SET,
@@ -10,6 +11,7 @@ import {
 const initialState = {
   user: {},
   posts: [],
+  myPosts: [],
   post: {},
   loading: false,
   drafts: [],
@@ -51,6 +53,11 @@ const UserProvider = ({ children }) => {
         return {
           ...state,
           draft: action.data,
+        };
+      case MY_POSTS_SET:
+        return {
+          ...state,
+          myPosts: action.data,
         };
 
       default:

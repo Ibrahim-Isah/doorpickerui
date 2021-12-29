@@ -8,6 +8,7 @@ import { UserContext } from "../../context/UserProvider";
 import { addPicket } from "../../store/api/post";
 import * as cats from "../../utils/category.json";
 import { useHistory } from "react-router-dom";
+import { uniqueId } from "lodash";
 const ca = cats.category.map((c) => {
   return { value: c.cat, label: c.cat };
 });
@@ -68,7 +69,7 @@ function GeneralInfo(props) {
     const res = await firebaseApi.storeChat(
       {
         createdAt: new Date(),
-        _id: itemId,
+        id: uniqueId(`${itemId}-`),
         text: "is this still available",
         user: {
           _id: state.user.id,

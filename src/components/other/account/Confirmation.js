@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Button } from "react-bootstrap";
 import { FaUserSecret } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
@@ -112,6 +111,7 @@ function Confirmation(props) {
                         className="form-control"
                         type="number"
                         placeholder="input token"
+                        onChange={(e) => setTk(e.target.value)}
                       />
                     </div>
                   </div>

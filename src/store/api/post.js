@@ -51,6 +51,14 @@ export const userDrafts = async (usr) => {
   const data = await response.json();
   return { data };
 };
+export const userPosts = async (usr) => {
+  const response = await fetch(`${BASE_URL}post/posts/${usr}`, auth);
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
 export const findLoc = async () => {
   const response = await fetch(
     `https://extreme-ip-lookup.com/json/?key=${process.env.REACT_APP_GEO}`

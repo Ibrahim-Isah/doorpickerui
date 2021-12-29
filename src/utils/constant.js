@@ -1,8 +1,8 @@
 let BASE_URL = "https://doorpicker.herokuapp.com/api/v1/";
 // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-//   BASE_URL = "http://localhost:5071/api/v1/";
+//  BASE_URL = "http://localhost:5071/api/v1/";
 // } else {
-//   BASE_URL = "https://doorpicker.herokuapp.com/api/v1/";
+//  BASE_URL = "https://doorpicker.herokuapp.com/api/v1/";
 // }
 const authKey = process.env.REACT_APP_AUTH;
 export const PostSettings = (obj) => {
