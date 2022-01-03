@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.45.0",
     "bootstrap": "^4.5.3",
     "classnames": "^2.2.6",
     "firebase": "^9.6.1",
@@ -12,6 +11,7 @@
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-accessible-accordion": "^3.3.3",
+    "react-aws-s3": "^1.5.0",
     "react-bootstrap": "^1.4.0",
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
