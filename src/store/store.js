@@ -141,7 +141,40 @@ import userimage from "../assets/images/team1.jpg"; // 368*331
 import imgboximg from "../assets/images/img10.jpg"; // 570*345
 import about2img from "../assets/images/img2.jpg"; //389*259
 import mainimage from "../assets/images/video-img.jpg"; // 750*500
-
+export const remi = {
+  review: [
+    {
+      id: 1,
+      img: "team1",
+      name: "Adam Smith",
+      date: new Date(),
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Curabitur non nulla sit amet nisl tempus",
+      star: 3,
+      replyComments: [
+        {
+          id: "1-1",
+          img: "team1",
+          name: "Julian Smith",
+          date: new Date(),
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Curabitur non nulla sit amet nisl tempus",
+          star: 4,
+        },
+      ],
+    },
+    {
+      id: 2,
+      img: "team1",
+      name: "Matt Derry",
+      date: new Date(),
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Curabitur non nulla sit amet nisl tempus",
+      star: 4,
+      replyComments: [],
+    },
+  ],
+};
 const sectiondata = {
   headermenu: [
     {
@@ -355,8 +388,7 @@ const sectiondata = {
           text: "Fitness",
         },
       ],
-      content:
-        "Discover the best pocket friendy items in city nearest to you.",
+      content: "Discover the best pocket friendy items in city nearest to you.",
       bgimage: bannerbg1,
     },
     banner2: {

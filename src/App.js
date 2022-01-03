@@ -2,10 +2,8 @@ import React, { useRef, useEffect } from "react";
 import { useLocation, Switch } from "react-router-dom";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
-// Layouts
 import LayoutDefault from "./layouts/LayoutDefault";
 
-// Pages
 import Home from "./pages/homes/Home";
 import Home2 from "./pages/homes/Home2";
 import Home4 from "./pages/homes/Home4";
@@ -42,6 +40,7 @@ import SignUp from "./pages/SignUp";
 import { UserProvider } from "./context/UserProvider";
 import Chat from "./components/chat/Chat";
 import Confirmation from "./components/other/account/Confirmation";
+import EditListing from "./pages/listings/EditListing";
 const App = () => {
   const childRef = useRef();
   let location = useLocation();
@@ -82,6 +81,7 @@ const App = () => {
               <AppRoute path="/listing-details" component={ListingDetails} />
               <AppRoute path="/listing-chat" component={Chat} />
               <AppRoute path="/add-listing/new" component={AddListing} />
+              <AppRoute path="/add-listing/edit" component={EditListing} />
               <AppRoute path="/user-profile" component={UserProfile} />
               <AppRoute path="/top-author" component={TopAuthors} />
               <AppRoute path="/dashboard" component={Dashboard} />

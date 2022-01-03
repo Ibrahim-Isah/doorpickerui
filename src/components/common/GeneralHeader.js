@@ -26,15 +26,10 @@ export default function GeneralHeader() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="menu-full-width">
-                  {/* Logo */}
                   <div className="logo">
                     <Logo url={logosrc} />
                   </div>
-
-                  {/* Navbar */}
                   <Navbar />
-
-                  {/* Author Access */}
                   <HeaderAuthorAccess />
                 </div>
               </div>

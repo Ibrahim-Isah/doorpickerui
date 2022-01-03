@@ -47,7 +47,7 @@ export const doConfirmation = async (tk, phone) => {
   return { data };
 };
 export const userChangePwd = async (obj) => {
-  const response = await fetch(`${BASE_URL}user/passwprd`, PostSettings(obj));
+  const response = await fetch(`${BASE_URL}user/password`, PostSettings(obj));
   if (!response.ok) {
     return { error: { code: response.status } };
   }
@@ -56,6 +56,14 @@ export const userChangePwd = async (obj) => {
 };
 export const userUpdate = async (obj) => {
   const response = await fetch(`${BASE_URL}user/update`, PostSettings(obj));
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
+export const doPhoto = async (obj) => {
+  const response = await fetch(`${BASE_URL}user/photo`, PostSettings(obj));
   if (!response.ok) {
     return { error: { code: response.status } };
   }

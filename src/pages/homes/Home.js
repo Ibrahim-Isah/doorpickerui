@@ -20,9 +20,6 @@ function Home() {
   useEffect(() => {
     async function getData() {
       const d = await getLive();
-      if (!d.ok) {
-        console.log(d, " error");
-      }
       dispatch({ type: POSTS_SET, data: d?.data });
     }
     getData();
@@ -31,9 +28,34 @@ function Home() {
     <main className="home-1">
       <GeneralHeader />
       <BannerOne />
+      {/* <GenericHeader /> */}
       <section className="card-area text-center padding-bottom-100px">
         <div className="container">
           <PlaceOne places={state.posts} />
+        </div>
+      </section>
+
+      <section className="blog-area padding-top-100px padding-bottom-80px">
+        <div className="container">
+          <div className="row section-title-width section-title-ml-mr-0">
+            <div className="col-lg-8">
+              <SectionsHeading
+                title="Bestsellers"
+                desc="Our most searched items"
+              />
+            </div>
+            <div className="col-lg-4">
+              <div className="btn-box h-100 d-flex align-items-center justify-content-end">
+                <Button
+                  text="View All"
+                  url={sectiondata.latestarticles.btnurl}
+                  className=" margin-top-100px"
+                />
+              </div>
+            </div>
+          </div>
+
+          <LatestBlog latestarticles={sectiondata.latestarticles.items} />
         </div>
       </section>
       <section className="cta-area section-bg column-sm-center padding-top-80px padding-bottom-80px">
@@ -63,29 +85,6 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="blog-area padding-top-100px padding-bottom-80px">
-        <div className="container">
-          <div className="row section-title-width section-title-ml-mr-0">
-            <div className="col-lg-8">
-              <SectionsHeading
-                title="Bestsellers"
-                desc="Our most searched items"
-              />
-            </div>
-            <div className="col-lg-4">
-              <div className="btn-box h-100 d-flex align-items-center justify-content-end">
-                <Button
-                  text="View All"
-                  url={sectiondata.latestarticles.btnurl}
-                  className=" margin-top-100px"
-                />
-              </div>
-            </div>
-          </div>
-
-          <LatestBlog latestarticles={sectiondata.latestarticles.items} />
         </div>
       </section>
 

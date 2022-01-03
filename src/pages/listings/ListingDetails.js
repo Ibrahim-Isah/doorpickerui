@@ -1,92 +1,111 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import GeneralHeader from "../../components/common/GeneralHeader";
 import ListingDetailsBreadcrumb from "./ListingDetailsBreadcrumb";
 import ListingDetailsSidebar from "../../components/sidebars/ListingDetailsSidebar";
 import ListingDetailsGallery from "../../components/sliders/ListingDetailsGallery";
-import { AiOutlinePlayCircle } from "react-icons/ai";
-import ModalVideo from "react-modal-video";
 import GeneralMap from "../../components/contact/GeneralMap";
-import ContactInfo from "../../components/contact/ContactInfo";
 import CustomerFeedback from "../../components/sidebars/widgets/CustomerFeedback";
 import ListingDetailsComments from "../../components/contact/ListingDetailsComments";
 import ReviewFields from "../../components/contact/ReviewFields";
-import PlaceOne from "../../components/places/PlaceOne";
-import NewsLetter from "../../components/other/cta/NewsLetter";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import sectiondata from "../../store/store";
+import { postMeta } from "../../store/api/post";
+import { BsCheckCircle } from "react-icons/bs";
 
-class ListingDetails extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isOpen: false,
-    };
-    this.openModal = this.openModal.bind(this);
-  }
-  openModal() {
-    this.setState({ isOpen: true });
-  }
-  contentstate = {
+function ListingDetails(props) {
+  const p = props?.location?.state?.post || {};
+  //const [isOpen, setOpen] = useState(false);
+  const [meta, setMeta] = useState({});
+  useEffect(() => {
+    async function getMeta() {
+      const r = await postMeta(p.id);
+      setMeta(r?.data || {});
+    }
+    getMeta();
+  }, []);
+
+  // const openModal = () => {
+  //   setOpen(true);
+  // };
+  const contentstate = {
     mapTitle: "Location",
     peopleViewtitle: "People Also Viewed",
   };
-  render() {
-    const p = this.props?.location?.state?.post || {};
-    console.log(this.props?.location?.state?.post, " properly ");
-    return (
-      <main className="listing-details">
-        {/* Header */}
-        <GeneralHeader />
+  const rev = meta?.review ? JSON.parse(meta.review) : [];
 
-        {/* Breadcrumb */}
-        <ListingDetailsBreadcrumb post={p} />
-
-        <ModalVideo
-          channel="youtube"
-          isOpen={this.state.isOpen}
-          videoId={sectiondata.listingDetails.videoid}
-          onClose={() => this.setState({ isOpen: false })}
-        />
-        <section className="single-listing-area padding-top-35px">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-8">
-                <div className="single-listing-wrap">
-                  <ListingDetailsGallery />
-
-                  <div className="listing-description padding-top-40px padding-bottom-35px">
-                    <h2 className="widget-title">
-                      {sectiondata.listingDetails.descriptiontitle}
-                    </h2>
-                    <div className="title-shape"></div>
-                    <div className="section-heading mt-4">
-                      <p className="sec__desc font-size-16">{p?.description}</p>
-                    </div>
+  return (
+    <main className="listing-details">
+      <GeneralHeader />
+      <ListingDetailsBreadcrumb post={p} meta={meta} />
+      {/* <ModalVideo
+        channel="youtube"
+        isOpen={isOpen}
+        videoId={sectiondata.listingDetails.videoid}
+        onClose={() => setOpen(false)}
+      /> */}
+      <section className="single-listing-area padding-top-35px">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8">
+              <div className="single-listing-wrap">
+                <ListingDetailsGallery />
+                <div className="listing-description padding-top-40px padding-bottom-35px">
+                  <h2 className="widget-title">
+                    {sectiondata.listingDetails.descriptiontitle}
+                  </h2>
+                  <div className="title-shape"></div>
+                  <div className="section-heading mt-4">
+                    <p className="sec__desc font-size-16">{p?.description}</p>
                   </div>
+                </div>
 
-                  <div className="feature-listing padding-bottom-20px">
-                    <h2 className="widget-title">
-                      {sectiondata.listingDetails.featurestitle}
-                    </h2>
-                    <div className="title-shape"></div>
-                    <ul className="list-items mt-4">
-                      {sectiondata.listingDetails.featureslists.map(
-                        (item, i) => {
-                          return (
-                            <li key={i}>
-                              <i className="color-text font-size-18">
-                                {item.icon}
-                              </i>{" "}
-                              {item.title}
-                            </li>
-                          );
-                        }
-                      )}
-                    </ul>
-                  </div>
+                <div className="feature-listing padding-bottom-20px">
+                  <h2 className="widget-title">
+                    {sectiondata.listingDetails.featurestitle}
+                  </h2>
+                  <div className="title-shape"></div>
+                  <ul className="list-items mt-4">
+                    <li>
+                      <i className="color-text font-size-18">
+                        <BsCheckCircle />
+                      </i>{" "}
+                      Fixed Price: {p?.fixed || false}
+                    </li>
+                    <li>
+                      <i className="color-text font-size-18">
+                        <BsCheckCircle />
+                      </i>{" "}
+                      Condition: {p?.condition || "NA"}
+                    </li>
+                    <li>
+                      <i className="color-text font-size-18">
+                        <BsCheckCircle />
+                      </i>{" "}
+                      Category: {p?.category || "NA"}
+                    </li>
+                    <li>
+                      <i className="color-text font-size-18">
+                        <BsCheckCircle />
+                      </i>{" "}
+                      Sub Category: {p?.subCategory || "NA"}
+                    </li>
+                    <li>
+                      <i className="color-text font-size-18">
+                        <BsCheckCircle />
+                      </i>{" "}
+                      Color: {p?.color || "NA"}
+                    </li>
+                    <li>
+                      <i className="color-text font-size-18">
+                        <BsCheckCircle />
+                      </i>{" "}
+                      Type: {p?.make || "NA"}
+                    </li>
+                  </ul>
+                </div>
 
-                  {/* <div className="video-listing padding-bottom-40px">
+                {/* <div className="video-listing padding-bottom-40px">
                     <h2 className="widget-title">
                       {sectiondata.listingDetails.videotitle}
                     </h2>
@@ -113,64 +132,47 @@ class ListingDetails extends Component {
                     </div>
                   </div> */}
 
-                  <div className="listing-map gmaps">
-                    <h2 className="widget-title">
-                      {this.contentstate.mapTitle}
-                    </h2>
-                    <div className="title-shape margin-bottom-35px"></div>
-                    <GeneralMap />
-                  </div>
-
-                  {/* <ContactInfo
-                    contactinfos={sectiondata.listingDetails.contactinfos}
-                  /> */}
-
-                  <CustomerFeedback />
-
-                  <div className="comments-wrap">
-                    <h2 className="widget-title">3 Reviews</h2>
-                    <div className="title-shape"></div>
-                    <ListingDetailsComments
-                      commentlists={sectiondata.listingDetails.comments}
-                    />
-                  </div>
-
-                  <ReviewFields />
+                <div className="listing-map gmaps">
+                  <h2 className="widget-title">{contentstate.mapTitle}</h2>
+                  <div className="title-shape margin-bottom-35px"></div>
+                  <GeneralMap />
                 </div>
-              </div>
-              <div className="col-lg-4">
-                <ListingDetailsSidebar post={p} />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="card-area padding-top-80px padding-bottom-100px">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="section-heading">
+                <CustomerFeedback meta={meta} />
+                <div className="comments-wrap">
                   <h2 className="widget-title">
-                    {this.contentstate.peopleViewtitle}
+                    {meta?.review?.length || 0} Review(s)
                   </h2>
                   <div className="title-shape"></div>
+                  <ListingDetailsComments commentlists={rev} />
                 </div>
+                <ReviewFields />
               </div>
             </div>
-            <PlaceOne places={sectiondata.mostvisitedplaces.places} />
+            <div className="col-lg-4">
+              <ListingDetailsSidebar post={p} />
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Newsletter */}
-        <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />
-
-        {/* Footer */}
-        <Footer />
-
-        <ScrollTopBtn />
-      </main>
-    );
-  }
+      {/* <section className="card-area padding-top-80px padding-bottom-100px">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="section-heading">
+                <h2 className="widget-title">{contentstate.peopleViewtitle}</h2>
+                <div className="title-shape"></div>
+              </div>
+            </div>
+          </div>
+          <PlaceOne places={sectiondata.mostvisitedplaces.places} />
+        </div>
+      </section> */}
+      <Footer />
+      <ScrollTopBtn />
+    </main>
+  );
+  //}
 }
 
 export default ListingDetails;

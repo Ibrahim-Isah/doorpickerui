@@ -16,6 +16,22 @@ export const getLive = async (pg = 0, ct = 10) => {
   const data = await response.json();
   return { data };
 };
+export const postMeta = async (pid) => {
+  const response = await fetch(`${BASE_URL}post/meta/${pid}`, auth);
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
+export const addMeta = async (obj) => {
+  const response = await fetch(`${BASE_URL}post/meta/`, PostSettings(obj));
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
 export const addPicket = async (obj) => {
   const response = await fetch(`${BASE_URL}post/add`, PostSettings(obj));
   if (!response.ok) {
@@ -53,6 +69,14 @@ export const userDrafts = async (usr) => {
 };
 export const userPosts = async (usr) => {
   const response = await fetch(`${BASE_URL}post/posts/${usr}`, auth);
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
+export const addImage = async (obj) => {
+  const response = await fetch(`${BASE_URL}post/add/image`, PostSettings(obj));
   if (!response.ok) {
     return { error: { code: response.status } };
   }

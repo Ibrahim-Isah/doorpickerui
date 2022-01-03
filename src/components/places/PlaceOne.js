@@ -1,12 +1,7 @@
 import React from "react";
 import { AiOutlineEye } from "react-icons/ai";
-import { FiPhone, FiHeart, FiDollarSign } from "react-icons/fi";
-import {
-  FaLocationArrow,
-  FaMap,
-  FaMarker,
-  FaRegCalendarCheck,
-} from "react-icons/fa";
+import { FiHeart, FiDollarSign } from "react-icons/fi";
+import { FaLocationArrow } from "react-icons/fa";
 import Slider from "react-slick";
 
 // Import css files
@@ -51,7 +46,6 @@ const responsive = [
 ];
 
 function PlaceOne({ places }) {
-  console.log(places, " where date");
   return (
     <div className="row mt-5">
       <div className="col-lg-12">

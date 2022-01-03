@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import { GiPositionMarker, GiChickenOven, GiCaravan } from "react-icons/gi";
+import { GiPositionMarker, GiCaravan } from "react-icons/gi";
 import { MdStar, MdStarBorder, MdClose } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { AiOutlineFlag } from "react-icons/ai";
 import {
-  FaRegMoneyBillAlt,
   FaFacebookF,
   FaTwitter,
   FaInstagram,
@@ -83,10 +82,10 @@ const state = {
 };
 
 function ListingDetailsBreadcrumb(props) {
-  const { title, location, city } = props.post;
+  const { post, meta } = props;
+  const { title, location, city, sellingPrice } = post;
   useEffect(() => {
     const body = document.querySelector("body");
-
     function showReportModal() {
       body.classList.add("modal-open");
       body.style.paddingRight = "17px";
@@ -132,6 +131,7 @@ function ListingDetailsBreadcrumb(props) {
       false
     );
   });
+  const rev = meta?.review ? JSON.parse(meta.review) : [];
 
   return (
     <>
@@ -156,19 +156,20 @@ function ListingDetailsBreadcrumb(props) {
                         data-placement="top"
                         title="Pricey"
                       >
-                        <span className="average-active">$$$</span>$$
+                        <span className="average-active">N</span>
+                        {sellingPrice?.toLocaleString()}
                       </div>
                     </li>
                     <li>
                       <div className="average-ratings">
                         <span className="theme-btn button-success mr-1">
-                          4.2{" "}
+                          {meta?.star}
                           <i className="d-inline-block">
                             <MdStar />
                           </i>
                         </span>
                         <span>
-                          <strong>36</strong> Reviews
+                          <strong>{rev.length}</strong> Reviews
                         </span>
                       </div>
                     </li>
@@ -177,7 +178,7 @@ function ListingDetailsBreadcrumb(props) {
                         <i className="d-inline-block">
                           <GiCaravan />
                         </i>
-                        Vehicle
+                        {post?.category}
                       </span>
                     </li>
                   </ul>
@@ -198,7 +199,7 @@ function ListingDetailsBreadcrumb(props) {
                         >
                           <i className="d-inline-block">
                             <RiExternalLinkLine />
-                          </i>{" "}
+                          </i>
                           share
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="dropdown-menu">
@@ -218,10 +219,10 @@ function ListingDetailsBreadcrumb(props) {
                       </Dropdown>
                     </li>
                     <li>
-                      <Link to="#" className="theme-btn">
+                      <Link to="/listing-chat" className="theme-btn">
                         <span className="d-inline-block">
                           <FaSms />
-                        </span>{" "}
+                        </span>
                         chat seller
                       </Link>
                     </li>
@@ -233,7 +234,7 @@ function ListingDetailsBreadcrumb(props) {
                       <a href="#review" className="theme-btn">
                         <i className="d-inline-block">
                           <MdStarBorder />
-                        </i>{" "}
+                        </i>
                         write a review
                       </a>
                     </li>
@@ -241,7 +242,7 @@ function ListingDetailsBreadcrumb(props) {
                       <span className="theme-btn report-modal-btn">
                         <i className="d-inline-block">
                           <AiOutlineFlag />
-                        </i>{" "}
+                        </i>
                         report
                       </span>
                     </li>
@@ -282,7 +283,7 @@ function ListingDetailsBreadcrumb(props) {
                 <h4 className="modal-title">
                   <span className="mb-0">
                     <AiOutlineFlag />
-                  </span>{" "}
+                  </span>
                   Report this Listing
                 </h4>
               </div>
@@ -309,7 +310,7 @@ function ListingDetailsBreadcrumb(props) {
                     >
                       <i>
                         <RiSendPlane2Line />
-                      </i>{" "}
+                      </i>
                       Send message
                     </button>
                   </div>
@@ -319,8 +320,6 @@ function ListingDetailsBreadcrumb(props) {
           </div>
         </div>
       </div>
-
-      {/*<TestVanillaJs />*/}
     </>
   );
 }

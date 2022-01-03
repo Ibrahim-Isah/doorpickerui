@@ -1,8 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Alert, Button } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
 import { BsCloudUpload } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import S3 from "react-aws-s3";
+import { addImage } from "../../store/api/post";
+import { UserContext } from "../../context/UserProvider";
+import { DRAFT_SET } from "../../context/actions";
+import { useHistory } from "react-router-dom";
+const config = {
+  bucketName: process.env.REACT_APP_bucket,
+  dirName: "picker",
+  region: "us-east-1",
+  accessKeyId: process.env.REACT_APP_aws_key,
+  secretAccessKey: process.env.REACT_APP_aws_secret,
+  s3Url: "https://essluploads.s3.amazonaws.com",
+};
+const ReactS3Client = new S3(config);
 
 const thumbsContainer = {
   display: "flex",
@@ -32,25 +45,38 @@ const thumbInner = {
 
 const img = {
   display: "block",
-  width: "auto",
-  maxWidth: "808px",
-  height: "auto",
+  width: "150px",
+  maxWidth: "200px",
+  height: "150px",
 };
 
 function PhotoUploader(props) {
+  const { done, next } = props;
+  const [state, dispatch] = useContext(UserContext);
+  const { draft, user } = state;
   const [files, setFiles] = useState([]);
+  const history = useHistory();
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
+      const imgs = [];
       setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
+        acceptedFiles.map((file) => {
+          const s3 = s3Upload(file, file.name);
+          Object.assign(imgs, s3.location);
+          return Object.assign(file, {
             preview: URL.createObjectURL(file),
-          })
-        )
+          });
+        })
       );
+      storeImage(imgs);
     },
   });
+  const storeImage = async (imgs = []) => {
+    const r = await addImage({ id: draft.id, images: imgs });
+    dispatch({ type: DRAFT_SET, data: r.data });
+    done();
+  };
 
   const thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
@@ -67,6 +93,14 @@ function PhotoUploader(props) {
     },
     [files]
   );
+  const s3Upload = (file, fileName) => {
+    ReactS3Client.uploadFile(file, fileName)
+      .then((data) => {
+        console.log(data, " upload succesful");
+        return data.location;
+      })
+      .catch((err) => console.error(err, " upload failed "));
+  };
 
   return (
     <>
@@ -79,23 +113,38 @@ function PhotoUploader(props) {
           <div className="row">
             <div className="col-lg-12">
               <div className="drag-and-drop-wrap text-center">
-                <div className="drag-and-drop-file">
-                  <div {...getRootProps({ className: "dropzone" })}>
-                    <input {...getInputProps()} />
-                    <span className="drag-drop-icon">
-                      <BsCloudUpload />
-                    </span>
-                    <h3>Drag & Drop Files Here to Upload</h3>
-                    <Link to="#" className="drag-drop-btn">
-                      Browse Files
-                    </Link>
-                  </div>
-                  <aside style={thumbsContainer}>{thumbs}</aside>
-                </div>
+                {user?.id ? (
+                  <>
+                    <div className="drag-and-drop-file">
+                      <div {...getRootProps({ className: "dropzone" })}>
+                        <input {...getInputProps()} />
+                        <span className="drag-drop-icon">
+                          <BsCloudUpload />
+                        </span>
+                        <h3>You can drag & drop all files here to upload</h3>
+                      </div>
+                      <aside style={thumbsContainer}>{thumbs}</aside>
+                    </div>
+                  </>
+                ) : (
+                  <Alert variant="warning">
+                    <Button
+                      variant="link"
+                      style={{ marginLeft: "4px", textDecoration: "none" }}
+                      onClick={() =>
+                        history.push("/login", {
+                          from: "/add-listing/new",
+                        })
+                      }
+                    >
+                      You are not logged in! Go to login
+                    </Button>
+                  </Alert>
+                )}
               </div>
             </div>
           </div>
-          <Button onClick={() => props.next()}>Done</Button>
+          <Button onClick={() => next()}>Done</Button>
         </div>
       </div>
     </>
