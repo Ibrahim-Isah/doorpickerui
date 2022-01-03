@@ -8,7 +8,7 @@ import AddPrice from "../../components/addlisting/AddPrice";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import breadcrumbimg from "../../assets/images/bread-bg.jpg";
-import { userDrafts } from "../../store/api/post";
+import { addImage, userDrafts } from "../../store/api/post";
 import { UserContext } from "../../context/UserProvider";
 import { DRAFT_SET, POSTS_DRAFT } from "../../context/actions";
 import { Dropdown, SplitButton } from "react-bootstrap";
@@ -44,6 +44,9 @@ function ControlledTabs() {
     }
     state?.user?.id && myDrafts();
   }, [state.user, dispatch]);
+  const _image = async (imgs) => {
+    const r = await addImage(state.draft.id, imgs);
+  };
 
   return (
     <main className="add-listing">
@@ -80,7 +83,7 @@ function ControlledTabs() {
                 className="mb-3"
               >
                 <Tab eventKey="home" title="Add Photo">
-                  <PhotoUploader next={() => setKey("profile")} />
+                  <PhotoUploader next={() => setKey("profile")} done={_image} />
                 </Tab>
                 <Tab eventKey="profile" title="General Info">
                   <GeneralInfo next={() => setKey("contact")} />

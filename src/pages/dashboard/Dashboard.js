@@ -4,7 +4,14 @@ import Breadcrumb from "../../components/common/Breadcrumb";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Link } from "react-router-dom";
 import { BsListCheck, BsBookmark, BsPencil } from "react-icons/bs";
-import { FaMailBulk, FaRegEnvelope, FaUser } from "react-icons/fa";
+import {
+  FaBook,
+  FaMailBulk,
+  FaMoneyBill,
+  FaRegEnvelope,
+  FaUser,
+  FaUsers,
+} from "react-icons/fa";
 import { GiPositionMarker } from "react-icons/gi";
 import { FiPhone, FiEdit } from "react-icons/fi";
 import {
@@ -20,23 +27,26 @@ import sectiondata from "../../store/store";
 import { UserContext } from "../../context/UserProvider";
 import { userPosts } from "../../store/api/post";
 import { MY_POSTS_SET, USER_SET } from "../../context/actions";
-import { userChangePwd, userUpdate } from "../../store/api/user";
+import { getUsers, userChangePwd, userUpdate } from "../../store/api/user";
+import { Table } from "react-bootstrap";
 
 function Dashboard() {
   const [state, dispatch] = useContext(UserContext);
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [user, setUser] = useState({});
+  const [users, setUsers] = useState([]);
   useEffect(() => {
     async function myDrafts() {
       const r = await userPosts(state.user?.id);
       dispatch({ type: MY_POSTS_SET, data: r.data });
+      const allUsers = await getUsers();
+      setUsers(allUsers?.data || []);
     }
     state.user?.id && myDrafts();
     setUser(state.user);
   }, [state.user]);
   useEffect(() => {
     const body = document.querySelector("body");
-
     function showDeleteAcntModal(e) {
       body.classList.add("modal-open");
       body.style.paddingRight = "17px";
@@ -106,6 +116,7 @@ function Dashboard() {
     const r = await userUpdate(obj);
     dispatch({ type: USER_SET, data: r.data });
   };
+  const isAdmin = state.user?.roles?.includes("ADMIN");
 
   return (
     <main className="dashboard-page">
@@ -146,6 +157,34 @@ function Dashboard() {
                         Favorites
                       </div>
                     </Tab>
+                    {isAdmin && (
+                      <>
+                        <Tab>
+                          <div className="nav-item nav-link theme-btn pt-0 pb-0 mr-1">
+                            <span className="la">
+                              <FaUsers />
+                            </span>
+                            Users
+                          </div>
+                        </Tab>
+                        <Tab>
+                          <div className="nav-item nav-link theme-btn pt-0 pb-0 mr-1">
+                            <span className="la">
+                              <FaBook />
+                            </span>
+                            Pages
+                          </div>
+                        </Tab>
+                        <Tab>
+                          <div className="nav-item nav-link theme-btn pt-0 pb-0 mr-1">
+                            <span className="la">
+                              <FaMoneyBill />
+                            </span>
+                            Transactions
+                          </div>
+                        </Tab>
+                      </>
+                    )}
                   </TabList>
                   <div className="btn-box">
                     <Link to="/add-listing/new" className="theme-btn">
@@ -165,14 +204,14 @@ function Dashboard() {
               </div>
               <div className="col-lg-12">
                 <div className="tab-content" id="nav-tabContent">
-                  <TabPanel>
+                  <TabPanel id="pickets">
                     <div className="row">
                       {state.myPosts.map((item, i) => {
                         return (
                           <div key={i} className="col-lg-4 column-td-6">
                             <div className="card-item">
                               <Link
-                                to={item.cardLink}
+                                to="/add-listing/edit"
                                 className="card-image-wrap"
                               >
                                 <div className="card-image">
@@ -188,7 +227,7 @@ function Dashboard() {
                               </Link>
                               <div className="card-content-wrap">
                                 <div className="card-content">
-                                  <Link to={item.cardLink}>
+                                  <Link to="/add-listing/edit">
                                     <h4 className="card-title mt-0">
                                       {item.title}
                                     </h4>
@@ -618,6 +657,98 @@ function Dashboard() {
                           </div>
                         );
                       })}
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="row">
+                      <div className="col-lg-12">
+                        <h4>Users ({users.length})</h4>
+                        <Table striped bordered hover>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>First Name</th>
+                              <th>Last Name</th>
+                              <th>Username</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {users.map((u) => (
+                              <tr key={u.id}>
+                                <td>{u.id}</td>
+                                <td>{u.firstname}</td>
+                                <td>{u.lastname}</td>
+                                <td>{u.username}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </Table>
+                      </div>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="row">
+                      <div className="col-lg-12">
+                        <div className="invoice-table table-responsive">
+                          <table className="table-bordered w-100">
+                            <thead>
+                              <tr>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>VAT</th>
+                                <th>Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Beef Dripping Glazed Steak</td>
+                                <td>1</td>
+                                <td>$1.0</td>
+                                <td>$8.00</td>
+                              </tr>
+                              <tr>
+                                <td>Steak & Melted Cheese Brioche</td>
+                                <td>1</td>
+                                <td>$1.5</td>
+                                <td>$8.00</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="row">
+                      <Table striped bordered hover>
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td colSpan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </Table>
                     </div>
                   </TabPanel>
                 </div>

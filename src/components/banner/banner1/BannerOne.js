@@ -1,7 +1,6 @@
 import React from "react";
 import BannerOneHeroHeading from "./BannerOneHeroHeading";
 import BannerOneSearchInput from "./BannerOneSearchInput";
-import BannerOneCategories from "./BannerOneCategories";
 import sectiondata from "../../../store/store";
 import * as cats from "../../../utils/category.json";
 const highlights = cats.category.map((c) => c.cat);
@@ -13,6 +12,7 @@ export default function BannerOne() {
         style={{
           backgroundImage:
             "url(" + sectiondata.herobanners.banner1.bgimage + ")",
+          height: "150px",
         }}
       >
         <div className="hero-overlay"></div>
