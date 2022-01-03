@@ -6,6 +6,12 @@ A marketplace
 
 In the project directory, you can run:
 
+### API
+
+go to utils -> constant.js and make sure your base url is ALWAYS set to call: BASE_URL = "https://doorpicker.herokuapp.com/api/v1/";
+
+Also, many create .env in the root of your project and contact Femi for contents
+
 ### `yarn start`
 
 Runs the app in the development mode.\
