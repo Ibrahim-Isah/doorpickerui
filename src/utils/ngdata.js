@@ -13,7 +13,7 @@ export const Ngstates = [
   "Enugu",
   "Edo",
   "Ekiti",
-  "FCT -Abuja",
+  "FCT - Abuja",
   "Gombe",
   "Imo",
   "Jigawa",
