@@ -27,7 +27,9 @@ function LoginBox({ title, subtitle, from }) {
       }
       const isAuth = { ...response?.data, auth: true };
       dispatch({ type: USER_SET, data: isAuth });
-      history.push(dest);
+      history.push(dest, {
+        user: isAuth,
+      });
     }
   };
   return (

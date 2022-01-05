@@ -14,7 +14,6 @@ function AddPrice(props) {
   const [terms, setTerms] = useState(false);
   const [al, setAlert] = useState({ show: false });
   const history = useHistory();
-  console.log(terms, "terms");
   const _done = async () => {
     if (!state.user?.id) {
       setAlert({
