@@ -54,6 +54,14 @@ export const userChangePwd = async (obj) => {
   const data = await response.json();
   return { data };
 };
+export const userToken = async (obj) => {
+  const response = await fetch(`${BASE_URL}user/dotoken`, PostSettings(obj));
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
 export const userUpdate = async (obj) => {
   const response = await fetch(`${BASE_URL}user/update`, PostSettings(obj));
   if (!response.ok) {

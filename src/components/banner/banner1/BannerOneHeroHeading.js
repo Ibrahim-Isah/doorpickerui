@@ -5,7 +5,6 @@ export default function BannerOneHeroHeading({
   content,
   titleHighlight,
 }) {
-  console.log(JSON.stringify(titleHighlight, " hey"));
   return (
     <>
       <div className="hero-heading">

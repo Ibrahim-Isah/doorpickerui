@@ -16,7 +16,6 @@ function Confirmation(props) {
   const history = useHistory();
   const [state, dispatch] = useContext(UserContext);
   const phone = props.location?.state?.phone || state?.user?.phone;
-  console.log(state.user);
   const _token = async () => {
     if (tk.length > 0) {
       const d = await doConfirmation(tk, phone);

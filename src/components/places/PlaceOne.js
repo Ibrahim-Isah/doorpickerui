@@ -52,7 +52,7 @@ function PlaceOne({ places }) {
         <Slider
           className="places-carousel"
           dots={true}
-          infinite={places.length > 3}
+          infinite={places?.length > 3}
           slidesToScroll={2}
           arrows={false}
           slidesToShow={3}

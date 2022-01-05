@@ -29,11 +29,6 @@ function Login(props) {
           </div>
         </div>
       </section>
-
-      {/* Newsletter */}
-      {/* <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} /> */}
-
-      {/* Footer */}
       <Footer />
 
       <ScrollTopBtn />

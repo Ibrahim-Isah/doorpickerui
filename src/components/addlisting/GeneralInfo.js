@@ -99,7 +99,6 @@ function GeneralInfo(props) {
       ownerId: state.user.id,
       status: "DRAFT",
     };
-    console.log(JSON.stringify(data), " wtf ?????");
     if (state?.draft?.id) {
       data.id = state.draft.id;
     }
