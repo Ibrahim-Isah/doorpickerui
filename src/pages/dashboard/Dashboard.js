@@ -30,11 +30,12 @@ import { MY_POSTS_SET, USER_SET } from "../../context/actions";
 import { getUsers, userChangePwd, userUpdate } from "../../store/api/user";
 import { Table } from "react-bootstrap";
 
-function Dashboard() {
+function Dashboard(props) {
   const [state, dispatch] = useContext(UserContext);
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
+  //const { isAuth } = props.location?.state;
   useEffect(() => {
     async function myDrafts() {
       const r = await userPosts(state.user?.id);
@@ -108,7 +109,7 @@ function Dashboard() {
   const _changePwd = async () => {
     const obj = { id: state.user.id, password: user.password };
     const r = await userChangePwd(obj);
-    // show alert
+    dispatch({ type: USER_SET, data: r.data });
   };
   const _update = async () => {
     const obj = { ...user };

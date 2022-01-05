@@ -14,7 +14,6 @@ const Uploader = (props) => {
   const [loading, setLoading] = useState(false);
   const [att, setFile] = useState(null);
   const appendFile = (ev) => {
-    console.log(ev.target.files[0], " vie");
     const { files } = ev?.target;
     files[0].size > 38229976
       ? alert("File cant be larger than 15mb!")

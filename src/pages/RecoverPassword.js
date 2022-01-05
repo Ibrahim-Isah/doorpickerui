@@ -1,37 +1,34 @@
-import React from 'react';
+import React from "react";
 import GeneralHeader from "../components/common/GeneralHeader";
 import Breadcrumb from "../components/common/Breadcrumb";
 import RecoverPassBox from "../components/other/account/RecoverPassBox";
 import NewsLetter from "../components/other/cta/NewsLetter";
 import Footer from "../components/common/footer/Footer";
 import ScrollTopBtn from "../components/common/ScrollTopBtn";
-import breadcrumbimg from '../assets/images/bread-bg.jpg'
+import breadcrumbimg from "../assets/images/bread-bg.jpg";
 import sectiondata from "../store/store";
 
 const state = {
-    breadcrumbimg: breadcrumbimg,
-}
+  breadcrumbimg: breadcrumbimg,
+};
 function RecoverPassword() {
-    return (
-        <main className="recover-pass-page">
-            {/* Header */}
-            <GeneralHeader />
+  return (
+    <main className="recover-pass-page">
+      <GeneralHeader />
 
-            {/* Breadcrumb */}
-            <Breadcrumb CurrentPgTitle="Recover Password" MenuPgTitle="Pages" img={state.breadcrumbimg} />
+      <Breadcrumb
+        CurrentPgTitle="Recover Password"
+        MenuPgTitle="Pages"
+        img={state.breadcrumbimg}
+      />
 
-            <RecoverPassBox />
+      <RecoverPassBox />
 
-            {/* Newsletter */}
-            <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />
+      <Footer />
 
-            {/* Footer */}
-            <Footer />
-
-            <ScrollTopBtn />
-
-        </main>
-    );
+      <ScrollTopBtn />
+    </main>
+  );
 }
 
 export default RecoverPassword;

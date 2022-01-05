@@ -32,7 +32,6 @@ const AddLocation = (props) => {
   // const handleChangeState = (v) => {
   //   setState(v);
   // };
-  console.log(state.draft);
   const _done = async () => {
     if (!state.user?.id || !state.draft?.id) {
       setAlert({
