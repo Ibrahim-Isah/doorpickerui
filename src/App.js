@@ -14,7 +14,7 @@ import TopPlaces from './pages/categories/TopPlaces';
 import ListingGrid from './pages/listings/ListingGrid';
 import ListingList from './pages/listings/ListingList';
 import ListMapView from './pages/listings/ListMapView';
-import ListMapView2 from './pages/listings/ListMapView2';
+// import ListMapView2 from './pages/listings/ListMapView2';
 import ListLeftSidebar from './pages/listings/ListLeftSidebar';
 import ListRightSidebar from './pages/listings/ListRightSidebar';
 import ListingDetails from './pages/listings/ListingDetails';
@@ -72,7 +72,7 @@ const App = () => {
 							<AppRoute path='/listing-grid' component={ListingGrid} />
 							<AppRoute path='/listing-list' component={ListingList} />
 							<AppRoute path='/list-map-view' component={ListMapView} />
-							<AppRoute path='/list-map-view2' component={ListMapView2} />
+							{/* <AppRoute path='/list-map-view2' component={ListMapView2} /> */}
 							<AppRoute path='/list-left-sidebar' component={ListLeftSidebar} />
 							<AppRoute
 								path='/list-right-sidebar'
