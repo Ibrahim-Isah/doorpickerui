@@ -12,7 +12,7 @@ export default function BannerOne() {
         style={{
           backgroundImage:
             "url(" + sectiondata.herobanners.banner1.bgimage + ")",
-          height: "150px",
+          height: "95vh",
         }}
       >
         <div className="hero-overlay"></div>
