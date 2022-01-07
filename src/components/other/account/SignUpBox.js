@@ -147,7 +147,8 @@ function SignUpBox({ title, subtitle }) {
 												{...register('username', {
 													validate: {
 														isUsernameTaken: async (value) =>
-															(await userIsTaken(value)) === false || 'Username is taken',
+															(await userIsTaken(value)) === false ||
+															'Username is taken',
 													},
 												})}
 											/>

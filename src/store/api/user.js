@@ -79,7 +79,7 @@ export const doPhoto = async (obj) => {
 	return { data };
 };
 export const userIsTaken = async (userInfo) => {
-	const response = await fetch(`${BASE_URL}user/istaken/${userInfo}`);
+	const response = await fetch(`${BASE_URL}user/istaken/${userInfo}`, auth);
 	if (!response.ok) {
 		return { error: { code: response.status } };
 	}
