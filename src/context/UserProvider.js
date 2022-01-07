@@ -11,6 +11,7 @@ import {
 const initialState = {
   user: {},
   posts: [],
+  favs: [],
   myPosts: [],
   post: {},
   loading: false,
@@ -27,6 +28,7 @@ const UserProvider = ({ children }) => {
         return {
           ...state,
           posts: action.data,
+          favs: action.fav,
         };
       case POSTS_DRAFT:
         return {

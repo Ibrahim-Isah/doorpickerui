@@ -12,7 +12,7 @@ import Button from "../../components/common/Button";
 import PlaceOne from "../../components/places/PlaceOne";
 import sectiondata from "../../store/store";
 import { UserContext } from "../../context/UserProvider";
-import { getLive } from "../../store/api/post";
+import { getFeatured, getLive } from "../../store/api/post";
 import { POSTS_SET } from "../../context/actions";
 
 function Home() {
@@ -20,7 +20,8 @@ function Home() {
   useEffect(() => {
     async function getData() {
       const d = await getLive();
-      dispatch({ type: POSTS_SET, data: d?.data });
+      const f = await getFeatured();
+      dispatch({ type: POSTS_SET, data: d?.data, fav: f?.data });
     }
     getData();
   }, []);
@@ -54,8 +55,7 @@ function Home() {
               </div>
             </div>
           </div>
-
-          <LatestBlog latestarticles={sectiondata.latestarticles.items} />
+          <LatestBlog latestarticles={state.favs} />
         </div>
       </section>
       <section className="cta-area section-bg column-sm-center padding-top-80px padding-bottom-80px">

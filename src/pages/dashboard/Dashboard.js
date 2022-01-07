@@ -2,13 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import GeneralHeader from "../../components/common/GeneralHeader";
 import Breadcrumb from "../../components/common/Breadcrumb";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BsListCheck, BsBookmark, BsPencil } from "react-icons/bs";
 import {
   FaBook,
   FaMailBulk,
+  FaMinus,
   FaMoneyBill,
+  FaPlus,
+  FaRegEdit,
   FaRegEnvelope,
+  FaStar,
+  FaTrash,
   FaUser,
   FaUsers,
 } from "react-icons/fa";
@@ -25,8 +30,8 @@ import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import sectiondata from "../../store/store";
 import { UserContext } from "../../context/UserProvider";
-import { userPosts } from "../../store/api/post";
-import { MY_POSTS_SET, USER_SET } from "../../context/actions";
+import { changeStatus, getPosts, userPosts } from "../../store/api/post";
+import { DRAFT_SET, MY_POSTS_SET, USER_SET } from "../../context/actions";
 import { getUsers, userChangePwd, userUpdate } from "../../store/api/user";
 import { Table } from "react-bootstrap";
 
@@ -35,10 +40,13 @@ function Dashboard(props) {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
+  const [did, setId] = useState(null);
+  const history = useHistory();
+  const isAdmin = state.user?.roles?.includes("ADMIN");
   //const { isAuth } = props.location?.state;
   useEffect(() => {
     async function myDrafts() {
-      const r = await userPosts(state.user?.id);
+      const r = isAdmin ? await getPosts() : await userPosts(state.user?.id);
       dispatch({ type: MY_POSTS_SET, data: r.data });
       const allUsers = await getUsers();
       setUsers(allUsers?.data || []);
@@ -117,7 +125,17 @@ function Dashboard(props) {
     const r = await userUpdate(obj);
     dispatch({ type: USER_SET, data: r.data });
   };
-  const isAdmin = state.user?.roles?.includes("ADMIN");
+  const _edit = async (obj) => {
+    obj.status = "DRAFT";
+    obj.ownerId = state.user.id;
+    const r = await changeStatus(obj);
+    dispatch({ type: DRAFT_SET, data: r.data });
+    history.push("/add-listing/new", { draft: r.data });
+  };
+  const _favorite = async (id, status) => {
+    const r = await changeStatus({ id, status, ownerId: state.user.id });
+    dispatch({ type: DRAFT_SET, data: r.data });
+  };
 
   return (
     <main className="dashboard-page">
@@ -211,51 +229,64 @@ function Dashboard(props) {
                         return (
                           <div key={i} className="col-lg-4 column-td-6">
                             <div className="card-item">
-                              <Link
-                                to="/add-listing/edit"
-                                className="card-image-wrap"
-                              >
-                                <div className="card-image">
-                                  <img
-                                    src={
-                                      item?.img ||
-                                      "https://via.placeholder.com/100x50"
-                                    }
-                                    className="card__img"
-                                    alt="Card"
-                                  />
-                                </div>
-                              </Link>
+                              <div className="card-image">
+                                <img
+                                  src={
+                                    item?.img ||
+                                    "https://via.placeholder.com/100x50"
+                                  }
+                                  className="card__img"
+                                  alt="Card"
+                                />
+                              </div>
                               <div className="card-content-wrap">
                                 <div className="card-content">
-                                  <Link to="/add-listing/edit">
-                                    <h4 className="card-title mt-0">
-                                      {item.title}
-                                    </h4>
-                                    <p className="card-sub">{`${item.location}, ${item.city}`}</p>
-                                  </Link>
+                                  <h4 className="card-title mt-0">
+                                    {item.title}
+                                  </h4>
+                                  <p className="card-sub">{`${item.location}, ${item.city}`}</p>
                                 </div>
                                 <div className="rating-row">
                                   <div className="edit-info-box">
                                     <button
+                                      onClick={() => _edit(item)}
                                       type="button"
                                       className="theme-btn button-success border-0 mr-1"
                                     >
                                       <span className="la">
-                                        {item.editIcon}
+                                        <FaRegEdit />
                                       </span>
-                                      {item.editTxt}
+                                      edit
                                     </button>
+                                    {isAdmin && (
+                                      <>
+                                        {item?.status === "LIVE" && (
+                                          <button
+                                            onClick={() =>
+                                              _favorite(item.id, "FAVORITE")
+                                            }
+                                            type="button"
+                                            className="theme-btn button-success border-0 mr-1"
+                                          >
+                                            <span className="la">
+                                              <FaStar />
+                                            </span>
+                                            Favorite
+                                          </button>
+                                        )}
+                                      </>
+                                    )}
                                     <button
+                                      onClick={() => setId(item.id)}
                                       type="button"
-                                      className="theme-btn delete-btn border-0"
+                                      className="theme-btn button-danger delete-btn border-0"
                                       data-toggle="modal"
                                       data-target=".product-delete-modal"
                                     >
                                       <span className="la">
-                                        {item.deleteIcon}
+                                        <FaTrash />
                                       </span>
-                                      {item.deleteTxt}
+                                      delete
                                     </button>
                                   </div>
                                 </div>
@@ -663,27 +694,45 @@ function Dashboard(props) {
                   <TabPanel>
                     <div className="row">
                       <div className="col-lg-12">
-                        <h4>Users ({users.length})</h4>
-                        <Table striped bordered hover>
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>First Name</th>
-                              <th>Last Name</th>
-                              <th>Username</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {users.map((u) => (
-                              <tr key={u.id}>
-                                <td>{u.id}</td>
-                                <td>{u.firstname}</td>
-                                <td>{u.lastname}</td>
-                                <td>{u.username}</td>
+                        <div className="invoice-table table-responsive">
+                          <p>
+                            Users ({users.length}){" "}
+                            <Link to="/add-admin">
+                              <FaPlus />
+                            </Link>
+                          </p>
+
+                          <Table className="table-bordered hover striped w-100">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Joined</th>
+                                <th></th>
                               </tr>
-                            ))}
-                          </tbody>
-                        </Table>
+                            </thead>
+                            <tbody>
+                              {users.map((u) => (
+                                <tr key={u.id}>
+                                  <td>{u.id}</td>
+                                  <td>{u.firstname}</td>
+                                  <td>{u.lastname}</td>
+                                  <td>{u.username}</td>
+                                  <td>{u.email}</td>
+                                  <td>{u.createdOn}</td>
+                                  <td>
+                                    <span className="float-right">
+                                      <FaMinus /> <FaRegEdit />
+                                    </span>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </Table>
+                        </div>
                       </div>
                     </div>
                   </TabPanel>
@@ -780,7 +829,7 @@ function Dashboard(props) {
                     <AiOutlineExclamationCircle />
                   </span>
                   <h4 className="modal-title mt-2 mb-1">
-                    Your account will be deleted permanently!
+                    This item will be deleted permanently!
                   </h4>
                   <p className="modal-sub">Are you sure to proceed.</p>
                 </div>
@@ -794,6 +843,7 @@ function Dashboard(props) {
                   Cancel
                 </button>
                 <button
+                  onClick={() => _favorite(did, "DELETED")}
                   type="button"
                   className="theme-btn border-0 button-danger"
                 >

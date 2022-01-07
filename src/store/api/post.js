@@ -8,6 +8,14 @@ export const getPosts = async (pg = 0, ct = 10) => {
   const data = await response.json();
   return { data };
 };
+export const getFeatured = async (pg = 0, ct = 10) => {
+  const response = await fetch(`${BASE_URL}post/featured/${pg}/${ct}`, auth);
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
 export const getLive = async (pg = 0, ct = 10) => {
   const response = await fetch(`${BASE_URL}post/live/${pg}/${ct}`, auth);
   if (!response.ok) {
@@ -87,6 +95,14 @@ export const findLoc = async () => {
   const response = await fetch(
     `https://extreme-ip-lookup.com/json/?key=${process.env.REACT_APP_GEO}`
   );
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
+export const changeStatus = async (obj) => {
+  const response = await fetch(`${BASE_URL}post/status`, PostSettings(obj));
   if (!response.ok) {
     return { error: { code: response.status } };
   }

@@ -1,5 +1,5 @@
-let BASE_URL = "https://doorpicker.herokuapp.com/api/v1/";
-// let BASE_URL = "/api/v1/";
+//let BASE_URL = "https://doorpicker.herokuapp.com/api/v1/";
+let BASE_URL = "/api/v1/";
 // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 //  BASE_URL = "http://localhost:5071/api/v1/";
 // } else {
