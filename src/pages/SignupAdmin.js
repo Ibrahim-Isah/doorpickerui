@@ -3,19 +3,20 @@ import { useForm } from "react-hook-form";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaMobile, FaRegEnvelope } from "react-icons/fa";
 import { FiLock } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Footer from "../components/common/footer/Footer";
 import GeneralHeader from "../components/common/GeneralHeader";
 import ScrollTopBtn from "../components/common/ScrollTopBtn";
-import { userIsTaken } from "../store/api/user";
+import { userIsTaken, userSignup } from "../store/api/user";
 import breadcrumbimg from "../assets/images/bread-bg.jpg";
 import Breadcrumb from "../components/common/Breadcrumb";
 import { Alert } from "react-bootstrap";
-import { ALERT_SHOW } from "../context/actions";
+import { ALERT_SHOW, USER_SET } from "../context/actions";
 import { UserContext } from "../context/UserProvider";
 function SignupAdmin(props) {
   const [state, dispatch] = useContext(UserContext);
   const password = useRef({});
+  const history = useHistory();
   const {
     register,
     handleSubmit,
@@ -23,8 +24,23 @@ function SignupAdmin(props) {
     reset,
     formState: { errors },
   } = useForm();
-  const { _submit } = props;
   const [breadc] = useState(breadcrumbimg);
+  password.current = watch("password", "");
+  const _submit = async (data) => {
+    alert(data);
+    const user = await userSignup(data);
+    console.log(user, " what happened");
+    if (user.error) {
+      // sign up failed!
+    }
+    if (user.data) {
+      const { data } = user;
+      dispatch({ type: USER_SET, data });
+      reset();
+      // navigate to confirmation page
+      history.push({ pathname: "/dashboard" });
+    }
+  };
   return (
     <main className="signup-page">
       <GeneralHeader />
@@ -40,22 +56,6 @@ function SignupAdmin(props) {
                   </h3>
                   <p className="font-size-16 font-weight-medium">add admin</p>
                 </div>
-                <Alert
-                  show={false}
-                  variant={""}
-                  dismissible
-                  onClose={() =>
-                    dispatch({
-                      type: ALERT_SHOW,
-                      data: {
-                        show: false,
-                      },
-                    })
-                  }
-                >
-                  ""
-                </Alert>
-
                 <div className="billing-content">
                   <div className="contact-form-action">
                     <form method="post">
@@ -240,24 +240,6 @@ function SignupAdmin(props) {
                                     "Password do not match!",
                                 })}
                               />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="form-group">
-                            <div className="custom-checkbox d-block mr-0">
-                              <input
-                                type="checkbox"
-                                id="chb14"
-                                {...register("terms", {
-                                  required: "required!",
-                                })}
-                              />
-                              {errors.terms && (
-                                <span role="alert" className="color-text">
-                                  {errors.terms.message}
-                                </span>
-                              )}
                             </div>
                           </div>
                         </div>

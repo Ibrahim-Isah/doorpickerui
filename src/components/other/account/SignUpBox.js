@@ -15,7 +15,6 @@ function SignUpBox({ title, subtitle }) {
   const password = useRef({});
   const history = useHistory();
   const [state, dispatch] = useContext(UserContext);
-
   const {
     register,
     handleSubmit,
@@ -25,6 +24,7 @@ function SignUpBox({ title, subtitle }) {
   } = useForm();
   password.current = watch("password", "");
   const _submit = async (data) => {
+    data.isAdmin = false;
     const user = await userSignup(data);
     if (user.error) {
       // sign up failed!
@@ -79,7 +79,7 @@ function SignUpBox({ title, subtitle }) {
 
         <div className="billing-content">
           <div className="contact-form-action">
-            <form method="post">
+            <form onSubmit={handleSubmit(_submit)}>
               <div className="row">
                 <SignInOptions />
 
@@ -296,10 +296,7 @@ function SignUpBox({ title, subtitle }) {
                 </div>
                 <div className="col-lg-12">
                   <div className="btn-box margin-top-20px margin-bottom-20px">
-                    <button
-                      className="theme-btn border-0"
-                      onClick={handleSubmit(_submit)}
-                    >
+                    <button className="theme-btn border-0" type="submit">
                       Register account
                     </button>
                   </div>
