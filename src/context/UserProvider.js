@@ -12,6 +12,7 @@ const initialState = {
   user: {},
   posts: [],
   myPosts: [],
+  favs: [],
   post: {},
   loading: false,
   drafts: [],
@@ -27,6 +28,7 @@ const UserProvider = ({ children }) => {
         return {
           ...state,
           posts: action.data,
+          favs: action.fav,
         };
       case POSTS_DRAFT:
         return {
