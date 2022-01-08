@@ -5,6 +5,20 @@ import { FaRegEnvelope, FaUserSecret } from 'react-icons/fa';
 function RecoverPassBox(props) {
 	const [token, setToken] = useState(null);
 	const [isValid, setValid] = useState(null);
+	const [contact, setContact] = useState('');
+	const [password, setPassword] = useState('');
+	const [confirmPassword, setConfirmPassword] = useState('');
+	const [noToken, setNoToken] = useState(true);
+	const [error, setError] = useState('');
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		if (password !== confirmPassword) {
+			return setError('Password does not match');
+		}
+	};
+
 	return (
 		<>
 			<section className='form-shared padding-top-40px padding-bottom-100px'>
@@ -28,71 +42,114 @@ function RecoverPassBox(props) {
 								<div className='billing-content'>
 									<div className='contact-form-action'>
 										<form>
-											<div className='input-box'>
-												<label className='label-text'>
-													Your Email or Phone Number(for example 0807136662)
-												</label>
-												<div className='form-group'>
-													<span className='la form-icon'>
-														<FaRegEnvelope />
-													</span>
-													<input
-														className='form-control'
-														type='text'
-														name='text'
-														placeholder='Enter email address or phone number'
-													/>
-												</div>
-											</div>
-											<div className='input-box'>
-												<label className='label-text'>
-													Token (Sent to your email or phone)
-												</label>
-												<div className='form-group'>
-													<span className='la form-icon'>
-														<FaRegEnvelope />
-													</span>
-													<input
-														className='form-control'
-														type='text'
-														name='text'
-														placeholder='Token (Sent to your email or phone)'
-													/>
-												</div>
-											</div>
-											<div className='input-box'>
-												<label className='label-text'>Password</label>
-												<div className='form-group'>
-													<span className='la form-icon'>
-														<FaUserSecret />
-													</span>
-													<input
-														className='form-control'
-														type='text'
-														name='text'
-														placeholder='New password'
-													/>
-												</div>
-											</div>
-											<div className='input-box'>
-												<label className='label-text'>Confirm Password</label>
-												<div className='form-group'>
-													<span className='la form-icon'>
-														<FaUserSecret />
-													</span>
-													<input
-														className='form-control'
-														type='text'
-														name='text'
-														placeholder='Confirm new password'
-													/>
-												</div>
-											</div>
-											<div className='btn-box margin-top-20px margin-bottom-20px'>
-												<button className='theme-btn border-0' type='submit'>
-													reset password
-												</button>
-											</div>
+											{/* The noToken state will check for whether the user has send a request for a token and receive it or not */}
+											{noToken ? (
+												<>
+													<div className='input-box'>
+														<label className='label-text'>
+															Your Email or Phone Number(for example 0807136662)
+														</label>
+														<div className='form-group'>
+															<span className='la form-icon'>
+																<FaRegEnvelope />
+															</span>
+															<input
+																className='form-control'
+																type='text'
+																name='text'
+																placeholder='Enter email address or phone number'
+																value={contact}
+																onChange={({ target }) =>
+																	setContact(target.value)
+																}
+															/>
+														</div>
+													</div>
+													<div className='btn-box margin-top-20px margin-bottom-20px'>
+														<button
+															className='theme-btn border-0'
+															type='button'
+															onClick={() => setNoToken(false)}
+														>
+															Send Token
+														</button>
+													</div>
+												</>
+											) : (
+												<>
+													{error && (
+														<div className='alert alert-warning'>{error}</div>
+													)}
+													<div className='input-box'>
+														<label className='label-text'>
+															Token (Sent to your email or phone)
+														</label>
+														<div className='form-group'>
+															<span className='la form-icon'>
+																<FaRegEnvelope />
+															</span>
+															<input
+																className='form-control'
+																type='text'
+																name='text'
+																placeholder='Token (Sent to your email or phone)'
+																value={token}
+																onChange={({ target }) =>
+																	setToken(target.value)
+																}
+															/>
+														</div>
+													</div>
+													<div className='input-box'>
+														<label className='label-text'>Password</label>
+														<div className='form-group'>
+															<span className='la form-icon'>
+																<FaUserSecret />
+															</span>
+															<input
+																className='form-control'
+																type='text'
+																name='text'
+																placeholder='New password'
+																value={password}
+																onChange={({ target }) =>
+																	setPassword(target.value)
+																}
+															/>
+														</div>
+													</div>
+													<div className='input-box'>
+														<label className='label-text'>
+															Confirm Password
+														</label>
+														<div className='form-group'>
+															<span className='la form-icon'>
+																<FaUserSecret />
+															</span>
+															<input
+																className='form-control'
+																type='text'
+																name='text'
+																placeholder='Confirm new password'
+																value={confirmPassword}
+																onChange={({ target }) =>
+																	setConfirmPassword(target.value)
+																}
+															/>
+														</div>
+													</div>
+
+													<div className='btn-box margin-top-20px margin-bottom-20px'>
+														<button
+															className='theme-btn border-0'
+															type='submit'
+															onClick={handleSubmit}
+														>
+															reset password
+														</button>
+													</div>
+												</>
+											)}
 											<p className='font-weight-medium'>
 												<Link to='/login' className='color-text'>
 													Login{' '}
