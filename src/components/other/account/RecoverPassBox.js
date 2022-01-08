@@ -1,22 +1,56 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegEnvelope, FaUserSecret } from 'react-icons/fa';
+import { useHistory } from 'react-router-dom';
+import { userToken, userChangePwd } from '../../../store/api/user';
 
 function RecoverPassBox(props) {
-	const [token, setToken] = useState(null);
-	const [isValid, setValid] = useState(null);
+	const history = useHistory();
+
+	const [token, setToken] = useState('');
+	const [isValid, setValid] = useState('');
 	const [contact, setContact] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [noToken, setNoToken] = useState(true);
 	const [error, setError] = useState('');
 
+	const handleSendToken = async (e) => {
+		e.preventDefault();
+		// try {
+		let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
+		let tokenBody;
+
+		if (regex.test(contact.trim())) {
+			let emailObj = { email: `${contact}` };
+			tokenBody = emailObj;
+		} else {
+			let phoneObj = { phone: `${contact.trim()}` };
+			tokenBody = phoneObj;
+		}
+
+		const sentToken = await userToken(tokenBody);
+		if (sentToken.error) {
+			setError('Token not sent. Make sure the number or email is correct');
+			return;
+		}
+		// } catch (err) {
+		// 	console.log('error', err.message);
+		// }
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		if (password !== confirmPassword) {
+		if (password.trim() !== confirmPassword.trim()) {
 			return setError('Password does not match');
 		}
+
+		setError('');
+		setPassword('');
+		setConfirmPassword('');
+		setContact('');
+		setToken('');
 	};
 
 	return (
@@ -45,6 +79,9 @@ function RecoverPassBox(props) {
 											{/* The noToken state will check for whether the user has send a request for a token and receive it or not */}
 											{noToken ? (
 												<>
+													{error && (
+														<div className='alert alert-warning'>{error}</div>
+													)}
 													<div className='input-box'>
 														<label className='label-text'>
 															Your Email or Phone Number(for example 0807136662)
@@ -69,7 +106,7 @@ function RecoverPassBox(props) {
 														<button
 															className='theme-btn border-0'
 															type='button'
-															onClick={() => setNoToken(false)}
+															onClick={handleSendToken}
 														>
 															Send Token
 														</button>
