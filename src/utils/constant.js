@@ -6,6 +6,7 @@ let BASE_URL = "https://doorpicker.herokuapp.com/api/v1/";
 //  BASE_URL = "https://doorpicker.herokuapp.com/api/v1/";
 // }
 const authKey = process.env.REACT_APP_AUTH;
+export const s3path = "https://essluploads.s3.amazonaws.com/picker/";
 export const PostSettings = (obj) => {
   return {
     method: "POST",
