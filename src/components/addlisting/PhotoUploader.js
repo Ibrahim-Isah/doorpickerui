@@ -51,7 +51,7 @@ const img = {
 };
 
 function PhotoUploader(props) {
-  const { done, next } = props;
+  const { next } = props;
   const [state, dispatch] = useContext(UserContext);
   const { draft, user } = state;
   const [files, setFiles] = useState([]);
@@ -59,29 +59,31 @@ function PhotoUploader(props) {
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
-      const imgs = [];
       setFiles(
         acceptedFiles.map((file) => {
-          const s3 = s3Upload(file, file.name);
-          Object.assign(imgs, s3.location);
+          s3Upload(file, file.name);
           return Object.assign(file, {
             preview: URL.createObjectURL(file),
           });
         })
       );
-      storeImage(imgs);
     },
   });
-  const storeImage = async (imgs = []) => {
-    const r = await addImage({ id: draft.id, images: imgs });
+  const storeImage = async () => {
+    const imgs = files.map((f) => f.path);
+    const r = await addImage({
+      id: draft?.id,
+      ownerId: user.id,
+      images: imgs,
+    });
     dispatch({ type: DRAFT_SET, data: r.data });
-    done();
+    next();
   };
 
   const thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
       <div style={thumbInner}>
-        <img src={file.preview} style={img} alt="Author Profile" />
+        <img src={file.preview} style={img} alt="New Post" />
       </div>
     </div>
   ));
@@ -94,12 +96,12 @@ function PhotoUploader(props) {
     [files]
   );
   const s3Upload = (file, fileName) => {
-    ReactS3Client.uploadFile(file, fileName)
-      .then((data) => {
-        console.log(data, " upload succesful");
-        return data.location;
-      })
-      .catch((err) => console.error(err, " upload failed "));
+    ReactS3Client.uploadFile(file, fileName);
+    // .then((data) => {
+    //   console.log(data, " upload succesful");
+    //   return data.location;
+    // })
+    // .catch((err) => console.error(err, " upload failed "));
   };
 
   return (
@@ -144,7 +146,7 @@ function PhotoUploader(props) {
               </div>
             </div>
           </div>
-          <Button onClick={() => next()}>Done</Button>
+          <Button onClick={storeImage}>Done</Button>
         </div>
       </div>
     </>

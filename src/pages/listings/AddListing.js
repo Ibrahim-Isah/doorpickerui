@@ -44,9 +44,6 @@ function ControlledTabs() {
     }
     state?.user?.id && myDrafts();
   }, [state.user, dispatch]);
-  const _image = async (imgs) => {
-    const r = await addImage(state.draft.id, imgs);
-  };
 
   return (
     <main className="add-listing">
@@ -83,7 +80,7 @@ function ControlledTabs() {
                 className="mb-3"
               >
                 <Tab eventKey="home" title="Add Photo">
-                  <PhotoUploader next={() => setKey("profile")} done={_image} />
+                  <PhotoUploader next={() => setKey("profile")} />
                 </Tab>
                 <Tab eventKey="profile" title="General Info">
                   <GeneralInfo next={() => setKey("contact")} />

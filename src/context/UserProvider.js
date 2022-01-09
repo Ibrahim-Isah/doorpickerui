@@ -11,6 +11,7 @@ import {
 const initialState = {
   user: {},
   posts: [],
+  favs: [],
   myPosts: [],
   favs: [],
   post: {},

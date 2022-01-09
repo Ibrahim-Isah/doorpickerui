@@ -1,24 +1,20 @@
-import React from "react";
-import WidgetAuthor from "./widgets/WidgetAuthor";
-import WidgetStaticsInfo from "./widgets/WidgetStaticsInfo";
-import WidgetBooking from "./widgets/WidgetBooking";
-import WidgetOpenHours from "./widgets/WidgetOpenHours";
-import WidgetCategory from "./widgets/WidgetCategory";
-import WidgetTags from "./widgets/WidgetTags";
+import React, { useEffect, useState } from "react";
 import WidgetSimilarListing from "./widgets/WidgetSimilarListing";
-import WidgetSubscribe from "./widgets/WidgetSubscribe";
 import WidgetFollow from "./widgets/WidgetFollow";
 import sectiondata from "../../store/store";
 import { BsCheckCircle } from "react-icons/bs";
-import Button from "../common/Button";
-import { AiOutlineUser } from "react-icons/ai";
 import WidgetDetail from "./widgets/WidgetDetail";
+import { getSimilar } from "../../store/api/post";
 
-const state = {
-  btnText: "Verified Listing",
-  btnIcon: <BsCheckCircle />,
-};
 function ListingDetailsSidebar(props) {
+  const [similar, setSimi] = useState([]);
+  useEffect(() => {
+    async function mySimilar() {
+      const r = await getSimilar(props.post?.category);
+      setSimi(r?.data || []);
+    }
+    mySimilar();
+  }, [props.post.id]);
   return (
     <>
       <div className="author-verified-badge margin-bottom-20px">
@@ -28,8 +24,10 @@ function ListingDetailsSidebar(props) {
           data-placement="top"
           title="Listing has been verified and belongs the business owner or manager"
         >
-          <span className="d-inline-block">{state.btnIcon}</span>
-          {state.btnText}
+          <span className="d-inline-block">
+            <BsCheckCircle />
+          </span>
+          Verified Listing
         </div>
       </div>
       <div className="sidebar section-bg">
@@ -37,9 +35,9 @@ function ListingDetailsSidebar(props) {
           contents={sectiondata.listingDetails.sidebar.widgetAuthor}
           post={props.post}
         />
-        <WidgetStaticsInfo
+        {/* <WidgetStaticsInfo
           staticsinfo={sectiondata.listingDetails.sidebar.widgetStaticsInfo}
-        />
+        /> */}
         {/* <WidgetBooking /> */}
         {/* <WidgetOpenHours
           openhours={sectiondata.listingDetails.sidebar.widgetOpenHours}
@@ -47,15 +45,11 @@ function ListingDetailsSidebar(props) {
         {/* <WidgetCategory
           wCategories={sectiondata.listingDetails.sidebar.widgetCategories}
         /> */}
-        <WidgetTags
+        {/* <WidgetTags
           tagcontent={sectiondata.listingDetails.sidebar.widgetTags}
-        />
-        <WidgetSimilarListing
-          similarcontent={
-            sectiondata.listingDetails.sidebar.widgetSimilarListing
-          }
-        />
-        <WidgetSubscribe />
+        /> */}
+        <WidgetSimilarListing similarcontent={similar} />
+        {/* <WidgetSubscribe /> */}
         <WidgetFollow
           followconnect={sectiondata.listingDetails.sidebar.widgetFollowConnect}
         />

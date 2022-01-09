@@ -49,7 +49,7 @@ function ListingDetails(props) {
           <div className="row">
             <div className="col-lg-8">
               <div className="single-listing-wrap">
-                <ListingDetailsGallery />
+                <ListingDetailsGallery images={p?.images || []} />
                 <div className="listing-description padding-top-40px padding-bottom-35px">
                   <h2 className="widget-title">
                     {sectiondata.listingDetails.descriptiontitle}
@@ -132,11 +132,11 @@ function ListingDetails(props) {
                     </div>
                   </div> */}
 
-                <div className="listing-map gmaps">
+                {/* <div className="listing-map gmaps">
                   <h2 className="widget-title">{contentstate.mapTitle}</h2>
                   <div className="title-shape margin-bottom-35px"></div>
                   <GeneralMap />
-                </div>
+                </div> */}
                 <CustomerFeedback meta={meta} />
                 <div className="comments-wrap">
                   <h2 className="widget-title">

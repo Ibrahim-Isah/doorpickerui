@@ -101,3 +101,19 @@ export const findLoc = async () => {
   const data = await response.json();
   return { data };
 };
+export const changeStatus = async (obj) => {
+  const response = await fetch(`${BASE_URL}post/status`, PostSettings(obj));
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
+export const getSimilar = async (str) => {
+  const response = await fetch(`${BASE_URL}post/similar/${str}`, auth);
+  if (!response.ok) {
+    return { error: { code: response.status } };
+  }
+  const data = await response.json();
+  return { data };
+};
