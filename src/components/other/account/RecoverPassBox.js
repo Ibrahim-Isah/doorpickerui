@@ -1,50 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegEnvelope, FaUserSecret } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import { userToken, userChangePwd } from '../../../store/api/user';
+import { USER_SET } from '../../../context/actions';
+import { UserContext } from '../../../context/UserProvider';
 
 function RecoverPassBox(props) {
 	const history = useHistory();
+	const [state, dispatch] = useContext(UserContext);
 
 	const [token, setToken] = useState('');
 	const [isValid, setValid] = useState('');
 	const [contact, setContact] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
-	const [noToken, setNoToken] = useState(true);
+	const [noToken, setNoToken] = useState(false);
 	const [error, setError] = useState('');
 
 	const handleSendToken = async (e) => {
 		e.preventDefault();
 		// try {
 		let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-		let tokenBody;
+		let obj;
 
 		if (regex.test(contact.trim())) {
 			let emailObj = { email: `${contact}` };
-			tokenBody = emailObj;
+			obj = emailObj;
 		} else {
 			let phoneObj = { phone: `${contact.trim()}` };
-			tokenBody = phoneObj;
+			obj = phoneObj;
 		}
 
-		const sentToken = await userToken(tokenBody);
+		const sentToken = await userToken(obj);
 		if (sentToken.error) {
 			setError('Token not sent. Make sure the number or email is correct');
 			return;
 		}
+
+		setNoToken(false);
+		setError('');
 		// } catch (err) {
 		// 	console.log('error', err.message);
 		// }
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		if (password.trim() !== confirmPassword.trim()) {
 			return setError('Password does not match');
 		}
+
+		const obj = {
+			confirmationToken: `${token}`,
+			password: `${password.trim()}`,
+		};
+
+		const changePassword = await userChangePwd(obj);
+
+		const userStore = { ...changePassword?.data, auth: true };
+		dispatch({ type: USER_SET, data: userStore });
+		history.push('/dashboard');
 
 		setError('');
 		setPassword('');
