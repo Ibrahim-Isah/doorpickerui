@@ -3,23 +3,25 @@ import { Link } from 'react-router-dom';
 import { FaRegEnvelope, FaUserSecret } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import { userToken, userChangePwd } from '../../../store/api/user';
-import { USER_SET } from '../../../context/actions';
+import { ALERT_SHOW, USER_SET } from '../../../context/actions';
 import { UserContext } from '../../../context/UserProvider';
+import { Alert } from 'react-bootstrap';
 
 function RecoverPassBox(props) {
 	const history = useHistory();
 	const [state, dispatch] = useContext(UserContext);
 
 	const [token, setToken] = useState('');
-	const [isValid, setValid] = useState('');
+	const [isDisabled, setIsDisabled] = useState(false);
 	const [contact, setContact] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [noToken, setNoToken] = useState(true);
-	const [error, setError] = useState('');
 
 	const handleSendToken = async (e) => {
 		e.preventDefault();
+
+		setIsDisabled(true);
 		try {
 			let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
 			let obj;
@@ -34,12 +36,19 @@ function RecoverPassBox(props) {
 
 			const sentToken = await userToken(obj);
 			if (sentToken.error) {
-				setError('Token not sent. Make sure the number or email is correct');
+				dispatch({
+					type: ALERT_SHOW,
+					data: {
+						variant: 'danger',
+						show: true,
+						msg: 'Token not sent. Make sure the number or email is correct',
+					},
+				});
+				setIsDisabled(false);
 				return;
 			}
-			console.log('token', sentToken.data);
 			setNoToken(false);
-			setError('');
+			setIsDisabled(false);
 		} catch (err) {
 			console.log('error', err.message);
 		}
@@ -48,8 +57,19 @@ function RecoverPassBox(props) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		setIsDisabled(true);
+
 		if (password.trim() !== confirmPassword.trim()) {
-			return setError('Password does not match');
+			dispatch({
+				type: ALERT_SHOW,
+				data: {
+					variant: 'warning',
+					show: true,
+					msg: 'Password does not match',
+				},
+			});
+			setIsDisabled(false);
+			return;
 		}
 
 		const obj = {
@@ -58,16 +78,37 @@ function RecoverPassBox(props) {
 		};
 
 		const changePassword = await userChangePwd(obj);
+		if (changePassword.error) {
+			dispatch({
+				type: ALERT_SHOW,
+				data: {
+					variant: 'danger',
+					show: true,
+					msg: 'Password reset failed. Make sure token is correct',
+				},
+			});
+			setIsDisabled(false);
+		}
+		if (changePassword.data) {
+			dispatch({
+				type: ALERT_SHOW,
+				data: {
+					variant: 'success',
+					show: true,
+					msg: 'Password reset successfully',
+				},
+			});
 
-		const userStore = { ...changePassword?.data, auth: true };
-		dispatch({ type: USER_SET, data: userStore });
-		history.push('/dashboard');
+			const userStore = { ...changePassword?.data, auth: true };
+			dispatch({ type: USER_SET, data: userStore });
+			history.push('/dashboard');
 
-		setError('');
-		setPassword('');
-		setConfirmPassword('');
-		setContact('');
-		setToken('');
+			setPassword('');
+			setConfirmPassword('');
+			setContact('');
+			setToken('');
+			setIsDisabled(false);
+		}
 	};
 
 	return (
@@ -96,9 +137,21 @@ function RecoverPassBox(props) {
 											{/* The noToken state will check for whether the user has send a request for a token and receive it or not */}
 											{noToken ? (
 												<>
-													{error && (
-														<div className='alert alert-warning'>{error}</div>
-													)}
+													<Alert
+														variant={state.alert?.variant}
+														show={state.alert?.show}
+														dismissible
+														onClose={() =>
+															dispatch({
+																type: ALERT_SHOW,
+																data: {
+																	show: false,
+																},
+															})
+														}
+													>
+														{state.alert?.msg}
+													</Alert>
 													<div className='input-box'>
 														<label className='label-text'>
 															Your Email or Phone Number(for example 0807136662)
@@ -124,6 +177,7 @@ function RecoverPassBox(props) {
 															className='theme-btn border-0'
 															type='button'
 															onClick={handleSendToken}
+															disabled={isDisabled}
 														>
 															Send Token
 														</button>
@@ -131,9 +185,21 @@ function RecoverPassBox(props) {
 												</>
 											) : (
 												<>
-													{error && (
-														<div className='alert alert-warning'>{error}</div>
-													)}
+													<Alert
+														show={state.alert?.show}
+														variant={state.alert?.variant}
+														dismissible
+														onClose={() =>
+															dispatch({
+																type: ALERT_SHOW,
+																data: {
+																	show: false,
+																},
+															})
+														}
+													>
+														{state.alert?.msg}
+													</Alert>
 													<div className='input-box'>
 														<label className='label-text'>
 															Token (Sent to your email or phone)
@@ -198,6 +264,7 @@ function RecoverPassBox(props) {
 															className='theme-btn border-0'
 															type='submit'
 															onClick={handleSubmit}
+															disabled={isDisabled}
 														>
 															reset password
 														</button>
