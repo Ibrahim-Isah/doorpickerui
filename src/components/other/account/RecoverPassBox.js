@@ -15,7 +15,7 @@ function RecoverPassBox(props) {
 	const [contact, setContact] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
-	const [noToken, setNoToken] = useState(false);
+	const [noToken, setNoToken] = useState(true);
 	const [error, setError] = useState('');
 
 	const handleSendToken = async (e) => {
@@ -37,7 +37,7 @@ function RecoverPassBox(props) {
 			setError('Token not sent. Make sure the number or email is correct');
 			return;
 		}
-
+		console.log('token', sentToken.data);
 		setNoToken(false);
 		setError('');
 		// } catch (err) {

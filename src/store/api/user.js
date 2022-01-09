@@ -59,7 +59,7 @@ export const userToken = async (obj) => {
 	if (!response.ok) {
 		return { error: { code: response.status } };
 	}
-	const data = await response.json();
+	const data = await response;
 	return { data };
 };
 export const userUpdate = async (obj) => {
