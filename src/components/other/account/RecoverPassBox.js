@@ -20,29 +20,29 @@ function RecoverPassBox(props) {
 
 	const handleSendToken = async (e) => {
 		e.preventDefault();
-		// try {
-		let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-		let obj;
+		try {
+			let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
+			let obj;
 
-		if (regex.test(contact.trim())) {
-			let emailObj = { email: `${contact}` };
-			obj = emailObj;
-		} else {
-			let phoneObj = { phone: `${contact.trim()}` };
-			obj = phoneObj;
-		}
+			if (regex.test(contact.trim())) {
+				let emailObj = { email: `${contact}` };
+				obj = emailObj;
+			} else {
+				let phoneObj = { phone: `${contact.trim()}` };
+				obj = phoneObj;
+			}
 
-		const sentToken = await userToken(obj);
-		if (sentToken.error) {
-			setError('Token not sent. Make sure the number or email is correct');
-			return;
+			const sentToken = await userToken(obj);
+			if (sentToken.error) {
+				setError('Token not sent. Make sure the number or email is correct');
+				return;
+			}
+			console.log('token', sentToken.data);
+			setNoToken(false);
+			setError('');
+		} catch (err) {
+			console.log('error', err.message);
 		}
-		console.log('token', sentToken.data);
-		setNoToken(false);
-		setError('');
-		// } catch (err) {
-		// 	console.log('error', err.message);
-		// }
 	};
 
 	const handleSubmit = async (e) => {
