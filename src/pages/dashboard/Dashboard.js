@@ -136,6 +136,10 @@ function Dashboard(props) {
     const r = await changeStatus({ id, status, ownerId: state.user.id });
     dispatch({ type: DRAFT_SET, data: r.data });
   };
+  const _logout = () => {
+    dispatch({ type: USER_SET, data: null });
+    history.push("/login");
+  };
 
   return (
     <main className="dashboard-page">
@@ -212,12 +216,16 @@ function Dashboard(props) {
                       </span>
                       add picket
                     </Link>
-                    <Link to="/" className="theme-btn ml-1">
+                    <button
+                      variant="link"
+                      onClick={_logout}
+                      className="theme-btn ml-1"
+                    >
                       <span className="la">
                         <AiOutlinePoweroff />
                       </span>
                       sign out
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

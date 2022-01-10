@@ -10,43 +10,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import { s3path } from "../../utils/constant";
 
-// Below is the option for the breakpoint when the slider is to be used. It has being commented out because slider is not used and now we used grid system
-// const responsive = [
-// 	{
-// 		breakpoint: 1024,
-// 		settings: {
-// 			slidesToShow: 3,
-// 			slidesToScroll: 3,
-// 			infinite: true,
-// 			dots: true,
-// 		},
-// 	},
-// 	{
-// 		breakpoint: 768,
-// 		settings: {
-// 			slidesToShow: 2,
-// 			slidesToScroll: 2,
-// 			infinite: true,
-// 			dots: true,
-// 		},
-// 	},
-// 	{
-// 		breakpoint: 600,
-// 		settings: {
-// 			slidesToShow: 2,
-// 			slidesToScroll: 2,
-// 			initialSlide: 2,
-// 		},
-// 	},
-// 	{
-// 		breakpoint: 480,
-// 		settings: {
-// 			slidesToShow: 1,
-// 			slidesToScroll: 1,
-// 		},
-// 	},
-// ];
-
 function PlaceOne({ places }) {
   return (
     <div className="mt-5">

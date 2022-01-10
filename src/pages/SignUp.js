@@ -10,10 +10,7 @@ function SignUp() {
   const [breadc] = useState(breadcrumbimg);
   return (
     <main className="signup-page">
-      {/* Header */}
       <GeneralHeader />
-
-      {/* Breadcrumb */}
       <Breadcrumb CurrentPgTitle="Sign Up" img={breadc} />
 
       <section className="form-shared padding-top-40px padding-bottom-100px">
@@ -28,11 +25,6 @@ function SignUp() {
           </div>
         </div>
       </section>
-
-      {/* Newsletter */}
-      {/* <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} /> */}
-
-      {/* Footer */}
       <Footer />
 
       <ScrollTopBtn />
