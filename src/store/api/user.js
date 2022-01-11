@@ -78,11 +78,35 @@ export const doPhoto = async (obj) => {
 	const data = await response.json();
 	return { data };
 };
-export const userIsTaken = async (userInfo) => {
-	const response = await fetch(`${BASE_URL}user/istaken/${userInfo}`, auth);
+export const userIsTaken = async (obj) => {
+	const response = await fetch(`${BASE_URL}user/istaken/${obj}`, auth);
 	if (!response.ok) {
 		return { error: { code: response.status } };
 	}
 	const data = await response.json();
 	return data;
+};
+export const contactUs = async (obj) => {
+	const response = await fetch(`${BASE_URL}add/contact`, PostSettings(obj));
+	if (!response.ok) {
+		return { error: { code: response.status } };
+	}
+	const data = await response;
+	return { data };
+};
+export const getAllUsersContactEmail = async () => {
+	const response = await fetch(`${BASE_URL}user/users`, auth);
+	if (!response.ok) {
+		return { error: { code: response.status } };
+	}
+	const data = await response.json();
+	return { data };
+};
+export const getOneUserContactEmail = async (userEmail) => {
+	const response = await fetch(`${BASE_URL}user/users/${userEmail}`, auth);
+	if (!response.ok) {
+		return { error: { code: response.status } };
+	}
+	const data = await response.json();
+	return { data };
 };
