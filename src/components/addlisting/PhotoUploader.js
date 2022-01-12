@@ -13,7 +13,7 @@ const config = {
   region: "us-east-1",
   accessKeyId: process.env.REACT_APP_aws_key,
   secretAccessKey: process.env.REACT_APP_aws_secret,
-  s3Url: "https://essluploads.s3.amazonaws.com",
+  s3Url: "https://essluploads.s3.amazonaws.com/",
 };
 const ReactS3Client = new S3(config);
 
@@ -55,13 +55,16 @@ function PhotoUploader(props) {
   const [state, dispatch] = useContext(UserContext);
   const { draft, user } = state;
   const [files, setFiles] = useState([]);
+  const [err, setErr] = useState(null);
   const history = useHistory();
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
       setFiles(
         acceptedFiles.map((file) => {
-          s3Upload(file, file.name);
+          s3Upload(file, file.name)
+            .then((data) => console.log(data, " upload succesful"))
+            .catch((e) => setErr(e));
           return Object.assign(file, {
             preview: URL.createObjectURL(file),
           });
@@ -96,7 +99,7 @@ function PhotoUploader(props) {
     [files]
   );
   const s3Upload = (file, fileName) => {
-    ReactS3Client.uploadFile(file, fileName);
+    return ReactS3Client.uploadFile(file, fileName);
     // .then((data) => {
     //   console.log(data, " upload succesful");
     //   return data.location;
@@ -141,6 +144,15 @@ function PhotoUploader(props) {
                     >
                       You are not logged in! Go to login
                     </Button>
+                  </Alert>
+                )}
+                {err && (
+                  <Alert
+                    variant="danger"
+                    onClose={() => setErr(null)}
+                    dismissible
+                  >
+                    Image Upload failed!
                   </Alert>
                 )}
               </div>

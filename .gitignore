@@ -24,3 +24,8 @@ yarn-error.log*
 .env
 package-lock.json
 yarn.lock
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/web.iml
+.idea/inspectionProfiles/Project_Default.xml

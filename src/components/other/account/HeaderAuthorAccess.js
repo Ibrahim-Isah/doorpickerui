@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FiPlus, FiPlusCircle, FiBookmark } from "react-icons/fi";
 import { BsListCheck, BsQuestion, BsGear, BsPower } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Button from "../../common/Button";
 import userimg from "../../../assets/images/team1.jpg";
 import { UserContext } from "../../../context/UserProvider";
@@ -12,6 +12,7 @@ import { doPhoto } from "../../../store/api/user";
 
 export default function HeaderAuthorAccess() {
   const [state, dispatch] = useContext(UserContext);
+  const history = useHistory();
   const [AuthorAccessOpen, setAuthorAccessOpen] = useState(
     state.user?.id || false
   );
@@ -32,6 +33,13 @@ export default function HeaderAuthorAccess() {
       dispatch({ type: USER_SET, data: r.data });
     }
   };
+  // const _logout = () => {
+  //   console.log("loggin out ");
+  //   setShow(false);
+  //   setAuthorAccessOpen(!AuthorAccessOpen);
+  //   //dispatch({ type: USER_SET, data: null });
+  //   history.push("/login");
+  // };
 
   return (
     <>
@@ -39,9 +47,9 @@ export default function HeaderAuthorAccess() {
         <ul className="author-access-list">
           {AuthorAccessOpen ? (
             <li>
-              <Button onClick={() => dispatch({ type: USER_SET, data: {} })}>
+              <Link onClick={() => setAuthorAccessOpen(!AuthorAccessOpen)}>
                 logout
-              </Button>
+              </Link>
             </li>
           ) : (
             <li>
@@ -141,7 +149,10 @@ export default function HeaderAuthorAccess() {
               </Link>
             </li>
             <li>
-              <Link to="#">
+              <Link
+                to="#"
+                onClick={() => setAuthorAccessOpen(!AuthorAccessOpen)}
+              >
                 <BsPower className="user-icon" /> Sign Out
               </Link>
             </li>
