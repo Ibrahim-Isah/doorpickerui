@@ -221,44 +221,10 @@ const sectiondata = {
                 }
             ]
         },*/
-    {
-      title: "listings",
-      path: "/listing-grid",
-      /*dropdown: [
-                {
-                    title: 'listing grid',
-                    path: '/listing-grid'
-                },
-                {
-                    title: 'map view',
-                    path: '/list-map-view'
-                },
-                {
-                    title: 'map view 2',
-                    path: '/list-map-view2'
-                },
-                {
-                    title: 'listing list',
-                    path: '/listing-list'
-                },
-                {
-                    title: 'left sidebar',
-                    path: '/list-left-sidebar'
-                },
-                {
-                    title: 'right sidebar',
-                    path: '/list-right-sidebar'
-                },
-                {
-                    title: 'listing details',
-                    path: '/listing-details'
-                },
-                {
-                    title: 'add listing',
-                    path: '/add-listing/new'
-                }
-            ]*/
-    },
+    // {
+    //   title: "listings",
+    //   path: "/listing-grid",
+    // },
     /*  {
            title: 'pages',
             path: '/user-profile',
