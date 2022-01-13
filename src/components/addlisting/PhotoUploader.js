@@ -7,15 +7,7 @@ import { addImage } from "../../store/api/post";
 import { UserContext } from "../../context/UserProvider";
 import { DRAFT_SET } from "../../context/actions";
 import { useHistory } from "react-router-dom";
-const config = {
-  bucketName: process.env.REACT_APP_bucket,
-  dirName: "picker",
-  region: "us-east-1",
-  accessKeyId: process.env.REACT_APP_aws_key,
-  secretAccessKey: process.env.REACT_APP_aws_secret,
-  s3Url: "https://essluploads.s3.amazonaws.com/",
-};
-const ReactS3Client = new S3(config);
+import { getVar } from "../../store/api/user";
 
 const thumbsContainer = {
   display: "flex",
@@ -56,6 +48,14 @@ function PhotoUploader(props) {
   const { draft, user } = state;
   const [files, setFiles] = useState([]);
   const [err, setErr] = useState(null);
+  const [envs, setEnv] = useState(null);
+  useEffect(() => {
+    async function myVars() {
+      const r = await getVar();
+      setEnv(r);
+    }
+    myVars();
+  }, []);
   const history = useHistory();
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
@@ -98,13 +98,18 @@ function PhotoUploader(props) {
     },
     [files]
   );
+  console.log(envs);
   const s3Upload = (file, fileName) => {
+    const config = {
+      bucketName: envs.bucket,
+      dirName: "picker",
+      region: "us-east-1",
+      accessKeyId: envs.awskey,
+      secretAccessKey: envs.awssecret,
+      s3Url: "https://essluploads.s3.amazonaws.com/",
+    };
+    const ReactS3Client = new S3(config);
     return ReactS3Client.uploadFile(file, fileName);
-    // .then((data) => {
-    //   console.log(data, " upload succesful");
-    //   return data.location;
-    // })
-    // .catch((err) => console.error(err, " upload failed "));
   };
 
   return (
@@ -117,6 +122,15 @@ function PhotoUploader(props) {
         <div className="billing-content">
           <div className="row">
             <div className="col-lg-12">
+              {err && (
+                <Alert
+                  variant="danger"
+                  onClose={() => setErr(null)}
+                  dismissible
+                >
+                  Image Upload failed!
+                </Alert>
+              )}
               <div className="drag-and-drop-wrap text-center">
                 {user?.id ? (
                   <>
@@ -144,15 +158,6 @@ function PhotoUploader(props) {
                     >
                       You are not logged in! Go to login
                     </Button>
-                  </Alert>
-                )}
-                {err && (
-                  <Alert
-                    variant="danger"
-                    onClose={() => setErr(null)}
-                    dismissible
-                  >
-                    Image Upload failed!
                   </Alert>
                 )}
               </div>

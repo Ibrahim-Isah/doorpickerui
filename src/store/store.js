@@ -108,6 +108,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import destinationimg1 from "../assets/images/img5.jpg";
+import man from "../assets/images/man-1.png";
 import flag1 from "../assets/images/flag14.png";
 import flag2 from "../assets/images/flag1.jpg";
 import flag3 from "../assets/images/flag2.jpg";
@@ -122,7 +123,6 @@ import hiw3videoimg from "../assets/images/video-img2.jpg";
 import { FcLineChart } from "react-icons/fc";
 import dreamimg from "../assets/images/img6.jpg"; // 263*165
 import hiw5videoimg from "../assets/images/video-img3.jpg";
-import slicevideo from "../assets/video/slice-video.m4v";
 import flag10 from "../assets/images/flag10.png";
 import flag11 from "../assets/images/flag11.png";
 import flag12 from "../assets/images/flag12.jpg";
@@ -405,7 +405,7 @@ const sectiondata = {
       sectitle: "Find The Best Places To Be",
       seccontent:
         "Discover the best places to stay, eat, shop & visit the city nearest to you.",
-      videobgsrc: slicevideo,
+      videobgsrc: "",
     },
   },
   categories: {
@@ -3329,7 +3329,7 @@ const sectiondata = {
   },
   contactdata: {
     title: "Our Office",
-    img: destinationimg1,
+    img: man,
     desc: "DoorPicker is at your service. Established in 2018, we connect buyers with sellers. List your items for sale on doorpicker and watch us perform the magic that will put more money into your pocket.",
     address: "12345, Admiralty way, Lekki, Lagos",
     phoneNum: "+234(01)123456789",
