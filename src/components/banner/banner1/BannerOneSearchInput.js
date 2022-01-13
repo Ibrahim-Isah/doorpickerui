@@ -11,8 +11,6 @@ export default function BannerOneSearchInput(props) {
   const categories = props.data.map((c) => {
     return { value: c, label: c };
   });
-  console.log(state.postsCopy);
-  console.log(state.posts);
   // useEffect(() => {
   //   function getFilteredArray() {
   //     if (searchText.length === 0 && selectedCategory === "all") {
@@ -36,7 +34,6 @@ export default function BannerOneSearchInput(props) {
     e.preventDefault();
     const { value } = e.target;
     if (value.length === 0) {
-      console.log(value, " val", value.length, typeof value);
       dispatch({ type: POSTS_SEARCH, data: state.postsCopy });
     }
     const res = state.posts.filter((item) =>

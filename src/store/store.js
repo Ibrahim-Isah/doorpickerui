@@ -108,6 +108,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import destinationimg1 from "../assets/images/img5.jpg";
+import man from "../assets/images/man-1.png";
 import flag1 from "../assets/images/flag14.png";
 import flag2 from "../assets/images/flag1.jpg";
 import flag3 from "../assets/images/flag2.jpg";
@@ -3329,7 +3330,7 @@ const sectiondata = {
   },
   contactdata: {
     title: "Our Office",
-    img: destinationimg1,
+    img: man,
     desc: "DoorPicker is at your service. Established in 2018, we connect buyers with sellers. List your items for sale on doorpicker and watch us perform the magic that will put more money into your pocket.",
     address: "12345, Admiralty way, Lekki, Lagos",
     phoneNum: "+234(01)123456789",
