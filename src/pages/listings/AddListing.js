@@ -8,7 +8,7 @@ import AddPrice from "../../components/addlisting/AddPrice";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import breadcrumbimg from "../../assets/images/bread-bg.jpg";
-import { addImage, userDrafts } from "../../store/api/post";
+import { userDrafts } from "../../store/api/post";
 import { UserContext } from "../../context/UserProvider";
 import { DRAFT_SET, POSTS_DRAFT } from "../../context/actions";
 import { Dropdown, SplitButton } from "react-bootstrap";
@@ -18,7 +18,6 @@ function ControlledTabs() {
   const [state, dispatch] = useContext(UserContext);
   const [key, setKey] = useState("home");
   const [bread] = useState(breadcrumbimg);
-  //const [locale, setLocation] = useState(null);
 
   // useEffect(() => {
   //   async function Location() {
@@ -27,15 +26,6 @@ function ControlledTabs() {
   //   }
   //   Location();
   // }, []);
-  // const addPost = () => {
-  //   const toSave = {
-  //     status: "LIVE",
-  //     sellingPrice: price,
-  //     id: state.draft?.id,
-  //     ownerId: state.user?.id,
-  //   };
-  //   addPicket(toSave);
-  //   //create a post
   // };
   useEffect(() => {
     async function myDrafts() {
@@ -76,7 +66,7 @@ function ControlledTabs() {
               <Tabs
                 id="controlled-tab"
                 activeKey={key}
-                onSelect={(k) => setKey(k)}
+                onSelect={(k) => (state.user?.id ? setKey(k) : setKey("home"))}
                 className="mb-3"
               >
                 <Tab eventKey="home" title="Add Photo">

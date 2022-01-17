@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GeneralHeader from "../components/common/GeneralHeader";
 import Breadcrumb from "../components/common/Breadcrumb";
 import AskQuestionField from "../components/contact/AskQuestionField";
@@ -16,6 +16,7 @@ const state = {
   breadcrumbimg: breadcrumbimg,
 };
 function Contact() {
+  
   return (
     <main className="contact-page">
       {/* Header */}
