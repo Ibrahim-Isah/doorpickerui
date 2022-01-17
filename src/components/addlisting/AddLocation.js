@@ -21,12 +21,14 @@ const AddLocation = (props) => {
 	const [al, setAlert] = useState({ show: false });
 	const [addr, setAddr] = useState('');
 	const [title] = useState('Add Location');
+	const [buttonState, setButtonState] = useState(true);
 	const history = useHistory();
 	// useEffect(() => {
 	//   findLoc().then((d) => setLocation(d?.data));
 	// }, []);
 
 	const handleChangeCity = (s) => {
+		addr && setButtonState(false);
 		setCity(s);
 	};
 	// const handleChangeState = (v) => {
@@ -139,7 +141,12 @@ const AddLocation = (props) => {
                     </div>
                   </div> */}
 							</div>
-							<Button onClick={_done}>Done</Button>
+							<Button
+								onClick={!buttonState ? _done : null}
+								disabled={buttonState}
+							>
+								Done
+							</Button>
 						</form>
 					</div>
 				</div>

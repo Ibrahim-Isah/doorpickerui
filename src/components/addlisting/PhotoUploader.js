@@ -50,6 +50,7 @@ function PhotoUploader(props) {
 	const [err, setErr] = useState(null);
 	const [envs, setEnv] = useState(null);
 	const [buttonState, setButtonState] = useState(true);
+
 	useEffect(() => {
 		async function myVars() {
 			const r = await getVar();

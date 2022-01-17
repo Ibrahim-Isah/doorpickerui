@@ -33,6 +33,8 @@ function GeneralInfo(props) {
 	});
 	const [cond, setCondition] = useState(state.draft?.condition || '');
 	const [al, setAlert] = useState({ show: false });
+	const [buttonState, setButtonState] = useState(true);
+
 	const getSub = (cat) => {
 		setRes({ cat });
 		const sel = cats.category.find((c) => c.cat === cat);
@@ -64,6 +66,7 @@ function GeneralInfo(props) {
 		const draftCone = { ...dr };
 		draftCone[id] = value;
 		setDraft(draftCone);
+		dr && res && setButtonState(false);
 	};
 	const writeUserData = async (itemId = 10) => {
 		const res = await firebaseApi.storeChat(
@@ -238,7 +241,11 @@ function GeneralInfo(props) {
 									</div>
 								</div>
 							</div>
-							<Button onClick={_done} style={{ marginTop: '16px' }}>
+							<Button
+								onClick={!buttonState ? _done : null}
+								style={{ marginTop: '16px' }}
+								disabled={buttonState}
+							>
 								Done
 							</Button>
 							{/* <Button onClick={() => firebaseApi.addTwo()}>Two</Button> */}
