@@ -201,45 +201,51 @@ function GeneralInfo(props) {
 										</div>
 									</div>
 								</div>
-								<div className='col-lg-6'>
-									<div className='input-box'>
-										<label className='label-text'>Subcategory</label>
-										<div className='form-group mb-0'>
-											<Select
-												placeholder='Select a Subcategory'
-												options={sub}
-												onChange={(e) => _sub(e.value)}
-												value={{ value: res?.subcat, label: res?.subcat }}
-											/>
+								{res?.cat && (
+									<div className='col-lg-6'>
+										<div className='input-box'>
+											<label className='label-text'>Subcategory</label>
+											<div className='form-group mb-0'>
+												<Select
+													placeholder='Select a Subcategory'
+													options={sub}
+													onChange={(e) => _sub(e.value)}
+													value={{ value: res?.subcat, label: res?.subcat }}
+												/>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div className='col-lg-6'>
-									<div className='input-box'>
-										<label className='label-text'>Type</label>
-										<div className='form-group mb-0'>
-											<Select
-												placeholder='Select type'
-												options={t}
-												onChange={(e) => _type(e.value)}
-												value={{ value: res?.type, label: res?.type }}
-											/>
+								)}
+								{res?.subcat && (
+									<div className='col-lg-6'>
+										<div className='input-box'>
+											<label className='label-text'>Type</label>
+											<div className='form-group mb-0'>
+												<Select
+													placeholder='Select type'
+													options={t}
+													onChange={(e) => _type(e.value)}
+													value={{ value: res?.type, label: res?.type }}
+												/>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div className='col-lg-6'>
-									<div className='input-box'>
-										<label className='label-text'>Condition</label>
-										<div className='form-group mb-0'>
-											<Select
-												placeholder='Select a Condition'
-												options={condit}
-												onChange={(e) => setCondition(e.value)}
-												value={{ value: cond, label: cond }}
-											/>
+								)}
+								{res?.type && (
+									<div className='col-lg-6'>
+										<div className='input-box'>
+											<label className='label-text'>Condition</label>
+											<div className='form-group mb-0'>
+												<Select
+													placeholder='Select a Condition'
+													options={condit}
+													onChange={(e) => setCondition(e.value)}
+													value={{ value: cond, label: cond }}
+												/>
+											</div>
 										</div>
 									</div>
-								</div>
+								)}
 							</div>
 							<Button
 								onClick={!buttonState ? _done : null}
