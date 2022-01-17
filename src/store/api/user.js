@@ -95,7 +95,7 @@ export const getVar = async () => {
 	return data;
 };
 export const contactUs = async (obj) => {
-	const response = await fetch(`${BASE_URL}add/contact`, PostSettings(obj));
+	const response = await fetch(`${BASE_URL}contact/add`, PostSettings(obj));
 	if (!response.ok) {
 		return { error: { code: response.status } };
 	}
