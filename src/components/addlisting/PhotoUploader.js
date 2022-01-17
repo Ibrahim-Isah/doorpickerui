@@ -49,6 +49,7 @@ function PhotoUploader(props) {
 	const [files, setFiles] = useState([]);
 	const [err, setErr] = useState(null);
 	const [envs, setEnv] = useState(null);
+	const [buttonState, setButtonState] = useState(true);
 	useEffect(() => {
 		async function myVars() {
 			const r = await getVar();
@@ -70,6 +71,7 @@ function PhotoUploader(props) {
 					});
 				})
 			);
+			setButtonState(false);
 		},
 	});
 	const storeImage = async () => {
@@ -163,7 +165,12 @@ function PhotoUploader(props) {
 							</div>
 						</div>
 					</div>
-					<Button onClick={storeImage}>Done</Button>
+					<Button
+						onClick={!buttonState ? storeImage : null}
+						disabled={buttonState}
+					>
+						Done
+					</Button>
 				</div>
 			</div>
 		</>
