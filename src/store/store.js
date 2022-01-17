@@ -108,6 +108,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import destinationimg1 from "../assets/images/img5.jpg";
+import man from "../assets/images/man-1.png";
 import flag1 from "../assets/images/flag14.png";
 import flag2 from "../assets/images/flag1.jpg";
 import flag3 from "../assets/images/flag2.jpg";
@@ -122,7 +123,6 @@ import hiw3videoimg from "../assets/images/video-img2.jpg";
 import { FcLineChart } from "react-icons/fc";
 import dreamimg from "../assets/images/img6.jpg"; // 263*165
 import hiw5videoimg from "../assets/images/video-img3.jpg";
-import slicevideo from "../assets/video/slice-video.m4v";
 import flag10 from "../assets/images/flag10.png";
 import flag11 from "../assets/images/flag11.png";
 import flag12 from "../assets/images/flag12.jpg";
@@ -221,44 +221,10 @@ const sectiondata = {
                 }
             ]
         },*/
-    {
-      title: "listings",
-      path: "/listing-grid",
-      /*dropdown: [
-                {
-                    title: 'listing grid',
-                    path: '/listing-grid'
-                },
-                {
-                    title: 'map view',
-                    path: '/list-map-view'
-                },
-                {
-                    title: 'map view 2',
-                    path: '/list-map-view2'
-                },
-                {
-                    title: 'listing list',
-                    path: '/listing-list'
-                },
-                {
-                    title: 'left sidebar',
-                    path: '/list-left-sidebar'
-                },
-                {
-                    title: 'right sidebar',
-                    path: '/list-right-sidebar'
-                },
-                {
-                    title: 'listing details',
-                    path: '/listing-details'
-                },
-                {
-                    title: 'add listing',
-                    path: '/add-listing/new'
-                }
-            ]*/
-    },
+    // {
+    //   title: "listings",
+    //   path: "/listing-grid",
+    // },
     /*  {
            title: 'pages',
             path: '/user-profile',
@@ -439,7 +405,7 @@ const sectiondata = {
       sectitle: "Find The Best Places To Be",
       seccontent:
         "Discover the best places to stay, eat, shop & visit the city nearest to you.",
-      videobgsrc: slicevideo,
+      videobgsrc: "",
     },
   },
   categories: {
@@ -1072,7 +1038,7 @@ const sectiondata = {
       ],
     },
     hiw4: {
-      sectitle: "Why Choose Us",
+      sectitle: "DoorPicker in 3 Steps",
       seccontent:
         "Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.",
       items: [
@@ -1168,23 +1134,23 @@ const sectiondata = {
       ],
     },
     hiw7: {
-      sectitle: "Why Choose Us",
+      sectitle: "DoorPicker in 3 Steps",
       seccontent:
-        "Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.",
+        "Joining and using DoorPicker is as easy as ABC. Payments and collections are guaranteed for every verified transaction.",
       items: [
         {
           icon: <FiHeadphones />,
-          title: "24/7 Hours Support",
+          title: "Sign UP",
           desc: "There are many variations of passages of Lorem Ipsum available. Aenean a quam luctus, finibus tellus",
         },
         {
           icon: <FaCogs />,
-          title: "Admin Panel",
+          title: "Post Picket",
           desc: "There are many variations of passages of Lorem Ipsum available. Aenean a quam luctus, finibus tellus",
         },
         {
           icon: <FiThumbsUp />,
-          title: "Mobile friendly",
+          title: "Buy & Sell",
           desc: "There are many variations of passages of Lorem Ipsum available. Aenean a quam luctus, finibus tellus",
         },
       ],
@@ -2403,15 +2369,15 @@ const sectiondata = {
     website: "www.techydevs.com",
   },
   teamdata: {
-    sectitle: "Our Expert Team Members",
+    sectitle: "Our Team",
     seccontent:
       "Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.",
     teams: [
       {
         img: userimage,
-        title: "Kamal Ahmed",
+        title: "Dr. Mercy Okonkwo",
         titleUrl: "#",
-        stitle: "Business Consultant",
+        stitle: "CEO",
         socials: [
           {
             icon: <FaFacebookF />,
@@ -2433,9 +2399,9 @@ const sectiondata = {
       },
       {
         img: userimage,
-        title: "Kamran Ahmed",
+        title: "Eneche Oloja",
         titleUrl: "#",
-        stitle: "Photographer",
+        stitle: "CTO",
         socials: [
           {
             icon: <FaFacebookF />,
@@ -2457,9 +2423,9 @@ const sectiondata = {
       },
       {
         img: userimage,
-        title: "Tanbir Ahmed",
+        title: "Lawrence Ahmed",
         titleUrl: "#",
-        stitle: "Co-manager associated",
+        stitle: "PO",
         socials: [
           {
             icon: <FaFacebookF />,
@@ -2685,10 +2651,8 @@ const sectiondata = {
       },
     ],
     aboutst2: {
-      title:
-        "Welcome to the Dirto Business Directory Service and a Public Company",
-      content1:
-        "Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend.",
+      title: "Welcome to DoorPicker",
+      content1: "A marketplace that connects buyers and sellers. ",
       content2:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.",
       items: [
@@ -3350,7 +3314,7 @@ const sectiondata = {
       btnurl: "/sign-up",
     },
     cta4: {
-      title: "Want to Join with us?",
+      title: "Join the winning team?",
       content:
         "Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.",
       btntext: "Join Now",
@@ -3365,33 +3329,33 @@ const sectiondata = {
   },
   contactdata: {
     title: "Our Office",
-    img: destinationimg1,
-    desc: "Mauris aliquet eu quam id ornare. Morbi ac quam enim. Cras vitae nulla condimentum, semper dolor non, faucibus dolor. Praesent eros turpis, commodo vel justo at",
-    address: "USA 27TH Brooklyn NY",
-    phoneNum: "+7(111)123456789",
-    email: "contact@dirto.com",
-    opendays: "Monday To Friday",
-    opendaytime: "9am - 7pm",
+    img: man,
+    desc: "DoorPicker is at your service. Established in 2018, we connect buyers with sellers. List your items for sale on doorpicker and watch us perform the magic that will put more money into your pocket.",
+    address: "12345, Admiralty way, Lekki, Lagos",
+    phoneNum: "+234(01)123456789",
+    email: "contact@doorpicker.com",
+    opendays: "Monday To Sunday",
+    opendaytime: "6am - 7am",
     closeday: "Saturday To Sunday",
     mapoverlay: {
-      address: "Melbourne, Australia, 105 South",
-      city: "Park Avenue",
-      number: "2800 256 508",
-      number2: "666 777 888",
-      email1: "needhelp@dirto.com",
-      email2: "inquiry@dirto.com",
+      address: "Admiralty way, Lekki, Lagos",
+      city: "Lagos",
+      number: "080 256 508",
+      number2: "070 777 888",
+      email1: "office@doorpicker.com",
+      email2: "info@doorpicker.com",
     },
   },
   testimonialdata: {
-    sectitle: "What Our Users Said",
+    sectitle: "Words From Our Happy Users",
     seccontent:
       "Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.",
     sliders: [
       {
         id: 1,
         img: team1,
-        title: "Richard Doe",
-        designation: "united states",
+        title: "Richard Chukwu",
+        designation: "Lekki, Lagos",
         content:
           "Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des culpa officia deserunt mollit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at cumque fuga minima molestias nihil perspiciatis repudiandae sed vitae voluptatibus?",
       },

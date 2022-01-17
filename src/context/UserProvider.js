@@ -4,6 +4,7 @@ import {
   DRAFT_SET,
   MY_POSTS_SET,
   POSTS_DRAFT,
+  POSTS_SEARCH,
   POSTS_SET,
   POST_SET,
   USER_SET,
@@ -11,9 +12,9 @@ import {
 const initialState = {
   user: {},
   posts: [],
+  postsCopy: [],
   favs: [],
   myPosts: [],
-  favs: [],
   post: {},
   loading: false,
   drafts: [],
@@ -30,6 +31,12 @@ const UserProvider = ({ children }) => {
           ...state,
           posts: action.data,
           favs: action.fav,
+          postsCopy: action.data,
+        };
+      case POSTS_SEARCH:
+        return {
+          ...state,
+          posts: action.data,
         };
       case POSTS_DRAFT:
         return {

@@ -33,7 +33,7 @@ import { UserContext } from "../../context/UserProvider";
 import { changeStatus, getPosts, userPosts } from "../../store/api/post";
 import { DRAFT_SET, MY_POSTS_SET, USER_SET } from "../../context/actions";
 import { getUsers, userChangePwd, userUpdate } from "../../store/api/user";
-import { Table } from "react-bootstrap";
+import { Alert, Table } from "react-bootstrap";
 
 function Dashboard(props) {
   const [state, dispatch] = useContext(UserContext);
@@ -41,6 +41,7 @@ function Dashboard(props) {
   const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
   const [did, setId] = useState(null);
+  const [msg, setMsg] = useState(null);
   const history = useHistory();
   const isAdmin = state.user?.roles?.includes("ADMIN");
   //const { isAuth } = props.location?.state;
@@ -133,8 +134,14 @@ function Dashboard(props) {
     history.push("/add-listing/new", { draft: r.data });
   };
   const _favorite = async (id, status) => {
+    const mg = `${status} completed succesfully!`;
     const r = await changeStatus({ id, status, ownerId: state.user.id });
+    r?.data ? setMsg({ type: "success", mg }) : setMsg({ type: "danger", mg });
     dispatch({ type: DRAFT_SET, data: r.data });
+  };
+  const _logout = () => {
+    dispatch({ type: USER_SET, data: null });
+    history.push("/login");
   };
 
   return (
@@ -212,17 +219,30 @@ function Dashboard(props) {
                       </span>
                       add picket
                     </Link>
-                    <Link to="/" className="theme-btn ml-1">
+                    <button
+                      variant="link"
+                      onClick={_logout}
+                      className="theme-btn ml-1"
+                    >
                       <span className="la">
                         <AiOutlinePoweroff />
                       </span>
                       sign out
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
               <div className="col-lg-12">
                 <div className="tab-content" id="nav-tabContent">
+                  {msg && (
+                    <Alert
+                      variant={msg.type}
+                      onClose={() => setMsg(null)}
+                      dismissible
+                    >
+                      {msg.mg}
+                    </Alert>
+                  )}
                   <TabPanel id="pickets">
                     <div className="row">
                       {state.myPosts.map((item, i) => {
@@ -641,7 +661,7 @@ function Dashboard(props) {
                   </TabPanel>
                   <TabPanel>
                     <div className="row">
-                      {sectiondata.dashboard.cards.map((item, i) => {
+                      {[].map((item, i) => {
                         return (
                           <div key={i} className="col-lg-4 column-td-6">
                             <div className="card-item">
@@ -744,7 +764,7 @@ function Dashboard(props) {
                   <TabPanel>
                     <div className="row">
                       <div className="col-lg-12">
-                        <div className="invoice-table table-responsive">
+                        <div className="tranx-table table-responsive">
                           <table className="table-bordered w-100">
                             <thead>
                               <tr>
@@ -754,20 +774,7 @@ function Dashboard(props) {
                                 <th>Total</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                <td>Beef Dripping Glazed Steak</td>
-                                <td>1</td>
-                                <td>$1.0</td>
-                                <td>$8.00</td>
-                              </tr>
-                              <tr>
-                                <td>Steak & Melted Cheese Brioche</td>
-                                <td>1</td>
-                                <td>$1.5</td>
-                                <td>$8.00</td>
-                              </tr>
-                            </tbody>
+                            <tbody></tbody>
                           </table>
                         </div>
                       </div>
@@ -784,25 +791,7 @@ function Dashboard(props) {
                             <th>Username</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td colSpan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        </tbody>
+                        <tbody></tbody>
                       </Table>
                     </div>
                   </TabPanel>
