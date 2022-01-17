@@ -19,8 +19,32 @@ function AskQuestionField({ title }) {
 	} = useForm();
 
 	const onSubmit = async (data) => {
-		const user = await contactUs(data);
-		if (user.error) {
+		try {
+			const user = await contactUs(data);
+			if (user.error) {
+				dispatch({
+					type: ALERT_SHOW,
+					data: {
+						variant: 'danger',
+						show: true,
+						msg: 'Email failed to send!',
+					},
+				});
+			}
+			if (user.data) {
+				const { data } = user;
+				dispatch({
+					type: ALERT_SHOW,
+					data: {
+						variant: 'success',
+						show: true,
+						msg: `${data.name}, Email sent successfully`,
+					},
+				});
+				reset();
+			}
+		} catch (err) {
+			console.log(err.message);
 			dispatch({
 				type: ALERT_SHOW,
 				data: {
@@ -29,18 +53,6 @@ function AskQuestionField({ title }) {
 					msg: 'Email failed to send!',
 				},
 			});
-		}
-		if (user.data) {
-			const { data } = user;
-			dispatch({
-				type: ALERT_SHOW,
-				data: {
-					variant: 'success',
-					show: true,
-					msg: `${data.name}, Email sent successfully`,
-				},
-			});
-			reset();
 		}
 	};
 
