@@ -228,8 +228,8 @@ function RecoverPassBox(props) {
 															</span>
 															<input
 																className='form-control'
-																type='text'
-																name='text'
+																type='password'
+																name='password'
 																placeholder='New password'
 																value={password}
 																onChange={({ target }) =>
@@ -248,8 +248,8 @@ function RecoverPassBox(props) {
 															</span>
 															<input
 																className='form-control'
-																type='text'
-																name='text'
+																type='password'
+																name='password'
 																placeholder='Confirm new password'
 																value={confirmPassword}
 																onChange={({ target }) =>
