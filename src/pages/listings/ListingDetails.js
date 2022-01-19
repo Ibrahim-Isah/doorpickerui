@@ -3,7 +3,6 @@ import GeneralHeader from "../../components/common/GeneralHeader";
 import ListingDetailsBreadcrumb from "./ListingDetailsBreadcrumb";
 import ListingDetailsSidebar from "../../components/sidebars/ListingDetailsSidebar";
 import ListingDetailsGallery from "../../components/sliders/ListingDetailsGallery";
-import GeneralMap from "../../components/contact/GeneralMap";
 import CustomerFeedback from "../../components/sidebars/widgets/CustomerFeedback";
 import ListingDetailsComments from "../../components/contact/ListingDetailsComments";
 import ReviewFields from "../../components/contact/ReviewFields";
@@ -12,6 +11,7 @@ import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import sectiondata from "../../store/store";
 import { postMeta } from "../../store/api/post";
 import { BsCheckCircle } from "react-icons/bs";
+import { tComment } from "../../utils/tReview";
 
 function ListingDetails(props) {
   const p = props?.location?.state?.post || {};
@@ -28,12 +28,15 @@ function ListingDetails(props) {
   // const openModal = () => {
   //   setOpen(true);
   // };
-  const contentstate = {
-    mapTitle: "Location",
-    peopleViewtitle: "People Also Viewed",
-  };
-  const rev = meta?.review ? JSON.parse(meta.review) : [];
 
+  const rev = meta?.review ? JSON.parse(meta.review) : []; // the review from backend is a json string, it needs to be parsed as object
+  const stars = rev.map((r) => r.star);
+  console.log(stars, " soro");
+  console.log(JSON.stringify(rev), " rev");
+  const _review = (obj: tComment) => {
+    // add obj to the meta.review array
+    // submit the modified new meta that contains the added obj to the api: basepath/post/meta (POST request)
+  };
   return (
     <main className="listing-details">
       <GeneralHeader />
@@ -145,7 +148,7 @@ function ListingDetails(props) {
                   <div className="title-shape"></div>
                   <ListingDetailsComments commentlists={rev} />
                 </div>
-                <ReviewFields />
+                <ReviewFields doReview={_review} />
               </div>
             </div>
             <div className="col-lg-4">

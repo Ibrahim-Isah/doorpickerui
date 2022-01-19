@@ -6,6 +6,7 @@ import { BsPencil } from "react-icons/bs";
 import PhotoUploader2 from "../addlisting/PhotoUploader2";
 import { addMeta } from "../../store/api/post";
 import { remi } from "../../store/store";
+import { tComment } from "../../utils/tReview";
 
 const states = {
   title: "Add a Review",
@@ -26,7 +27,13 @@ const _review = async () => {
   const r = await addMeta(data);
   console.log(r);
 };
-function ReviewFields() {
+function ReviewFields(props) {
+  const addReview = (obj: tComment) => {
+    // call this method to submit a review
+    // capture the form input data into the obj argument
+
+    props.doReview(obj);
+  };
   return (
     <>
       <div className="add-review-listing padding-top-50px" id="review">

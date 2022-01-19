@@ -9,15 +9,14 @@ import NewsLetter from "../../components/other/cta/NewsLetter";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import GenericHeader from "../../components/common/GenericHeader";
-import breadcrumbimg from "../../assets/images/bread-bg.jpg";
 import sectiondata from "../../store/store";
 import { UserContext } from "../../context/UserProvider";
 
-const state = {
-  breadcrumbimg: breadcrumbimg,
-};
+// const state = {
+//   breadcrumbimg: breadcrumbimg,
+// };
 function ListingList() {
-  const [state, dispatch] = useContext(UserContext);
+  const [state] = useContext(UserContext);
   return (
     <main className="listing-list">
       {/* Header */}

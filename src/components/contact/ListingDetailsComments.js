@@ -4,6 +4,7 @@ import Button from "../common/Button";
 import SectionDivider from "../common/SectionDivider";
 import { Link } from "react-router-dom";
 import { RiReplyLine } from "react-icons/ri";
+import { MdStar } from "react-icons/md";
 
 function ListingDetailsComments(props) {
   const { commentlists } = props;
@@ -24,12 +25,16 @@ function ListingDetailsComments(props) {
                     <div className="comment-body">
                       <div className="meta-data">
                         <span className="comment__author">{item?.name}</span>
-                        <span className="comment__date">{item?.date}</span>
-                        {/* <div className="rating-rating">
-                                                {item.stars.map((star, index) => {
-                                                    return <span key={index} className="la la-star">{star}</span>
-                                                })}
-                                            </div> */}
+                        <span className="comment__date">
+                          {new Date(item?.date).toLocaleDateString()}{" "}
+                          <div className="rating-rating">
+                            {[...Array(item?.star)].map((i, idx) => (
+                              <span className="la la-star" key={idx}>
+                                <MdStar />
+                              </span>
+                            ))}{" "}
+                          </div>
+                        </span>
                       </div>
                       <p className="comment-content">{item?.content}</p>
                       <div className="comment-reply d-flex justify-content-between align-items-center">
@@ -71,18 +76,6 @@ function ListingDetailsComments(props) {
                                     <span className="comment__date">
                                       {item2.date}
                                     </span>
-                                    {/* <div className="rating-rating">
-                                      {item2.stars.map((star, index3) => {
-                                        return (
-                                          <span
-                                            key={index3}
-                                            className="la la-star"
-                                          >
-                                            {star}
-                                          </span>
-                                        );
-                                      })}
-                                    </div> */}
                                   </div>
                                   <p className="comment-content">
                                     {item2.content}
