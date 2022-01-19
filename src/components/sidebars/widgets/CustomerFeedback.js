@@ -8,10 +8,8 @@ function CustomerFeedback(props) {
 	const { meta } = props;
 	const rev = meta?.review ? JSON.parse(meta.review) : [];
 	const stars = rev.map((r) => r.star);
-	console.log(stars.length, 'checking stars and review', rev);
 	const sum = stars.reduce((a, b) => a + b, 0);
 	const totalRating = sum / stars.length;
-	console.log(sum, ' soro', sum / stars.length, stars);
 	const getOccurrence = (value) => {
 		let starOccurence = stars.filter((v) => v === value).length;
 		let starPercentage = ((starOccurence / stars.length) * 100).toFixed();
