@@ -29,3 +29,4 @@ yarn.lock
 .idea/vcs.xml
 .idea/web.iml
 .idea/inspectionProfiles/Project_Default.xml
+backup/

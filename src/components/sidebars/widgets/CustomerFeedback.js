@@ -6,7 +6,11 @@ const states = {
 };
 function CustomerFeedback(props) {
   const { meta } = props;
-
+  const rev = meta?.review ? JSON.parse(meta.review) : [];
+  const stars = rev.map((r) => r.star);
+  const sum = [stars].reduce((a, b) => +a + +b, 0);
+  console.log(sum, " soro", sum / stars.length, stars);
+  //console.log(JSON.parse(meta?.review), " json meta");
   return (
     <>
       <div className="review-content-wrap">
@@ -38,7 +42,10 @@ function CustomerFeedback(props) {
                     <MdStarHalf />
                   </span>
                 </div>
-                <p className="stats-average__rating-rating"> ({meta?.star})</p>
+                <p className="stats-average__rating-rating">
+                  {" "}
+                  ({meta?.rating})
+                </p>
               </div>
             </div>
             <div className="course-rating-text">
@@ -50,12 +57,20 @@ function CustomerFeedback(props) {
               <ul>
                 <li className="review-rating-rate__items">
                   <div className="review-rating-inner__item">
-                    <div className="review-rating-rate__item-text">5 stars</div>
+                    <div className="review-rating-rate__item-text">
+                      5 stars{" "}
+                      {
+                        // count the number of 5s in the stars array repeat same for 4, 3, 2,1
+                      }
+                    </div>
                     <div className="review-rating-rate__item-fill">
                       <span className="review-rating-rate__item-fill__fill rating-fill-width1"></span>
                     </div>
                     <div className="review-rating-rate__item-percent-text">
-                      77 %
+                      77 %{" "}
+                      {
+                        // calclulate the percentage of 5s in the stars array
+                      }
                     </div>
                   </div>
                 </li>
