@@ -34,7 +34,7 @@ function ListingDetails(props) {
 	console.log(stars, ' soro');
 	console.log(JSON.stringify(rev), ' rev');
 	console.log('doings', meta);
-	const _review = ({ obj: tComment }) => {
+	const _review = (obj: z) => {
 		// add obj to the meta.review array
 		// submit the modified new meta that contains the added obj to the api: basepath/post/meta (POST request)
 	};
