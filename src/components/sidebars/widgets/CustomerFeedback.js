@@ -18,11 +18,13 @@ function CustomerFeedback(props) {
 	};
 
 	const halfStar = () => {
-		if (Math.round(totalRating) > totalRating) {
+		if (Math.round(totalRating) > Number(totalRating)) {
 			return true;
+		} else {
+			return false;
 		}
-		return;
 	};
+	let getHalfStar = halfStar();
 
 	const fullStarsFunction = () => {
 		let arr = new Array();
@@ -70,10 +72,12 @@ function CustomerFeedback(props) {
 									<span className='la ml-0'>
 										<MdStar />
 									</span> */}
-									{halfStar && (
+									{getHalfStar === true ? (
 										<span className='la ml-0'>
 											<MdStarHalf />
 										</span>
+									) : (
+										''
 									)}
 								</div>
 								<p className='stats-average__rating-rating'> ({totalRating})</p>

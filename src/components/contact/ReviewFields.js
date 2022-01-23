@@ -15,29 +15,36 @@ const states = {
 };
 const _review = async () => {
 	// hard coded data,  pls replace
-	const data = {
-		pid: 6,
-		id: 21,
-		fav: 1,
-		share: 3,
-		rating: 5,
-		star: 4.5,
-		review: JSON.stringify(remi.review),
-	};
-	const r = await addMeta(data);
-	console.log(r);
+	// const r = await addMeta();
+	// console.log(r);
 };
-function ReviewFields(props) {
+function ReviewFields({ rev, doReview }) {
 	const [starRating, setStarRating] = useState(0);
 	const [nameField, setNameField] = useState('');
 	const [emailField, setEmailField] = useState('');
 	const [reviewField, setReviewField] = useState('');
+	const [message, setMessage] = useState(false);
 
-	const addReview = (obj: tComment) => {
+	const addReview = (e) => {
+		e.preventDefault();
 		// call this method to submit a review
+		let obj = {
+			id: rev.length + 1,
+			img: 'hydra',
+			name: nameField,
+			date: new Date(),
+			content: reviewField,
+			star: starRating,
+			replyComments: !rev.replyComments === null ? [...rev.replyComments] : [],
+		};
 		// capture the form input data into the obj argument
-
-		props.doReview(obj);
+		rev.push(obj);
+		doReview(JSON.stringify(rev));
+		setStarRating(0);
+		setNameField('');
+		setEmailField('');
+		setReviewField('');
+		setMessage(true);
 	};
 	return (
 		<>
@@ -214,7 +221,8 @@ function ReviewFields(props) {
 											className='theme-btn border-0 margin-top-20px'
 											type='submit'
 											value='submit'
-											onClick={_review}
+											// onClick={_review}
+											onClick={addReview}
 										>
 											Submit review
 										</button>

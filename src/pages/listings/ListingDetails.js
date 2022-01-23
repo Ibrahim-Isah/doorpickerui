@@ -9,7 +9,7 @@ import ReviewFields from '../../components/contact/ReviewFields';
 import Footer from '../../components/common/footer/Footer';
 import ScrollTopBtn from '../../components/common/ScrollTopBtn';
 import sectiondata from '../../store/store';
-import { postMeta } from '../../store/api/post';
+import { postMeta, addMeta } from '../../store/api/post';
 import { BsCheckCircle } from 'react-icons/bs';
 import { tComment } from '../../utils/tReview';
 
@@ -17,6 +17,8 @@ function ListingDetails(props) {
 	const p = props?.location?.state?.post || {};
 	//const [isOpen, setOpen] = useState(false);
 	const [meta, setMeta] = useState({});
+	const [triggerSubmit, setTriggerSubmit] = useState(false);
+
 	useEffect(() => {
 		async function getMeta() {
 			const r = await postMeta(p.id);
@@ -25,17 +27,29 @@ function ListingDetails(props) {
 		getMeta();
 	}, []);
 
+	useEffect(() => {
+		async function submitMeta() {
+			const response = await addMeta(meta);
+			console.log('this the response', response?.data);
+		}
+		if (triggerSubmit === true) {
+			submitMeta();
+			setTriggerSubmit(false);
+		}
+	}, [triggerSubmit]);
+
 	// const openModal = () => {
 	//   setOpen(true);
 	// };
 
 	const rev = meta?.review ? JSON.parse(meta.review) : []; // the review from backend is a json string, it needs to be parsed as object
 	const stars = rev.map((r) => r.star);
-	console.log(stars, ' soro');
-	console.log(JSON.stringify(rev), ' rev');
-	console.log('doings', meta);
-	const _review = (obj: z) => {
+	// console.log(stars, ' soro');
+	// console.log(JSON.stringify(rev), ' rev');
+	// console.log('doings', meta);
+	const _review = () => {
 		// add obj to the meta.review array
+		setTriggerSubmit(true);
 		// submit the modified new meta that contains the added obj to the api: basepath/post/meta (POST request)
 	};
 	return (
@@ -149,7 +163,19 @@ function ListingDetails(props) {
 									<div className='title-shape'></div>
 									<ListingDetailsComments commentlists={rev} />
 								</div>
-								<ReviewFields doReview={_review} />
+								<ReviewFields
+									rev={rev}
+									doReview={(obj) => {
+										setMeta((previousState) => {
+											return {
+												...previousState,
+												review: `${obj}`,
+												pid: p.id,
+											};
+										});
+										_review();
+									}}
+								/>
 							</div>
 						</div>
 						<div className='col-lg-4'>
