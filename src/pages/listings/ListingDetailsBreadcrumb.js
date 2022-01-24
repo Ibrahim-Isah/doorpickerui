@@ -87,13 +87,17 @@ function ListingDetailsBreadcrumb(props) {
 	const { post, meta, doReport, reporting } = props;
 	const { title, location, city, sellingPrice } = post;
 
-	useEffect(() => {
-		const body = document.querySelector('body');
-		function showReportModal() {
-			body.classList.add('modal-open');
-			body.style.paddingRight = '17px';
-		}
+	const body = document.querySelector('body');
+	function showReportModal() {
+		body.classList.add('modal-open');
+		body.style.paddingRight = '17px';
+	}
+	function hideReportModal() {
+		body.classList.remove('modal-open');
+		body.style.paddingRight = '0';
+	}
 
+	useEffect(() => {
 		document.addEventListener(
 			'click',
 			function (e) {
@@ -110,11 +114,6 @@ function ListingDetailsBreadcrumb(props) {
 			},
 			false
 		);
-
-		function hideReportModal() {
-			body.classList.remove('modal-open');
-			body.style.paddingRight = '0';
-		}
 
 		document.addEventListener(
 			'click',
@@ -151,6 +150,8 @@ function ListingDetailsBreadcrumb(props) {
 
 		reporting.push(reportObj);
 		doReport(JSON.stringify(reporting));
+		setReportMessage('');
+		hideReportModal();
 	};
 
 	return (

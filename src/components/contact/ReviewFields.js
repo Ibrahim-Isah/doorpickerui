@@ -4,6 +4,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { FaRegEnvelope } from 'react-icons/fa';
 import { BsPencil } from 'react-icons/bs';
 import PhotoUploader2 from '../addlisting/PhotoUploader2';
+import { Alert } from 'react-bootstrap';
 
 const states = {
 	title: 'Add a Review',
@@ -21,6 +22,7 @@ function ReviewFields({ rev, doReview }) {
 	const [emailField, setEmailField] = useState('');
 	const [reviewField, setReviewField] = useState('');
 	const [message, setMessage] = useState(false);
+	const [showAlert, setShowAlert] = useState(false);
 
 	const addReview = (e) => {
 		e.preventDefault();
@@ -42,6 +44,7 @@ function ReviewFields({ rev, doReview }) {
 		setEmailField('');
 		setReviewField('');
 		setMessage(true);
+		setShowAlert(true);
 	};
 	return (
 		<>
@@ -51,6 +54,18 @@ function ReviewFields({ rev, doReview }) {
 				<div className='section-heading padding-top-20px'>
 					<p className='sec__desc font-size-16'>{states.subtitle}</p>
 				</div>
+				{showAlert && (
+					<Alert
+						variant='success'
+						onClose={() => {
+							setShowAlert(false);
+						}}
+						dismissible
+					>
+						Thanks for your review.
+					</Alert>
+				)}
+
 				<ul className='rating-list padding-top-20px'>
 					<li>
 						<span className='la d-inline-block'>

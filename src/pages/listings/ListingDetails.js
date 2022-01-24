@@ -30,7 +30,6 @@ function ListingDetails(props) {
 	useEffect(() => {
 		async function submitMeta() {
 			const response = await addMeta(meta);
-			console.log('this the response', response?.data);
 		}
 		if (triggerSubmit === true) {
 			submitMeta();
@@ -172,9 +171,7 @@ function ListingDetails(props) {
                 </div> */}
 								<CustomerFeedback meta={meta} />
 								<div className='comments-wrap'>
-									<h2 className='widget-title'>
-										{meta?.review?.length || 0} Review(s)
-									</h2>
+									<h2 className='widget-title'>{rev.length || 0} Review(s)</h2>
 									<div className='title-shape'></div>
 									<ListingDetailsComments commentlists={rev} />
 								</div>
