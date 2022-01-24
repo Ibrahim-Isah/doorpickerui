@@ -43,6 +43,7 @@ function ListingDetails(props) {
 	// };
 
 	const rev = meta?.review ? JSON.parse(meta.review) : []; // the review from backend is a json string, it needs to be parsed as object
+	const reporting = meta?.report ? JSON.parse(meta.report) : [];
 	const stars = rev.map((r) => r.star);
 	// console.log(stars, ' soro');
 	// console.log(JSON.stringify(rev), ' rev');
@@ -55,7 +56,21 @@ function ListingDetails(props) {
 	return (
 		<main className='listing-details'>
 			<GeneralHeader />
-			<ListingDetailsBreadcrumb post={p} meta={meta} />
+			<ListingDetailsBreadcrumb
+				post={p}
+				meta={meta}
+				reporting={reporting}
+				doReport={(obj) => {
+					setMeta((previousState) => {
+						return {
+							...previousState,
+							report: `${obj}`,
+							pid: p.id,
+						};
+					});
+					_review();
+				}}
+			/>
 			{/* <ModalVideo
         channel="youtube"
         isOpen={isOpen}

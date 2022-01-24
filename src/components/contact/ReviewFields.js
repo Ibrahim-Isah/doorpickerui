@@ -4,9 +4,6 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { FaRegEnvelope } from 'react-icons/fa';
 import { BsPencil } from 'react-icons/bs';
 import PhotoUploader2 from '../addlisting/PhotoUploader2';
-import { addMeta } from '../../store/api/post';
-import { remi } from '../../store/store';
-import { tComment } from '../../utils/tReview';
 
 const states = {
 	title: 'Add a Review',
