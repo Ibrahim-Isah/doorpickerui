@@ -173,7 +173,19 @@ function ListingDetails(props) {
 								<div className='comments-wrap'>
 									<h2 className='widget-title'>{rev.length || 0} Review(s)</h2>
 									<div className='title-shape'></div>
-									<ListingDetailsComments commentlists={rev} />
+									<ListingDetailsComments
+										commentlists={rev}
+										doComment={(obj) => {
+											setMeta((previousState) => {
+												return {
+													...previousState,
+													review: `${obj}`,
+													pid: p.id,
+												};
+											});
+											_review();
+										}}
+									/>
 								</div>
 								<ReviewFields
 									rev={rev}

@@ -142,7 +142,7 @@ function CommentForm({ onClose, show, item }) {
 function ListingDetailsComments(props) {
 	const [showForm, setShowForm] = useState(false);
 	const [index, setIndex] = useState(null);
-	const { commentlists } = props;
+	const { commentlists, doComment } = props;
 	return (
 		<>
 			<ul className='comments-list padding-top-40px'>
