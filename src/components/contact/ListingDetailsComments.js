@@ -1,79 +1,129 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FiRefreshCw } from 'react-icons/fi';
 import Button from '../common/Button';
 import SectionDivider from '../common/SectionDivider';
 import { Link } from 'react-router-dom';
 import { RiReplyLine, RiSendPlane2Line } from 'react-icons/ri';
-import { MdClose, MdStar } from 'react-icons/md';
-import { BsPencil } from 'react-icons/bs';
-import { AiOutlineCloud, AiOutlineMessage } from 'react-icons/ai';
+import { MdStar } from 'react-icons/md';
+import { Form, Modal } from 'react-bootstrap';
+import { AiOutlineMessage } from 'react-icons/ai';
+
+function CommentForm({ onClose, show }) {
+	const [nameField, setNameField] = useState('');
+	const [starRating, setStarRating] = useState(1);
+	const [reviewField, setReviewField] = useState('');
+
+	return (
+		<>
+			<Form className='w-75 border text-dark md:w-100 p-5'>
+				<Form.Group
+					className='mb-3 text-dark'
+					controlId='exampleForm.ControlInput1'
+				>
+					<Form.Label>Name</Form.Label>
+					<Form.Control
+						type='text'
+						required
+						value={nameField}
+						onChange={({ target }) => setNameField(target.value)}
+					/>
+				</Form.Group>
+				<Form.Group
+					className='mb-3 text-dark'
+					controlId='exampleForm.ControlTextarea1'
+				>
+					<Form.Label>Reply</Form.Label>
+					<Form.Control
+						as='textarea'
+						rows={3}
+						required
+						value={reviewField}
+						onChange={({ target }) => setReviewField(target.value)}
+					/>
+				</Form.Group>
+				<Form.Group className='mb-3 text-dark'>
+					<Form.Label>Star Rating</Form.Label>
+					{['radio'].map((type) => (
+						<div key={`inline-${type}`} className='mb-3'>
+							<Form.Check
+								inline
+								label='1'
+								name='group1'
+								type={type}
+								id={`inline-${type}-1`}
+								value={starRating}
+								onChange={() => setStarRating(1)}
+							/>
+							<Form.Check
+								inline
+								label='2'
+								name='group1'
+								type={type}
+								id={`inline-${type}-2`}
+								value={starRating}
+								onChange={() => setStarRating(2)}
+							/>
+							<Form.Check
+								inline
+								label='3'
+								name='group1'
+								type={type}
+								id={`inline-${type}-3`}
+								value={starRating}
+								onChange={() => setStarRating(3)}
+							/>
+							<Form.Check
+								inline
+								label='4'
+								name='group1'
+								type={type}
+								id={`inline-${type}-4`}
+								value={starRating}
+								onChange={() => setStarRating(4)}
+							/>
+							<Form.Check
+								inline
+								label='5'
+								name='group1'
+								type={type}
+								id={`inline-${type}-5`}
+								value={starRating}
+								onChange={() => setStarRating(5)}
+							/>
+						</div>
+					))}
+				</Form.Group>
+				<div className='btn-box text-right'>
+					<button
+						className=' btn btn-success'
+						disabled={nameField === '' || reviewField === '' ? true : false}
+						onClick={(e) => {
+							e.preventDefault();
+							onClose();
+							console.log('doings', nameField, starRating, reviewField);
+						}}
+					>
+						Send Reply{' '}
+						<i>
+							<RiSendPlane2Line />
+						</i>
+					</button>
+				</div>
+			</Form>
+		</>
+	);
+}
 
 function ListingDetailsComments(props) {
+	const [showForm, setShowForm] = useState(false);
+	const [index, setIndex] = useState(null);
 	const { commentlists } = props;
-
-	const [commentContent, setCommentContent] = useState('');
-
-	const submitComment = (e) => {
-		e.preventDefault();
-	};
-
-	const body = document.querySelector('body');
-	function showReportModal() {
-		body.classList.add('modal-open');
-		body.style.paddingRight = '17px';
-	}
-	function hideReportModal() {
-		body.classList.remove('modal-open');
-		body.style.paddingRight = '0';
-	}
-
-	useEffect(() => {
-		document.addEventListener(
-			'click',
-			function (e) {
-				for (
-					let target = e.target;
-					target && target !== this;
-					target = target.parentNode
-				) {
-					if (target.matches('.report-modal-btn')) {
-						showReportModal.call(target, e);
-						break;
-					}
-				}
-			},
-			false
-		);
-
-		document.addEventListener(
-			'click',
-			function (e) {
-				for (
-					let target = e.target;
-					target && target !== this;
-					target = target.parentNode
-				) {
-					if (
-						target.matches(
-							'.report-modal-box .modal-bg, .report-modal-box .modal-top .close'
-						)
-					) {
-						hideReportModal.call(target, e);
-						break;
-					}
-				}
-			},
-			false
-		);
-	});
-
 	return (
 		<>
 			<ul className='comments-list padding-top-40px'>
 				<li>
 					{commentlists?.length > 0 &&
 						commentlists.map((item, i) => {
-							console.log('commenting ', item.replyComments);
 							return (
 								<div key={i}>
 									<div className='comment'>
@@ -98,14 +148,25 @@ function ListingDetailsComments(props) {
 											</div>
 											<p className='comment-content'>{item?.content}</p>
 											<div className='comment-reply d-flex justify-content-between align-items-center'>
-												<div className='theme-btn comment__btn'>
-													<span className='report-modal-btn'>
-														<i className='la d-inline-block '>
-															<RiReplyLine />
-														</i>
-														Reply
-													</span>
+												<div
+													className='theme-btn comment__btn'
+													onClick={() => {
+														setIndex(i);
+														setShowForm(true);
+													}}
+												>
+													<i className='la d-inline-block'>
+														<RiReplyLine />
+													</i>{' '}
+													Reply
 												</div>
+												{showForm && i === index ? (
+													<CommentForm
+														onClose={() => setShowForm(false)}
+														show={showForm}
+													/>
+												) : null}
+
 												{/* <p className="feedback-box">
                                                 Was this review?
                                                 <button type="button" className="theme-btn">
@@ -115,77 +176,6 @@ function ListingDetailsComments(props) {
                                                     <i className="la d-inline-block"><FaRegSmile /></i> Funny
                                                 </button>
                                             </p> */}
-											</div>
-											<div className='modal-form'>
-												<div
-													className='modal fade report-modal-box bs-example-modal-lg'
-													tabIndex='-1'
-													role='dialog'
-													aria-labelledby='myLargeModalLabel'
-												>
-													<div className='modal-bg'></div>
-													<div
-														className='modal-dialog modal-lg'
-														role='document'
-													>
-														<div className='modal-content'>
-															<div className='modal-top'>
-																<button
-																	type='button'
-																	className='close close-arrow'
-																	data-dismiss='modal'
-																	aria-label='Close'
-																>
-																	<span aria-hidden='true' className='mb-0'>
-																		<MdClose />
-																	</span>
-																</button>
-																<h4 className='modal-title'>
-																	<span className='mb-0'>
-																		<AiOutlineMessage />
-																	</span>{' '}
-																	Reply to the Review
-																</h4>
-															</div>
-															<div className='contact-form-action'>
-																<form method='post'>
-																	<div className='msg-box'>
-																		<label className='label-text'>
-																			Write Message
-																		</label>
-																		<div className='form-group'>
-																			<i className='form-icon'>
-																				<BsPencil />
-																			</i>
-																			<textarea
-																				className='message-control form-control'
-																				name='message'
-																				value={commentContent}
-																				onChange={({ target }) =>
-																					setCommentContent(target.value)
-																				}
-																				placeholder="What's your opinion about the review?"
-																				required
-																			></textarea>
-																		</div>
-																	</div>
-																	<div className='btn-box text-right'>
-																		<button
-																			type='submit'
-																			className='theme-btn button-success border-0'
-																			onClick={submitComment}
-																		>
-																			Send reply{' '}
-																			<i>
-																				<RiSendPlane2Line />
-																			</i>
-																		</button>
-																	</div>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -223,6 +213,7 @@ function ListingDetailsComments(props) {
 																			</i>{' '}
 																			{item2.replyBtn}
 																		</Link>
+
 																		{/* <p className="feedback-box">
                                       Was this review?
                                       <button

@@ -185,6 +185,7 @@ function ReviewFields({ rev, doReview }) {
 											placeholder='Your Name'
 											value={nameField}
 											onChange={({ target }) => setNameField(target.value)}
+											required
 										/>
 									</div>
 								</div>
@@ -220,6 +221,7 @@ function ReviewFields({ rev, doReview }) {
 											placeholder='Write Message'
 											value={reviewField}
 											onChange={({ target }) => setReviewField(target.value)}
+											required
 										></textarea>
 									</div>
 								</div>
