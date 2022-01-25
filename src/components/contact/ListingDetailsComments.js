@@ -4,18 +4,47 @@ import Button from '../common/Button';
 import SectionDivider from '../common/SectionDivider';
 import { Link } from 'react-router-dom';
 import { RiReplyLine, RiSendPlane2Line } from 'react-icons/ri';
-import { MdStar } from 'react-icons/md';
+import { MdClose, MdStar } from 'react-icons/md';
 import { Form, Modal } from 'react-bootstrap';
 import { AiOutlineMessage } from 'react-icons/ai';
 
-function CommentForm({ onClose, show }) {
+function CommentForm({ onClose, show, item }) {
 	const [nameField, setNameField] = useState('');
 	const [starRating, setStarRating] = useState(1);
 	const [reviewField, setReviewField] = useState('');
 
+	const addReply = (e) => {
+		e.preventDefault();
+
+		let replyObj = {
+			id: `${item?.id}-${item?.replyComments.length + 1}`,
+			content: reviewField,
+			date: new Date(),
+			star: starRating,
+			name: nameField,
+			img: 'hydra',
+		};
+
+		item?.replyComments.push(replyObj);
+		console.log('checkings', JSON.stringify(item));
+		onClose();
+	};
 	return (
 		<>
-			<Form className='w-75 border text-dark md:w-100 p-5'>
+			<Form className='w-75 border text-dark p-4 mt-3'>
+				<button
+					type='button'
+					onClick={(e) => {
+						e.preventDefault();
+						onClose();
+					}}
+					className='close close-arrow'
+					aria-label='Close'
+				>
+					<span aria-hidden='true' className='mb-3'>
+						<MdClose />
+					</span>
+				</button>
 				<Form.Group
 					className='mb-3 text-dark'
 					controlId='exampleForm.ControlInput1'
@@ -97,11 +126,7 @@ function CommentForm({ onClose, show }) {
 					<button
 						className=' btn btn-success'
 						disabled={nameField === '' || reviewField === '' ? true : false}
-						onClick={(e) => {
-							e.preventDefault();
-							onClose();
-							console.log('doings', nameField, starRating, reviewField);
-						}}
+						onClick={addReply}
 					>
 						Send Reply{' '}
 						<i>
@@ -164,6 +189,7 @@ function ListingDetailsComments(props) {
 													<CommentForm
 														onClose={() => setShowForm(false)}
 														show={showForm}
+														item={item}
 													/>
 												) : null}
 
@@ -197,7 +223,9 @@ function ListingDetailsComments(props) {
 																			{item2.name}
 																		</span>
 																		<span className='comment__date'>
-																			{item2.date}
+																			{new Date(
+																				item2.date
+																			).toLocaleDateString()}
 																		</span>
 																	</div>
 																	<p className='comment-content'>
