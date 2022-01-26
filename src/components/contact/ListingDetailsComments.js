@@ -8,7 +8,7 @@ import { MdClose, MdStar } from 'react-icons/md';
 import { Form, Modal } from 'react-bootstrap';
 import { AiOutlineMessage } from 'react-icons/ai';
 
-function CommentForm({ onClose, show, item }) {
+function CommentForm({ onClose, addComment, item }) {
 	const [nameField, setNameField] = useState('');
 	const [starRating, setStarRating] = useState(1);
 	const [reviewField, setReviewField] = useState('');
@@ -26,7 +26,7 @@ function CommentForm({ onClose, show, item }) {
 		};
 
 		item?.replyComments.push(replyObj);
-		console.log('checkings', JSON.stringify(item));
+		addComment(item);
 		onClose();
 	};
 	return (
@@ -142,7 +142,12 @@ function CommentForm({ onClose, show, item }) {
 function ListingDetailsComments(props) {
 	const [showForm, setShowForm] = useState(false);
 	const [index, setIndex] = useState(null);
+
 	const { commentlists, doComment } = props;
+
+	const updateCommentList = () => {
+		doComment(JSON.stringify(commentlists));
+	};
 	return (
 		<>
 			<ul className='comments-list padding-top-40px'>
@@ -188,7 +193,9 @@ function ListingDetailsComments(props) {
 												{showForm && i === index ? (
 													<CommentForm
 														onClose={() => setShowForm(false)}
-														show={showForm}
+														addComment={(obj) => {
+															updateCommentList(item);
+														}}
 														item={item}
 													/>
 												) : null}
