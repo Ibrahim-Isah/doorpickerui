@@ -236,6 +236,9 @@ function ReviewFields({ rev, doReview }) {
 											type='submit'
 											value='submit'
 											// onClick={_review}
+											disabled={
+												nameField === '' || reviewField === '' ? true : false
+											}
 											onClick={addReview}
 										>
 											Submit review

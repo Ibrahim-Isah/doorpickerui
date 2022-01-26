@@ -332,6 +332,7 @@ function ListingDetailsBreadcrumb(props) {
 										<button
 											type='submit'
 											className='theme-btn button-success border-0'
+											disabled={reportMessage === '' ? true : false}
 											onClick={submitReport}
 										>
 											<i>
